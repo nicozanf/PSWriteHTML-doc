@@ -11,7 +11,6 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
-import subprocess
 import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -99,11 +98,8 @@ else:
    current_language = 'en'
 
 # SET CURRENT_VERSION
-git_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-current_branch = subprocess.check_output(
-   ['git', '-C', git_root, 'branch', '--show-current'],
-   text=True,
-).strip()
+from git import Repo
+repo = Repo( search_parent_directories=True )
  
 if 'current_version' in os.environ:
    # get the current_version env var set by buildDocs.sh
@@ -111,7 +107,7 @@ if 'current_version' in os.environ:
 else:
    # the user is probably doing `make html`
    # set this build's current version by looking at the branch
-   current_version = current_branch
+   current_version = repo.active_branch.name
  
 # tell the theme which version we're currently on ('current_version' affects
 # the lower-left rtd menu and 'version' affects the logo-area version)
@@ -121,17 +117,14 @@ html_context['version'] = current_version
 # POPULATE LINKS TO OTHER LANGUAGES
 html_context['languages'] = [ ('en', '/' +REPO_NAME+ '/en/' +current_version+ '/') ]
  
-languages = [lang.name for lang in os.scandir('locales') if lang.is_dir()]
-for lang in languages:
-   html_context['languages'].append( (lang, '/' +REPO_NAME+ '/' +lang+ '/' +current_version+ '/') )
+#languages = [lang.name for lang in os.scandir('locales') if lang.is_dir()]
+#for lang in languages:
+#   html_context['languages'].append( (lang, '/' +REPO_NAME+ '/' +lang+ '/' +current_version+ '/') )
  
 # POPULATE LINKS TO OTHER VERSIONS
 html_context['versions'] = list()
  
-versions = subprocess.check_output(
-   ['git', '-C', git_root, 'for-each-ref', '--format=%(refname:short)', 'refs/heads'],
-   text=True,
-).splitlines()
+versions = [branch.name for branch in repo.branches]
 for version in versions:
    html_context['versions'].append( (version, '/' +REPO_NAME+ '/'  +current_language+ '/' +version+ '/') )
  
