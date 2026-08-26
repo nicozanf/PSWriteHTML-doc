@@ -76,14 +76,8 @@ ALL_VERSIONS=${ALL_VERSIONS:-false}      # set true to process all remote branch
 MAX_VERSIONS=${MAX_VERSIONS:-5}          # hard-cap the number of branches to process
 SPHINX_TIMEOUT=${SPHINX_TIMEOUT:-1800}  # timeout for each sphinx build in seconds (default 30m)
 
-# If ALL_VERSIONS is false, prefer master/main only
-if [ "${ALL_VERSIONS}" != "true" ]; then
-  if git show-ref --verify --quiet refs/remotes/origin/master || git show-ref --verify --quiet refs/heads/master; then
-    versions="master"
-  elif git show-ref --verify --quiet refs/remotes/origin/main || git show-ref --verify --quiet refs/heads/main; then
-    versions="main"
-  fi
-fi
+versions="main"
+
 
 # Limit number of versions to avoid runaway loops
 if [ -n "$versions" ]; then
@@ -164,8 +158,8 @@ for current_version in ${versions}; do
 
 done
 
-# return to master branch (or attempt to restore original HEAD)
-git checkout master || true
+# return to main branch (or attempt to restore original HEAD)
+git checkout main || true
 
 #######################
 # Update GitHub Pages #
@@ -191,10 +185,10 @@ cat > index.html <<EOF
 <html>
    <head>
       <title>${REPO_NAME} Docs</title>
-      <meta http-equiv = "refresh" content="0; url='/${REPO_NAME}/en/master/'" />
+      <meta http-equiv = "refresh" content="0; url='/${REPO_NAME}/en/main/'" />
    </head>
    <body>
-      <p>Please wait while you're redirected to our <a href="/${REPO_NAME}/en/master/">documentation</a>.</p>
+      <p>Please wait while you're redirected to our <a href="/${REPO_NAME}/en/main/">documentation</a>.</p>
    </body>
 </html>
 EOF
