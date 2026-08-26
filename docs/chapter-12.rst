@@ -15,11 +15,6 @@ by **Przemysław Kłys** (`Przemyslaw.Klys on PowerShell Gallery <https://www.po
 This chapter categorizes the complete ecosystem of modules into distinct administrative domains—ranging from messaging, office document
 generation, and Active Directory auditing to security policies, image processing, and system customization.
 
-.. figure:: https://raw.githubusercontent.com/EvotecIT/PSWriteHTML/master/Docs/Images/PSWriteHTML-Logo.png
-   :alt: Evotec Open Source Ecosystem
-   :align: center
-   :width: 300px
-
 
 Core Frameworks & Helper Libraries
 ===================================
