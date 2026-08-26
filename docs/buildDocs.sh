@@ -21,11 +21,7 @@ BUILD_EPUB=${BUILD_EPUB:-true}
 # INSTALL DEPENDS #
 ###################
 
-# Some CI runners may not need package installs; keep install attempts idempotent
-if command -v apt-get >/dev/null 2>&1; then
-  sudo apt-get update
-  sudo apt-get -y install git rsync python3-sphinx python3-sphinx-rtd-theme python3-stemmer python3-git python3-pip python3-virtualenv python3-setuptools || true
-fi
+
 
 # Use virtualenv/venv when available in the environment (workflow should have created .venv)
 if [ -f ".venv/bin/activate" ]; then
@@ -34,7 +30,14 @@ fi
 
 # Ensure required Python packages are available in the active environment
 python3 -m pip install --upgrade pip || true
-python3 -m pip install --upgrade rinohtype==0.5.4 pygments sphinx-rtd-theme sphinx-tabs docutils GitPython || true
+
+# Some CI runners may not need package installs; keep install attempts idempotent
+if command -v apt-get >/dev/null 2>&1; then
+  sudo apt-get update
+  sudo apt-get -y install git rsync python3-sphinx python3-sphinx-rtd-theme python3-stemmer python3-git python3-pip python3-virtualenv python3-setuptools || true
+fi
+
+python3 -m pip install --upgrade rinohtype pygments sphinx-rtd-theme sphinx-tabs docutils GitPython || true
 python3 -m pip list || true
 
 #####################
