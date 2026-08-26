@@ -1,0 +1,37 @@
+name: docs_pages_workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build_docs_job:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Create Python venv and install doc dependencies
+      run: |
+        python -m venv .venv
+        . .venv/bin/activate
+        python -m pip install --upgrade pip setuptools wheel
+        pip install sphinx rinohtype==0.5.4 pygments sphinx-rtd-theme sphinx-tabs docutils gitpython
+      shell: bash
+
+    - name: Execute script to build our documentation and update pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        . .venv/bin/activate
+        chmod +x docs/buildDocs.sh
+        docs/buildDocs.sh
+      shell: bash
