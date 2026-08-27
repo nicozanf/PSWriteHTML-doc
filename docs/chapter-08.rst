@@ -185,9 +185,6 @@ dashboard:
 This is the result:
 
 .. figure:: images/chapter-08-dark.png
-   :alt: Rendered Dark Mode Example
-   :align: center
-
     A dark-themed PSWriteHTML dashboard with custom colors and styles.
 
 

@@ -19,7 +19,7 @@ import sys
 
 project = 'PSWriteHTML'
 copyright = '2020, BSDv3 License'
-author = 'Przemysław Kłys - EvotecIt'
+author = 'PSWriteHTML created by Przemysław Kłys - EvotecIt'
 
 # The full version, including alpha/beta/rc tags
 release = '1.41.1'
