@@ -69,6 +69,8 @@ This is the result:
    :alt: Rendered Tab Example
    :align: center
 
+   A report organized with tabbed navigation.
+
 
 
 
@@ -94,6 +96,8 @@ This is the result:
 .. figure:: images/chapter-06-panels.png
    :alt: Rendered Panel Example
    :align: center
+
+   Three panels arranged in a responsive multi-column section.
 
 
    *Three panels placed inside a single section, automatically flowing into an aligned multi-column grid.*
@@ -135,6 +139,8 @@ This is the result:
 .. figure:: images/chapter-06-full.png
    :alt: Rendered Full design Example
    :align: center
+
+   A complete operational dashboard with tabs, panels, icons, and collapsible content.
 
 
 

@@ -17,9 +17,12 @@ Nico Zanferrari (https://github.com/nicozanf) assembled it, after reading all th
 Przemysław Kłys (EvotecIT) - see the last chapter for a list of sources, including video tutorials.  Surely AI made a lot of work, but most of the
 results were manually refined and carefully reviewed. Nowadays it is maintained as an open-source
 project on GitHub at https://github.com/nicozanf/PSWriteHTML-doc . The resulting web manual
-is automatically generated from the repository on https://nicozanf.github.io/PSWriteHTML-doc , along with the pdf version.
+is automatically generated from the repository on https://nicozanf.github.io/PSWriteHTML-doc , along with the pdf and epub versions.
 
-Contributions, feedback, and suggestions are always welcome!
+
+Contributions, feedback, and suggestions are always welcome! Just open an issue or submit a pull request on the GitHub repository.
+If you find this manual useful, please consider starring the repository to show your support.
+
 
 
 PSWriteHTML Overview
@@ -37,8 +40,11 @@ HTML, CSS, or JavaScript authoring.
 
    *PSWriteHTML makes report generation in PowerShell simple, flexible, and visually engaging.*
 
-.. image:: images/01-engine.png
+.. figure:: images/01-engine.png
+   :alt: PSWriteHTML report generation engine
    :class: with-shadow
+
+   The PSWriteHTML rendering engine transforms PowerShell data into HTML reports.
 
 Why PSWriteHTML?
 ================
@@ -89,8 +95,10 @@ Here is a minimal working example that collects services data from your computer
 This is an example of the power of PSWriteHTML: with a single command you can transform some data into a beautiful html page, with
 pagination, sorting, advanced searching capabilities, and even export in Excel/CSV/PDF !
 
-.. image:: images/01-HTML_simple_table.png
+.. figure:: images/01-HTML_simple_table.png
    :class: with-shadow
+
+   An interactive HTML table generated with the ``Out-HtmlView`` shortcut.
 
 But this simple *Out-HtmlView* cmdlet in fact is a shortcut for the underlying *New-HTML* command, which allows you to further customize
 the report (for example selecting the columns included): 

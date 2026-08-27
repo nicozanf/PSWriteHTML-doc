@@ -58,13 +58,14 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 html_logo = 'images/logo.png'
-html_favicon = 'images/logo-32x32.ico'
+#html_favicon = 'images/logo-32x32.ico'
 html_theme_options = {
     'logo_only': False,
-    'display_version': True,
+    #'display_version': True,
 }
 # The master toctree document.
 master_doc = 'index'
+numfig = True
 
  # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -134,9 +135,9 @@ for version in versions:
 rinoh_documents = [dict(
     doc = master_doc,
     target = 'target',
-    title = project + ' Documentation',
+    title = project + ' Unofficial Manual',
     date = '© ' + copyright,
-    logo = 'images/logo.png'
+    #logo = 'images/logo.png'
 )]
 today_fmt = "%B %d, %Y"
  

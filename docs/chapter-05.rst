@@ -63,6 +63,8 @@ This is the result:
    :alt: Rendered Donut Chart Example
    :align: center
 
+   A donut chart showing the distribution of account statuses.
+
 
 
 
@@ -86,6 +88,8 @@ This is the result:
    :alt: Rendered Bar Chart Example
    :align: center
 
+   A multi-series bar chart comparing values across categories.
+
 
 
 Line Charts
@@ -103,6 +107,8 @@ This is the result:
 .. figure:: images/chapter-05-line.png
    :alt: Rendered Line Chart Example
    :align: center
+
+   A line chart displaying changes across an ordered sequence.
 
 
 Note that line chart have a built-in tooltip that displays the series name and value when hovering over a data point. You can also customize the line color, width, and style using parameters in `New-ChartLine`.
@@ -125,6 +131,8 @@ This example displays an SLA compliance score of 92 percent in a radial gauge.
    :alt: Rendered Radial Chart Example
    :align: center
 
+   A radial gauge chart showing an SLA compliance score.
+
 Interactive Geographic Maps with ``New-HTMLMap``
 ================================================
 
@@ -144,6 +152,8 @@ That renders nicely:
 .. figure:: images/chapter-05-basic-map.png
    :alt: Rendered World Map Example
    :align: center
+
+   An interactive world map rendered with PSWriteHTML.
 
 
 Chart Styling and Customization Options
@@ -168,6 +178,8 @@ Sizing and Layout
 
 .. figure:: images/chapter-05-mixed.png
 
+   A combined chart view with multiple visualizations in one report.
+
    *You can also combine multiple charts into a single one.*
 
 
@@ -189,6 +201,8 @@ The result is a dashboard that combines a pie chart for service status with a de
 .. figure:: images/chapter-05-with-table.png
    :alt: Rendered Pie Chart Example
    :align: center
+
+   A service-status report combining a pie chart with a detailed table.
 
 
 .. note::

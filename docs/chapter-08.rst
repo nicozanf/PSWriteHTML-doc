@@ -188,6 +188,8 @@ This is the result:
    :alt: Rendered Dark Mode Example
    :align: center
 
+    A dark-themed PSWriteHTML dashboard with custom colors and styles.
+
 
 
 Styling Best Practices

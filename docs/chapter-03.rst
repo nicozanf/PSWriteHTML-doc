@@ -43,6 +43,8 @@ Container Levels Explained
    :align: center
    :width: 80%
 
+   A tabbed dashboard built from nested PSWriteHTML layout commands.
+
    *A tabbed dashboard created using simple nested script blocks in PowerShell.*
 
 
@@ -117,6 +119,8 @@ It produces a simple data table, as shown below:
    :alt: Rendered Header Customization Example
    :align: center
 
+   A first PSWriteHTML report rendered from a PowerShell script.
+
 
 Building Your First Complete Report
 ===================================
@@ -130,6 +134,8 @@ The following complete script demonstrates how to query Windows services, disk d
    :alt: Rendered Table Output Example
    :align: center
    :width: 80%
+
+   A local-node assessment report with service, disk, and uptime panels.
 
    *Resulting table presentation created by nesting `New-HTMLTable` within `New-HTMLPanel` containers.*
 

@@ -48,6 +48,8 @@ This is the result, a simple network diagram with three nodes and two links, ful
    :alt: Rendered Basic Diagram Example
    :align: center
 
+   A basic interactive diagram containing nodes and links.
+
 
 Customizing Nodes (``New-DiagramNode``)
 ===========================================
@@ -106,6 +108,8 @@ This is the result:
    :alt: Rendered Basic Network Diagram Example
    :align: center
 
+   A directional network diagram with customized nodes and links.
+
 
 Layout Hierarchies & Physics Engines
 ====================================
@@ -132,6 +136,8 @@ This is the result:
    :alt: Rendered AD Topology Diagram Example
    :align: center
 
+   An Active Directory topology diagram using a hierarchical layout.
+
 
 
 Complete Practical Example: Infrastructure Network Topology Map
@@ -148,6 +154,8 @@ This is the result:
 .. figure:: images/chapter-07-network.png
    :alt: Rendered Basic Diagram Example
    :align: center
+
+   An infrastructure network topology map with directional paths and status icons.
 
 
 Diagramming Best Practices

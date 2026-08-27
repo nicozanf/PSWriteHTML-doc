@@ -33,6 +33,8 @@ It produces a simple interactive table, as shown below:
    :alt: Rendered First DataTable Example
    :align: center
 
+   A first interactive DataTable with sorting, searching, and paging controls.
+
 
 
 Interactivity Controls & Buttons
@@ -183,6 +185,8 @@ It produces a complete colored interactive table, as shown below:
 .. figure:: images/chapter-04-complete-table.png
    :alt: Rendered complete DataTable Example
    :align: center
+
+   A complete DataTable combining export buttons, sorting, and conditional formatting.
 
    *Combining table conditions and controls results in clean, executive-ready documentation.*
 
