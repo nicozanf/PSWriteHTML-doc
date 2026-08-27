@@ -17,8 +17,8 @@ cmdlet. You can build nodes, connections, flowcharts, and relational graphs dyna
 design tools like Visio or Lucidchart.
 
 
-Core Diagram Concepts: Nodes and links
-======================================
+Core Diagram Concepts: Nodes and links (``New-HTMLDiagram``)
+==============================================================
 
 Diagrams in PSWriteHTML are constructed using two primary structural primitives inside
 a `New-HTMLDiagram <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLDiagram.md>`_ container:
@@ -116,8 +116,8 @@ Layout Hierarchies & Physics Engines
 
 Vis Network includes physics engines that automatically arrange nodes dynamically or snap them into rigid hierarchical trees.
 
-Hierarchical Layouts (Org Charts & Tree Diagrams)
--------------------------------------------------
+Hierarchical Layouts (Org Charts & Tree Diagrams) (``New-DiagramOptionsLayout``)
+---------------------------------------------------------------------------------
 
 For structured trees like Active Directory domain trust structures or organizational charts, enable hierarchical positioning
 using `New-DiagramOptionsLayout <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-DiagramOptionsLayout.md>`_ :

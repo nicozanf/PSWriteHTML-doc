@@ -121,8 +121,8 @@ on `New-HTML <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTML.
 
 .. _correlating-tables-and-charts:
 
-Correlating Tables and Charts with Events
------------------------------------------
+Correlating Tables and Charts with Events (``New-ChartEvent``, ``New-DiagramEvent``, and ``New-TableEvent``)
+-------------------------------------------------------------------------------------------------------------
 
 Interactive charts can be connected to a table so that selecting a chart value searches for and highlights the matching table rows.
 This is implemented using `New-ChartEvent <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartEvent.md>`_  or

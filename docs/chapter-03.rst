@@ -79,7 +79,9 @@ Basic Syntax Pattern
 Configuring Document-Level Properties (``New-HTML``)
 ====================================================
 
-The `New-HTML <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTML.md>`_ cmdlet controls global document behaviors, including output file path, title, theme, and asset resolution. It is the only mandatory cmdlet in a PSWriteHTML script.
+The `New-HTML <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTML.md>`_ cmdlet controls global document behaviors, including output file path, title, theme,
+and asset resolution. It is the only mandatory cmdlet in a PSWriteHTML script, except Out-HtmlView.
+
 
 .. hint::
    You can see the official reference pages for all the PSWriteHTML commands with a complete list of parameters and their descriptions on the

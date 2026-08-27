@@ -74,8 +74,8 @@ This is the result:
 
 
 
-Section & Column Grid Layouts
-=============================
+Section & Column Grid Layouts  (``New-HTMLPanel`` and ``New-HTMLSection``)
+==========================================================================
 
 By default, every `New-HTMLPanel  <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLPanel.md>`_  added inside a
 `New-HTMLSection <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLSection.md>`_  expands to fill the available width. When multiple

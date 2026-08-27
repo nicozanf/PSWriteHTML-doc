@@ -1,6 +1,6 @@
 
-PSWriteHTML: the reference Manual
-=================================
+PSWriteHTML: the unofficial Reference Manual
+============================================
 
 .. toctree::
    :maxdepth: 2

@@ -81,8 +81,8 @@ Basic Email Template Structure
     for this purpose. They ensure email clients render the multi-column layout using native HTML ``<table>`` rows and cells.
 
 
-Embedding Images in Email Reports
-=================================
+Embedding Images in Email Reports (``New-HTMLImage``)
+=====================================================
 
 External image links (e.g., ``<img src="https://...">``) may be blocked by default in Microsoft Outlook and Apple Mail until the recipient
 clicks "Download Images". To ensure logos and status icons display immediately, embed images directly using

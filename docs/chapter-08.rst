@@ -141,8 +141,8 @@ Supported components expose dedicated icon parameters. The icon names below link
 * **``-IconRegular``:** Outline-style icons (e.g., ``"file-alt"``, ``"clock"``).
 * **``-IconBrands``:** Brand logos (e.g., ``"windows"``, ``"linux"``, ``"aws"``, ``"github"``).
 
-Inline Icon Example
--------------------
+Inline Icon Example with ``New-HTMLFontIcon``
+---------------------------------------------
 
 .. code-block:: powershell
 

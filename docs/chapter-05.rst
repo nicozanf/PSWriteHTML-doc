@@ -46,8 +46,8 @@ To render a chart, place one or more chart builder commands such as ``New-ChartB
 ``New-ChartDonut`` inside the `New-HTMLChart <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLChart.md>`_  script
 block. The nested command determines the chart type.
 
-Basic Donut Chart Example
--------------------------
+Basic Donut Chart Example (``New-ChartDonut``)
+----------------------------------------------------
 
 The following example gathers fake account status distributions and displays them in
 an interactive donut chart:
@@ -69,8 +69,8 @@ This is the result:
 
 
 
-Bar and Column Charts
-=====================
+Bar and Column Charts (``New-ChartBar``)
+========================================
 
 Bar and column charts are ideal for comparing system statistics side by side, such as disk utilization across
 multiple servers.
@@ -92,8 +92,8 @@ This is the result:
 
 
 
-Line Charts
-===========
+Line Charts (``New-ChartLine``, ``New-ChartAxisX``)
+====================================================
 
 Line charts are useful for showing how a value changes across an ordered sequence, such as CPU usage measured over several days.
 Use `New-ChartAxisX <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartAxisX.md>`_  to define the categories
@@ -115,11 +115,12 @@ Note that line chart have a built-in tooltip that displays the series name and v
 Also, for line charts, a new menu appears in the top-right corner of the chart, allowing users to toggle series visibility, pan/zoom in/out, and export the chart as an image or PDF.
 
 
-Radial Gauge Charts
-===================
+Radial Gauge Charts (``New-ChartRadial``)
+=========================================
 
 Radial charts display a progress or percentage value against an implicit target of 100, making them suitable for metrics such as SLA compliance.
-Pass the metric label to ``-Name`` and its numeric value to ``-Value``:
+Use `New-ChartRadial <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartRadial.md>`_  , pass the metric label to ``-Name``
+and its numeric value to ``-Value``:
 
 .. literalinclude:: sources/chapter-05-radial.ps1
    :language: powershell
@@ -133,8 +134,8 @@ This example displays an SLA compliance score of 92 percent in a radial gauge.
 
    A radial gauge chart showing an SLA compliance score.
 
-Interactive Geographic Maps with ``New-HTMLMap``
-================================================
+Interactive Geographic Maps (``New-HTMLMap``) 
+=============================================
 
 For geographic visualizations, `New-HTMLMap <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLMap.md>`_ renders an
 interactive map using one of PSWriteHTML's built-in regions. Use ``-Map`` to select ``Poland``, ``Usa_States``,
@@ -159,7 +160,8 @@ That renders nicely:
 Chart Styling and Customization Options
 =======================================
 
-`New-HTMLChart <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLChart.md>`_  and its nested chart builder commands expose extensive options to match corporate branding or dashboard requirements:
+`New-HTMLChart <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLChart.md>`_  and its nested chart builder commands expose extensive
+options to match corporate branding or dashboard requirements:
 
 Color Schemes & Themes
 ----------------------
@@ -186,7 +188,8 @@ Sizing and Layout
 Combining Charts and Tables
 ===========================
 
-For comprehensive reporting, you can place charts and DataTables side-by-side or stacked inside the same section to provide both high-level visual summaries and actionable underlying records.
+For comprehensive reporting, you can place charts and DataTables side-by-side or stacked inside the same section to provide both high-level
+visual summaries and actionable underlying records.
 
 
 Full Operational Example: Service Distribution Report

@@ -124,8 +124,8 @@ New-TableHeader Parameters
 * **-Alignment:** Text alignment: ``left``, ``center``, or ``right``.
 
 
-Conditional Formatting & Cell Highlighting
-===========================================
+Conditional Formatting & Cell Highlighting (``New-TableCondition``)
+===================================================================
 
 Visual indicators are crucial for system health reports. PSWriteHTML allows conditional styling based on exact string
 values, numbers, or comparison operators using
