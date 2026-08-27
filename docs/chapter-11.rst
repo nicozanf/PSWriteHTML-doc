@@ -39,7 +39,10 @@ icons (emojis, FontAwesome), custom colors, subtitle text, and distinct visual s
 This is the result:
 
 .. figure:: images/chapter-11-infocards.png
-    Dashboard information cards displaying high-level operational metrics.
+   :alt: Rendered InfoCard Example
+   :align: center
+
+   Dashboard information cards displaying high-level operational metrics.
 
 
 Controlling Layout Density with ``-Density``
@@ -168,7 +171,10 @@ The following example creates a pie chart and a table from the same data. Clicki
 It produces the following interactive correlation:
 
 .. figure:: images/chapter-11-correlation.png
-    A chart and DataTable connected through an interactive correlation event.
+   :alt: Rendered Graph-DataTable Correlation Example
+   :align: center
+
+   A chart and DataTable connected through an interactive correlation event.
 
 
 You can also use  `New-TableEvent <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-TableEvent.md>`_.
