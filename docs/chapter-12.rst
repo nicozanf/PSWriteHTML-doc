@@ -38,12 +38,12 @@ Communication & Notification Modules
 Office & Document Generation
 ============================
 
-* **PSWritePDF:** Programmatically creates, edits, merges, splits, and formats PDF documents.
 * **PSWriteOffice:** Creates and reads Word (``.docx``), Excel (``.xlsx``), PowerPoint (``.pptx``), Markdown, and CSV files natively without
-  Microsoft Office installed (powered by OfficeIMO).
-* **PSWord / Documentimo:** Dedicated tools for building Microsoft Word documentation and structured reports.
-* **PSExcel / Excelimo:** Modules for creating and formatting Excel workbooks without requiring local Office installations.
-* **MarkdownPrince:** A utility for parsing, converting, and processing Markdown files.
+  Microsoft Office installed. See https://github.com/EvotecIT/PSWriteOffice
+* **PSWriteWord / Documentimo:** Dedicated tools for building Microsoft Word documentation and structured reports. (obsolete, functionality merged into PSWriteOffice)
+* **PSWriteExcel / Excelimo:** Modules for creating and formatting Excel workbooks without requiring local Office installations. (obsolete, functionality merged into PSWriteOffice)
+* **PSWritePDF:** Programmatically creates, edits, merges, splits, and formats PDF documents. (obsolete, functionality merged into PSWriteOffice)
+* **MarkdownPrince:** A utility for parsing, converting, and processing Markdown files. (obsolete, functionality merged into PSWriteOffice)
 
 
 Active Directory, Security & Auditing
