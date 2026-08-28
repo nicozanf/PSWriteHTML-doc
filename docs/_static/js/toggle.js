@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var initial = localStorage.getItem("css-mode") != "Night";
-    var checkbox = document.querySelector('input[name=mode]');
+    var checkbox = document.querySelector('input#switch');
 
     if (!checkbox) {
         return;
