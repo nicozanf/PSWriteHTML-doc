@@ -52,15 +52,15 @@ Basic Color Override Example
    }
 
 
-Custom CSS Injection
-====================
+Custom CSS Injection (``Add-HTMLStyle``)
+=========================================
 
 For fine-grained visual control, PSWriteHTML uses the `Add-HTMLStyle <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/Add-HTMLStyle.md>`_ 
 function allows you to add CSS styles to HTML documents in various ways such as inline styles, external stylesheets,and content from files or strings.
 
 
-Injecting Raw CSS with ``Add-HTMLStyle``
-----------------------------------------
+Injecting Raw CSS
+-----------------
 
 Pass custom CSS rules to ``Add-HTMLStyle -Placement Header -Content`` to override fonts, table borders, panel padding, or background gradients
 across the entire page:
@@ -95,8 +95,8 @@ across the entire page:
    }
 
 
-Component-Level Styles (``Add-HTMLStyle``)
-------------------------------------------
+Component-Level Styles
+----------------------
 
 Use ``Add-HTMLStyle`` **inside** the script block passed to New-HTML to add CSS to the generated document:
 
@@ -124,8 +124,8 @@ Use ``Add-HTMLStyle`` **inside** the script block passed to New-HTML to add CSS 
    }
 
 
-Icon Integration & Typography
-=============================
+Icon Integration & Typography (``New-HTMLFontIcon``)
+=====================================================
 
 PSWriteHTML natively integrates `FontAwesome <https://fontawesome.com/>`_ icons in supported components, including tabs. Other layout
 elements can include an icon with ``New-HTMLFontIcon`` where appropriate. FontAwesome provides icons, not a general-purpose typography
@@ -141,8 +141,8 @@ Supported components expose dedicated icon parameters. The icon names below link
 * **``-IconRegular``:** Outline-style icons (e.g., ``"file-alt"``, ``"clock"``).
 * **``-IconBrands``:** Brand logos (e.g., ``"windows"``, ``"linux"``, ``"aws"``, ``"github"``).
 
-Inline Icon Example with ``New-HTMLFontIcon``
----------------------------------------------
+Inline Icon Example
+-------------------
 
 .. code-block:: powershell
 

@@ -1,14 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    function findStylesheet(fileName) {
+        return Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+            .find(function(link) {
+                return new URL(link.href, document.baseURI).pathname.endsWith("/" + fileName);
+            });
+    }
+
     function toggleCssMode(isDay) {
         var mode = (isDay ? "Day" : "Night");
         localStorage.setItem("css-mode", mode);
 
-        var daysheet = $('link[href="_static/pygments.css"]')[0].sheet;
-        daysheet.disabled = !isDay;
+        var daysheet = findStylesheet("pygments.css");
+        if (daysheet) {
+            daysheet.disabled = !isDay;
+        }
 
-        var nightsheet = $('link[href="_static/css/dark.css"]')[0];
-        if (!isDay && nightsheet === undefined) {
+        var nightsheet = findStylesheet("dark.css");
+        if (!isDay && !nightsheet) {
             var element = document.createElement("link");
             element.setAttribute("rel", "stylesheet");
             element.setAttribute("type", "text/css");
@@ -16,13 +25,17 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementsByTagName("head")[0].appendChild(element);
             return;
         }
-        if (nightsheet !== undefined) {
+        if (nightsheet) {
             nightsheet.sheet.disabled = isDay;
         }
     }
 
     var initial = localStorage.getItem("css-mode") != "Night";
     var checkbox = document.querySelector('input[name=mode]');
+
+    if (!checkbox) {
+        return;
+    }
 
     toggleCssMode(initial);
     checkbox.checked = initial;

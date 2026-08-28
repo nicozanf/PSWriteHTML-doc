@@ -111,13 +111,13 @@ This is the result:
    A directional network diagram with customized nodes and links.
 
 
-Layout Hierarchies & Physics Engines
-====================================
+Layout Hierarchies & Physics Engines (``New-DiagramOptionsLayout``)
+=============================================================================
 
 Vis Network includes physics engines that automatically arrange nodes dynamically or snap them into rigid hierarchical trees.
 
-Hierarchical Layouts (Org Charts & Tree Diagrams) (``New-DiagramOptionsLayout``)
----------------------------------------------------------------------------------
+Hierarchical Layouts (Org Charts & Tree Diagrams)
+--------------------------------------------------
 
 For structured trees like Active Directory domain trust structures or organizational charts, enable hierarchical positioning
 using `New-DiagramOptionsLayout <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-DiagramOptionsLayout.md>`_ :

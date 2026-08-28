@@ -39,15 +39,15 @@ PSWriteHTML supports multiple chart archetypes depending on the data structure:
 +-----------------+-----------------------------------+------------------------------------------------------------+
 
 
-Creating Your First Chart (``New-HTMLChart``)
-=============================================
+Creating Your First Chart (``New-HTMLChart``, ``New-ChartDonut``)
+==================================================================
 
 To render a chart, place one or more chart builder commands such as ``New-ChartBar``, ``New-ChartLine``, or
 ``New-ChartDonut`` inside the `New-HTMLChart <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLChart.md>`_  script
 block. The nested command determines the chart type.
 
-Basic Donut Chart Example (``New-ChartDonut``)
-----------------------------------------------------
+Basic Donut Chart Example
+-------------------------
 
 The following example gathers fake account status distributions and displays them in
 an interactive donut chart:
