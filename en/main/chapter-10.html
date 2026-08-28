@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 10: Publishing Live Dashboards on Windows &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 11: Advanced Features, Layout Customization, and Troubleshooting" href="chapter-11.html" />
+    <link rel="prev" title="Chapter 9: Automated Reporting and Email Integration" href="chapter-09.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 10: Publishing Live Dashboards on Windows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#publishing-overview">Publishing Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-1-hosting-via-windows-iis-internet-information-services">Method 1: Hosting via Windows IIS (Internet Information Services)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-2-publishing-to-cloud-static-web-hosting">Method 2: Publishing to Cloud Static Web Hosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-3-lightweight-hosting-with-pode-framework">Method 3: Lightweight Hosting with Pode Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publishing-best-practices">Publishing Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 10: Publishing Live Dashboards on Windows</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-10.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-10-publishing-live-dashboards-on-windows">
+<h1>Chapter 10: Publishing Live Dashboards on Windows<a class="headerlink" href="#chapter-10-publishing-live-dashboards-on-windows" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#publishing-overview" id="id1">Publishing Overview</a></p></li>
+<li><p><a class="reference internal" href="#method-1-hosting-via-windows-iis-internet-information-services" id="id2">Method 1: Hosting via Windows IIS (Internet Information Services)</a></p></li>
+<li><p><a class="reference internal" href="#method-2-publishing-to-cloud-static-web-hosting" id="id3">Method 2: Publishing to Cloud Static Web Hosting</a></p></li>
+<li><p><a class="reference internal" href="#method-3-lightweight-hosting-with-pode-framework" id="id4">Method 3: Lightweight Hosting with Pode Framework</a></p></li>
+<li><p><a class="reference internal" href="#publishing-best-practices" id="id5">Publishing Best Practices</a></p></li>
+</ul>
+</nav>
+<section id="publishing-overview">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Publishing Overview</a><a class="headerlink" href="#publishing-overview" title="Link to this heading"></a></h2>
+<p>As you scale <strong>PSWriteHTML</strong> across enterprise infrastructure, you will likely want to transition from generating static, on-demand <cite>.html</cite>
+files to publishing live, continuously updated dashboards accessible across your organization.</p>
+<p>Because PSWriteHTML generates standalone HTML files bundled with JavaScript and CSS, publishing a live interactive dashboard does not require
+complex web application frameworks like ASP.NET or Node.js.</p>
+<p>The standard architectural pattern consists of a <strong>scheduled PowerShell task</strong> that periodically writes an updated <cite>index.html</cite> file to a
+directory served by a web server.</p>
+</section>
+<section id="method-1-hosting-via-windows-iis-internet-information-services">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Method 1: Hosting via Windows IIS (Internet Information Services)</a><a class="headerlink" href="#method-1-hosting-via-windows-iis-internet-information-services" title="Link to this heading"></a></h2>
+<p>Windows IIS provides a robust, built-in option for hosting live PSWriteHTML dashboards internally with Active Directory Windows Authentication support.</p>
+<ol class="arabic">
+<li><p><strong>Install IIS Web Server:</strong></p>
+<p>Run PowerShell as Administrator:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Install-WindowsFeature</span> <span class="n">-Name</span> <span class="n">Web-Server</span> <span class="n">-IncludeManagementTools</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Configure Web Root Directory:</strong></p>
+<p>Create a dedicated folder to host your live report (e.g., <code class="docutils literal notranslate"><span class="pre">C:\inetpub\wwwroot\Dashboards</span></code>).</p>
+</li>
+<li><p><strong>Configure Scheduled Auto-Refresh Pipeline:</strong></p>
+<p>Configure your PowerShell generation script to output directly to the IIS web directory and set the document to auto-refresh in the browser
+using custom header tags:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Target IIS Web Root</span>
+<span class="nv">$OutputPath</span> <span class="p">=</span> <span class="s2">"C:\inetpub\wwwroot\Dashboards\index.html"</span>
+
+<span class="c"># Auto-Refresh Meta Header (Refreshes browser every 300 seconds / 5 minutes)</span>
+<span class="nv">$CustomHeader</span> <span class="p">=</span> <span class="s1">'&lt;meta http-equiv="refresh" content="300"&gt;'</span>
+
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Live Infrastructure Monitor"</span> <span class="n">-FilePath</span> <span class="nv">$OutputPath</span> <span class="n">-CustomJavaScript</span> <span class="nv">$CustomHeader</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Live Metrics"</span> <span class="n">-IconSolid</span> <span class="s2">"heartbeat"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Last Updated: </span><span class="p">$(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s1">'yyyy-MM-dd HH:mm:ss'</span><span class="p">)</span><span class="s2">"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="p">(</span><span class="nb">Get-Service</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">DisplayName</span><span class="p">,</span> <span class="n">Status</span> <span class="n">-First</span> <span class="n">15</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Automate Update Frequency:</strong></p>
+<p>Register a Windows Scheduled Task to execute this generation script every 5 to 15 minutes. Users browsing
+to <code class="docutils literal notranslate"><span class="pre">http://your-server-name/Dashboards/</span></code> will always view the latest live snapshot.</p>
+</li>
+</ol>
+</section>
+<section id="method-2-publishing-to-cloud-static-web-hosting">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Method 2: Publishing to Cloud Static Web Hosting</a><a class="headerlink" href="#method-2-publishing-to-cloud-static-web-hosting" title="Link to this heading"></a></h2>
+<p>For cloud-managed environments, you can automatically upload the generated HTML dashboard to a static web container
+(such as Azure Static Web Apps or AWS S3) using native PowerShell cloud modules:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Generate Report Locally</span>
+<span class="nv">$LocalReport</span> <span class="p">=</span> <span class="s2">"$env:TEMP\index.html"</span>
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Cloud Infrastructure Health"</span> <span class="n">-FilePath</span> <span class="nv">$LocalReport</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+
+<span class="c"># Upload to Azure Storage Blob ($web Static Website Container)</span>
+<span class="c"># Requires Az.Storage module</span>
+<span class="nb">Set-AzStorageBlobContent</span> <span class="n">-Container</span> <span class="s1">'$web'</span> <span class="o">-File</span> <span class="nv">$LocalReport</span> <span class="n">-Blob</span> <span class="s2">"index.html"</span> <span class="n">-Context</span> <span class="nv">$StorageContext</span> <span class="n">-Force</span>
+</pre></div>
+</div>
+</section>
+<section id="method-3-lightweight-hosting-with-pode-framework">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Method 3: Lightweight Hosting with Pode Framework</a><a class="headerlink" href="#method-3-lightweight-hosting-with-pode-framework" title="Link to this heading"></a></h2>
+<p>If you want to serve live dashboards on a Windows machine without enabling full IIS features, you can use the lightweight
+open-source <strong>Pode</strong> PowerShell web framework (see <a class="reference external" href="https://badgerati.github.io/Pode/latest/">https://badgerati.github.io/Pode/latest/</a>) to serve your PSWriteHTML
+reports on demand:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Import-Module</span> <span class="n">Pode</span>
+
+<span class="nb">Start-PodeServer</span> <span class="p">{</span>
+    <span class="nb">Add-PodeEndpoint</span> <span class="n">-Address</span> <span class="n">localhost</span> <span class="n">-Port</span> <span class="n">8080</span> <span class="n">-Protocol</span> <span class="n">Http</span>
+
+    <span class="c"># Serve static PSWriteHTML directory</span>
+    <span class="nb">Use-PodeStatic</span> <span class="n">-Path</span> <span class="s2">"C:\Reports\LiveDashboard"</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="publishing-best-practices">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Publishing Best Practices</a><a class="headerlink" href="#publishing-best-practices" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Grant Service Account File Permissions:</strong> Ensure the service account running your scheduled generation script has
+explicit Modify/Write permissions to <code class="docutils literal notranslate"><span class="pre">C:\inetpub\wwwroot\</span></code>.</p></li>
+<li><p><strong>Understand Offline Resource Embedding:</strong> When publishing in air-gapped networks, always use <code class="docutils literal notranslate"><span class="pre">New-HTML</span> <span class="pre">-Offline</span></code>.
+PSWriteHTML embeds and base64-encodes all required JavaScript libraries, fonts, and CSS directly inside the single
+<code class="docutils literal notranslate"><span class="pre">index.html</span></code> file. No secondary assets or subfolders are needed on the web server.</p></li>
+<li><p><strong>Include “Last Refreshed” Timestamps:</strong> Always render the current timestamp (<code class="docutils literal notranslate"><span class="pre">Get-Date</span></code>) in a section header or
+badge so users can immediately verify data freshness.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-11.html"><span class="doc">Chapter 11: Advanced Features, Optimization, and Troubleshooting</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-09.html" class="btn btn-neutral float-left" title="Chapter 9: Automated Reporting and Email Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-11.html" class="btn btn-neutral float-right" title="Chapter 11: Advanced Features, Layout Customization, and Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

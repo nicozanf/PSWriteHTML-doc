@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 5: Visualizing Data with Charts and Graphs &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 6: Organizing Content with Tabs, Sections, and Panels" href="chapter-06.html" />
+    <link rel="prev" title="Chapter 4: Working with DataTables and Data Grids" href="chapter-04.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 5: Visualizing Data with Charts and Graphs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#charts-and-graphs-overview">Charts and Graphs Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chart-types-overview">Chart Types Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-your-first-chart-new-htmlchart-new-chartdonut">Creating Your First Chart (<code class="docutils literal notranslate"><span class="pre">New-HTMLChart</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartDonut</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-donut-chart-example">Basic Donut Chart Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bar-and-column-charts-new-chartbar">Bar and Column Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartBar</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multi-series-bar-chart-example">Multi-Series Bar Chart Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#line-charts-new-chartline-new-chartaxisx">Line Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartLine</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartAxisX</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#radial-gauge-charts-new-chartradial">Radial Gauge Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartRadial</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-geographic-maps-new-htmlmap">Interactive Geographic Maps (<code class="docutils literal notranslate"><span class="pre">New-HTMLMap</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chart-styling-and-customization-options">Chart Styling and Customization Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#color-schemes-themes">Color Schemes &amp; Themes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sizing-and-layout">Sizing and Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#combining-charts-and-tables">Combining Charts and Tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#full-operational-example-service-distribution-report">Full Operational Example: Service Distribution Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#chart-best-practices">Chart Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 5: Visualizing Data with Charts and Graphs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-05.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-5-visualizing-data-with-charts-and-graphs">
+<h1>Chapter 5: Visualizing Data with Charts and Graphs<a class="headerlink" href="#chapter-5-visualizing-data-with-charts-and-graphs" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#charts-and-graphs-overview" id="id10">Charts and Graphs Overview</a></p></li>
+<li><p><a class="reference internal" href="#chart-types-overview" id="id11">Chart Types Overview</a></p></li>
+<li><p><a class="reference internal" href="#creating-your-first-chart-new-htmlchart-new-chartdonut" id="id12">Creating Your First Chart (<code class="docutils literal notranslate"><span class="pre">New-HTMLChart</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartDonut</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basic-donut-chart-example" id="id13">Basic Donut Chart Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#bar-and-column-charts-new-chartbar" id="id14">Bar and Column Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartBar</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#multi-series-bar-chart-example" id="id15">Multi-Series Bar Chart Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#line-charts-new-chartline-new-chartaxisx" id="id16">Line Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartLine</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartAxisX</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#radial-gauge-charts-new-chartradial" id="id17">Radial Gauge Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartRadial</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#interactive-geographic-maps-new-htmlmap" id="id18">Interactive Geographic Maps (<code class="docutils literal notranslate"><span class="pre">New-HTMLMap</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#chart-styling-and-customization-options" id="id19">Chart Styling and Customization Options</a></p>
+<ul>
+<li><p><a class="reference internal" href="#color-schemes-themes" id="id20">Color Schemes &amp; Themes</a></p></li>
+<li><p><a class="reference internal" href="#sizing-and-layout" id="id21">Sizing and Layout</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#combining-charts-and-tables" id="id22">Combining Charts and Tables</a></p>
+<ul>
+<li><p><a class="reference internal" href="#full-operational-example-service-distribution-report" id="id23">Full Operational Example: Service Distribution Report</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#chart-best-practices" id="id24">Chart Best Practices</a></p></li>
+</ul>
+</nav>
+<section id="charts-and-graphs-overview">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Charts and Graphs Overview</a><a class="headerlink" href="#charts-and-graphs-overview" title="Link to this heading"></a></h2>
+<p>While data grids excel at granular details, visual summaries are often necessary for executive dashboards and high-level health assessments.
+<strong>PSWriteHTML</strong> includes native support for interactive charts powered by <a class="reference external" href="https://apexcharts.com/">ApexCharts</a>, enabling
+you to build dynamic bar, line, pie, donut, area, radar, and gauge charts directly from PowerShell objects.</p>
+<p>With the <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLChart.md">New-HTMLChart</a>   cmdlet, you can turn raw numerical metrics into
+responsive visual representations featuring tooltips, legends, animations, and image export options.</p>
+</section>
+<section id="chart-types-overview">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Chart Types Overview</a><a class="headerlink" href="#chart-types-overview" title="Link to this heading"></a></h2>
+<p>PSWriteHTML supports multiple chart archetypes depending on the data structure:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Chart Type</p></th>
+<th class="head"><p>Target Cmdlet / Parameter</p></th>
+<th class="head"><p>Best Used For</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Bar / Column</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">New-ChartBar</span></code></p></td>
+<td><p>Comparing discrete values across categories (e.g., Disk
+space by volume, services by state).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pie / Donut</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">New-ChartDonut</span></code></p></td>
+<td><p>Displaying proportional distribution or percentages
+(e.g., OS breakdown, memory usage).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Line / Area</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">New-ChartLine</span></code></p></td>
+<td><p>Tracking trends over continuous time series or sequential
+data points (e.g., CPU load history).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gauge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">New-ChartRadial</span></code></p></td>
+<td><p>Representing progress toward a single threshold or target
+percentage (e.g., SLA compliance score).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="creating-your-first-chart-new-htmlchart-new-chartdonut">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Creating Your First Chart (<code class="docutils literal notranslate"><span class="pre">New-HTMLChart</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartDonut</span></code>)</a><a class="headerlink" href="#creating-your-first-chart-new-htmlchart-new-chartdonut" title="Link to this heading"></a></h2>
+<p>To render a chart, place one or more chart builder commands such as <code class="docutils literal notranslate"><span class="pre">New-ChartBar</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartLine</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">New-ChartDonut</span></code> inside the <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLChart.md">New-HTMLChart</a>  script
+block. The nested command determines the chart type.</p>
+<section id="basic-donut-chart-example">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Basic Donut Chart Example</a><a class="headerlink" href="#basic-donut-chart-example" title="Link to this heading"></a></h3>
+<p>The following example gathers fake account status distributions and displays them in
+an interactive donut chart:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Prepare data categories, as an array of PSCustomObjects with two properties: Status and Count</span>
+<span class="nv">$Data</span> <span class="p">=</span> <span class="p">@(</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Status</span> <span class="p">=</span> <span class="s1">'Active'</span><span class="p">;</span>   <span class="n">Count</span> <span class="p">=</span> <span class="n">142</span> <span class="p">}</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Status</span> <span class="p">=</span> <span class="s1">'Disabled'</span><span class="p">;</span> <span class="n">Count</span> <span class="p">=</span> <span class="n">18</span> <span class="p">}</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Status</span> <span class="p">=</span> <span class="s1">'Locked'</span><span class="p">;</span>   <span class="n">Count</span> <span class="p">=</span> <span class="n">5</span> <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Account Status Overview"</span> <span class="n">-FilePath</span> <span class="s2">"AccountChart.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Identity Summary"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"User Account States"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLChart</span> <span class="n">-Title</span> <span class="s2">"Account Breakdown"</span> <span class="p">{</span>
+                    <span class="nv">$Data</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+                        <span class="nb">New-ChartDonut</span> <span class="n">-Name</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Status</span> <span class="n">-Value</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Count</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id3">
+<img alt="Rendered Donut Chart Example" src="_images/chapter-05-donut.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">A donut chart showing the distribution of account statuses.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="bar-and-column-charts-new-chartbar">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Bar and Column Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartBar</span></code>)</a><a class="headerlink" href="#bar-and-column-charts-new-chartbar" title="Link to this heading"></a></h2>
+<p>Bar and column charts are ideal for comparing system statistics side by side, such as disk utilization across
+multiple servers.</p>
+<section id="multi-series-bar-chart-example">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Multi-Series Bar Chart Example</a><a class="headerlink" href="#multi-series-bar-chart-example" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$DiskData</span> <span class="p">=</span> <span class="p">@(</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Drive</span> <span class="p">=</span> <span class="s1">'C:'</span><span class="p">;</span> <span class="n">UsedGB</span> <span class="p">=</span> <span class="n">120</span><span class="p">;</span> <span class="n">FreeGB</span> <span class="p">=</span> <span class="n">30</span> <span class="p">}</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Drive</span> <span class="p">=</span> <span class="s1">'D:'</span><span class="p">;</span> <span class="n">UsedGB</span> <span class="p">=</span> <span class="n">450</span><span class="p">;</span> <span class="n">FreeGB</span> <span class="p">=</span> <span class="n">50</span> <span class="p">}</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Drive</span> <span class="p">=</span> <span class="s1">'E:'</span><span class="p">;</span> <span class="n">UsedGB</span> <span class="p">=</span> <span class="n">200</span><span class="p">;</span> <span class="n">FreeGB</span> <span class="p">=</span> <span class="n">300</span> <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Disk Capacity Dashboard"</span> <span class="n">-FilePath</span> <span class="s2">"DiskChart.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Storage"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Drive Capacity Distribution (GB)"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLChart</span> <span class="n">-Title</span> <span class="s2">"Used vs Free Space"</span> <span class="n">-Height</span> <span class="n">350</span> <span class="p">{</span>
+                    <span class="nb">New-ChartBarOptions</span> <span class="n">-Vertical</span>
+                    <span class="nb">New-ChartLegend</span> <span class="n">-Name</span> <span class="s1">'Used Space (GB)'</span><span class="p">,</span> <span class="s1">'Free Space (GB)'</span> <span class="p">`</span>
+                                    <span class="n">-Color</span> <span class="s1">'#E53935'</span><span class="p">,</span> <span class="s1">'#43A047'</span>
+
+                    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$Disk</span> <span class="k">in</span> <span class="nv">$DiskData</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nb">New-ChartBar</span> <span class="n">-Name</span> <span class="nv">$Disk</span><span class="p">.</span><span class="n">Drive</span> <span class="p">`</span>
+                                    <span class="n">-Value</span> <span class="nv">$Disk</span><span class="p">.</span><span class="n">UsedGB</span><span class="p">,</span> <span class="nv">$Disk</span><span class="p">.</span><span class="n">FreeGB</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id4">
+<img alt="Rendered Bar Chart Example" src="_images/chapter-05-bar.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">A multi-series bar chart comparing values across categories.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="line-charts-new-chartline-new-chartaxisx">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Line Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartLine</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartAxisX</span></code>)</a><a class="headerlink" href="#line-charts-new-chartline-new-chartaxisx" title="Link to this heading"></a></h2>
+<p>Line charts are useful for showing how a value changes across an ordered sequence, such as CPU usage measured over several days.
+Use <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartAxisX.md">New-ChartAxisX</a>  to define the categories
+and <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartLine.md">New-ChartLine</a>  to provide one or more named series with matching values:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>   <span class="nv">$CpuHistory</span> <span class="p">=</span> <span class="p">@(</span>
+       <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Day</span> <span class="p">=</span> <span class="s1">'Monday'</span><span class="p">;</span>    <span class="n">Usage</span> <span class="p">=</span> <span class="n">42</span> <span class="p">}</span>
+       <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Day</span> <span class="p">=</span> <span class="s1">'Tuesday'</span><span class="p">;</span>   <span class="n">Usage</span> <span class="p">=</span> <span class="n">58</span> <span class="p">}</span>
+       <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Day</span> <span class="p">=</span> <span class="s1">'Wednesday'</span><span class="p">;</span> <span class="n">Usage</span> <span class="p">=</span> <span class="n">47</span> <span class="p">}</span>
+   <span class="p">)</span>
+
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"CPU Usage Dashboard"</span> <span class="n">-FilePath</span> <span class="s2">"CPUChart.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+   <span class="nb">New-HTMLChart</span> <span class="n">-Title</span> <span class="s2">"CPU Usage History"</span> <span class="n">-Height</span> <span class="n">350</span> <span class="p">{</span>
+       <span class="nb">New-ChartAxisX</span> <span class="n">-Names</span> <span class="p">@(</span><span class="nv">$CpuHistory</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Day</span> <span class="p">})</span>
+       <span class="nb">New-ChartLine</span> <span class="n">-Name</span> <span class="s2">"CPU Usage (%)"</span> <span class="p">`</span>
+                     <span class="n">-Value</span> <span class="p">@(</span><span class="nv">$CpuHistory</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Usage</span> <span class="p">})</span> <span class="p">`</span>
+                     <span class="n">-Color</span> <span class="s1">'#1976D2'</span> <span class="n">-Curve</span> <span class="n">smooth</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id5">
+<img alt="Rendered Line Chart Example" src="_images/chapter-05-line.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">A line chart displaying changes across an ordered sequence.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Note that line chart have a built-in tooltip that displays the series name and value when hovering over a data point. You can also customize the line color, width, and style using parameters in <cite>New-ChartLine</cite>.
+Also, for line charts, a new menu appears in the top-right corner of the chart, allowing users to toggle series visibility, pan/zoom in/out, and export the chart as an image or PDF.</p>
+</section>
+<section id="radial-gauge-charts-new-chartradial">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Radial Gauge Charts (<code class="docutils literal notranslate"><span class="pre">New-ChartRadial</span></code>)</a><a class="headerlink" href="#radial-gauge-charts-new-chartradial" title="Link to this heading"></a></h2>
+<p>Radial charts display a progress or percentage value against an implicit target of 100, making them suitable for metrics such as SLA compliance.
+Use <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartRadial.md">New-ChartRadial</a>  , pass the metric label to <code class="docutils literal notranslate"><span class="pre">-Name</span></code>
+and its numeric value to <code class="docutils literal notranslate"><span class="pre">-Value</span></code>:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"SLA Dashboard"</span> <span class="n">-FilePath</span> <span class="s2">"SLA-Chart.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+   <span class="nb">New-HTMLChart</span> <span class="n">-Title</span> <span class="s2">"SLA Compliance"</span> <span class="n">-Height</span> <span class="n">350</span> <span class="p">{</span>
+       <span class="nb">New-ChartRadial</span> <span class="n">-Name</span> <span class="s2">"SLA Compliance"</span> <span class="n">-Value</span> <span class="n">92</span> <span class="n">-Color</span> <span class="s1">'#43A047'</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example displays an SLA compliance score of 92 percent in a radial gauge.</p>
+<figure class="align-center" id="id6">
+<img alt="Rendered Radial Chart Example" src="_images/chapter-05-radial.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">A radial gauge chart showing an SLA compliance score.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="interactive-geographic-maps-new-htmlmap">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Interactive Geographic Maps (<code class="docutils literal notranslate"><span class="pre">New-HTMLMap</span></code>)</a><a class="headerlink" href="#interactive-geographic-maps-new-htmlmap" title="Link to this heading"></a></h2>
+<p>For geographic visualizations, <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLMap.md">New-HTMLMap</a> renders an
+interactive map using one of PSWriteHTML’s built-in regions. Use <code class="docutils literal notranslate"><span class="pre">-Map</span></code> to select <code class="docutils literal notranslate"><span class="pre">Poland</span></code>, <code class="docutils literal notranslate"><span class="pre">Usa_States</span></code>,
+<code class="docutils literal notranslate"><span class="pre">World_Countries</span></code>, or <code class="docutils literal notranslate"><span class="pre">European_Union</span></code>. You can customize the map with parameters such as <code class="docutils literal notranslate"><span class="pre">-AnchorName</span></code>, <code class="docutils literal notranslate"><span class="pre">-AreaTitle</span></code>,
+<code class="docutils literal notranslate"><span class="pre">-PlotTitle</span></code>, <code class="docutils literal notranslate"><span class="pre">-FillColor</span></code>, <code class="docutils literal notranslate"><span class="pre">-StrokeColor</span></code>, <code class="docutils literal notranslate"><span class="pre">-StrokeWidth</span></code>, <code class="docutils literal notranslate"><span class="pre">-ShowAreaLegend</span></code>, and <code class="docutils literal notranslate"><span class="pre">-ShowPlotLegend</span></code>. For data-driven
+area colors or plotted values, use <code class="docutils literal notranslate"><span class="pre">-MapSettings</span></code> to provide the map areas, plots, and legend configuration.</p>
+<p>The following example creates a simple interactive world map:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"World Map"</span> <span class="n">-FilePath</span> <span class="s2">"WorldMap.html"</span> <span class="n">-Online</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"World Countries"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+            <span class="nb">New-HTMLMap</span> <span class="n">-Map</span> <span class="s2">"World_Countries"</span> <span class="n">-AnchorName</span> <span class="s2">"WorldMap"</span> <span class="n">-AreaTitle</span> <span class="s2">"Selected Countries"</span> <span class="n">-ShowAreaLegend</span> <span class="n">-FillColor</span> <span class="s2">"#DCEAF7"</span> <span class="n">-StrokeColor</span> <span class="s2">"#536878"</span> <span class="n">-StrokeWidth</span> <span class="n">1</span> <span class="p">{</span>
+                <span class="nb">New-MapArea</span> <span class="n">-Area</span> <span class="s2">"US"</span> <span class="n">-Value</span> <span class="n">1</span> <span class="n">-Tooltip</span> <span class="p">{</span> <span class="s2">"United States"</span> <span class="p">}</span>
+                <span class="nb">New-MapArea</span> <span class="n">-Area</span> <span class="s2">"CA"</span> <span class="n">-Value</span> <span class="n">2</span> <span class="n">-Tooltip</span> <span class="p">{</span> <span class="s2">"Canada"</span> <span class="p">}</span>
+                <span class="nb">New-MapArea</span> <span class="n">-Area</span> <span class="s2">"AU"</span> <span class="n">-Value</span> <span class="n">3</span> <span class="n">-Tooltip</span> <span class="p">{</span> <span class="s2">"Australia"</span> <span class="p">}</span>
+                <span class="nb">New-MapArea</span> <span class="n">-Area</span> <span class="s2">"IT"</span> <span class="n">-Value</span> <span class="n">4</span> <span class="n">-Tooltip</span> <span class="p">{</span> <span class="s2">"Italy"</span> <span class="p">}</span>
+
+                <span class="nb">New-MapLegendSlice</span> <span class="n">-Type</span> <span class="n">area</span> <span class="n">-Label</span> <span class="s2">"USA"</span> <span class="n">-MinimumValue</span> <span class="n">1</span> <span class="n">-MaximumValue</span> <span class="n">1</span> <span class="n">-FillColor</span> <span class="s2">"#E74C3C"</span>
+                <span class="nb">New-MapLegendSlice</span> <span class="n">-Type</span> <span class="n">area</span> <span class="n">-Label</span> <span class="s2">"Canada"</span> <span class="n">-MinimumValue</span> <span class="n">2</span> <span class="n">-MaximumValue</span> <span class="n">2</span> <span class="n">-FillColor</span> <span class="s2">"#3498DB"</span>
+                <span class="nb">New-MapLegendSlice</span> <span class="n">-Type</span> <span class="n">area</span> <span class="n">-Label</span> <span class="s2">"Australia"</span> <span class="n">-MinimumValue</span> <span class="n">3</span> <span class="n">-MaximumValue</span> <span class="n">3</span> <span class="n">-FillColor</span> <span class="s2">"#2ECC71"</span>
+                <span class="nb">New-MapLegendSlice</span> <span class="n">-Type</span> <span class="n">area</span> <span class="n">-Label</span> <span class="s2">"Italy"</span> <span class="n">-MinimumValue</span> <span class="n">4</span> <span class="n">-MaximumValue</span> <span class="n">4</span> <span class="n">-FillColor</span> <span class="s2">"#F1C40F"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>That renders nicely:</p>
+<figure class="align-center" id="id7">
+<img alt="Rendered World Map Example" src="_images/chapter-05-basic-map.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">An interactive world map rendered with PSWriteHTML.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="chart-styling-and-customization-options">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Chart Styling and Customization Options</a><a class="headerlink" href="#chart-styling-and-customization-options" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLChart.md">New-HTMLChart</a>  and its nested chart builder commands expose extensive
+options to match corporate branding or dashboard requirements:</p>
+<section id="color-schemes-themes">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Color Schemes &amp; Themes</a><a class="headerlink" href="#color-schemes-themes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>-Color:</strong> Pass a hex color to <code class="docutils literal notranslate"><span class="pre">New-ChartBar</span></code>, <code class="docutils literal notranslate"><span class="pre">New-ChartPie</span></code>, or another chart builder to customize a series or slice. If not
+specified, a default color will be used.</p></li>
+<li><p><strong>New-ChartTheme -Palette:</strong> Select a pre-built color palette (e.g., <code class="docutils literal notranslate"><span class="pre">palette1</span></code> through <code class="docutils literal notranslate"><span class="pre">palette10</span></code>).</p></li>
+</ul>
+</section>
+<section id="sizing-and-layout">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Sizing and Layout</a><a class="headerlink" href="#sizing-and-layout" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>-Height:</strong> Set height explicitly in pixels (e.g., <code class="docutils literal notranslate"><span class="pre">-Height</span> <span class="pre">400</span></code>).</p></li>
+<li><p><strong>-Width:</strong> Set width explicitly in pixels (e.g., <code class="docutils literal notranslate"><span class="pre">-Width</span> <span class="pre">600</span></code>). If omitted, the chart will expand to fill its container.</p></li>
+<li><p><strong>New-ChartLegend -LegendPosition:</strong> Control where dataset legends appear (<code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>).</p></li>
+<li><p><strong>New-ChartSpark:</strong> Creates a minimalist inline chart without axes or legends, ideal for executive metric summary cards.</p></li>
+</ul>
+<figure class="align-default" id="id8">
+<img alt="_images/chapter-05-mixed.png" src="_images/chapter-05-mixed.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">A combined chart view with multiple visualizations in one report.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+<div class="legend">
+<p><em>You can also combine multiple charts into a single one.</em></p>
+</div>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="combining-charts-and-tables">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">Combining Charts and Tables</a><a class="headerlink" href="#combining-charts-and-tables" title="Link to this heading"></a></h2>
+<p>For comprehensive reporting, you can place charts and DataTables side-by-side or stacked inside the same section to provide both high-level
+visual summaries and actionable underlying records.</p>
+<section id="full-operational-example-service-distribution-report">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Full Operational Example: Service Distribution Report</a><a class="headerlink" href="#full-operational-example-service-distribution-report" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># 1. Collect Local Service Data</span>
+<span class="nv">$Services</span> <span class="p">=</span> <span class="nb">Get-Service</span>
+<span class="nv">$GroupedServices</span> <span class="p">=</span> <span class="nv">$Services</span> <span class="p">|</span> <span class="nb">Group-Object</span> <span class="n">Status</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="p">@{</span><span class="n">N</span><span class="p">=</span><span class="s1">'Status'</span><span class="p">;</span><span class="n">E</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">}},</span> <span class="n">Count</span>
+
+<span class="c"># 2. Build Integrated Report</span>
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Services Status &amp; Breakdown"</span> <span class="n">-FilePath</span> <span class="s2">"$env:USERPROFILE\Desktop\ServicesReport.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Service Metrics"</span> <span class="p">{</span>
+
+        <span class="c"># Top Row: Chart Summary</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Status Summary Chart"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLChart</span> <span class="n">-Title</span> <span class="s2">"Running vs Stopped Services"</span> <span class="n">-Height</span> <span class="n">300</span> <span class="p">{</span>
+                    <span class="nv">$GroupedServices</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+                        <span class="nv">$Color</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Status</span> <span class="o">-eq</span> <span class="s1">'Running'</span><span class="p">)</span> <span class="p">{</span> <span class="s1">'#4CAF50'</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="s1">'#F44336'</span> <span class="p">}</span>
+                        <span class="nb">New-ChartPie</span> <span class="n">-Name</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Status</span> <span class="n">-Value</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Count</span> <span class="n">-Color</span> <span class="nv">$Color</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c"># Bottom Row: Granular Data Grid</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Detailed Service Records"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="p">(</span><span class="nv">$Services</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">DisplayName</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">StartType</span> <span class="n">-First</span> <span class="n">25</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nb">New-TableCondition</span> <span class="n">-Name</span> <span class="s1">'Status'</span> <span class="n">-ComparisonType</span> <span class="n">string</span> <span class="n">-Operator</span> <span class="n">eq</span> <span class="n">-Value</span> <span class="s1">'Running'</span> <span class="n">-BackgroundColor</span> <span class="s1">'#E8F5E9'</span> <span class="n">-Color</span> <span class="s1">'#2E7D32'</span>
+                    <span class="nb">New-TableCondition</span> <span class="n">-Name</span> <span class="s1">'Status'</span> <span class="n">-ComparisonType</span> <span class="n">string</span> <span class="n">-Operator</span> <span class="n">eq</span> <span class="n">-Value</span> <span class="s1">'Stopped'</span> <span class="n">-BackgroundColor</span> <span class="s1">'#FFEBEE'</span> <span class="n">-Color</span> <span class="s1">'#C62828'</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The result is a dashboard that combines a pie chart for service status with a detailed service status table below it:</p>
+<figure class="align-center" id="id9">
+<img alt="Rendered Pie Chart Example" src="_images/chapter-05-with-table.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">A service-status report combining a pie chart with a detailed table.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For an interactive example that correlates chart selections with table rows using <code class="docutils literal notranslate"><span class="pre">-DataTableID</span></code>, <code class="docutils literal notranslate"><span class="pre">-ID</span></code>, and <code class="docutils literal notranslate"><span class="pre">-ColumnID</span></code>,
+see <a class="reference internal" href="chapter-11.html#correlating-tables-and-charts"><span class="std std-ref">Correlating Tables and Charts with Events</span></a> on Chapter 11.</p>
+</div>
+</section>
+</section>
+<section id="chart-best-practices">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Chart Best Practices</a><a class="headerlink" href="#chart-best-practices" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Avoid Overcrowding Categories:</strong> Pie and donut charts become unreadable with more than 7–8 slices.
+Group small items into an “Other” category prior to rendering.</p></li>
+<li><p><strong>Explicit Colors for Statuses:</strong> Consistently assign red/green/yellow hex values for status indicators
+(e.g., pass/fail or warning/critical states) rather than relying on random theme colors.</p></li>
+<li><p><strong>Set Fixed Heights:</strong> Specifying <code class="docutils literal notranslate"><span class="pre">-Height</span></code> ensures layout consistency across different desktop monitor resolutions.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-06.html"><span class="doc">Chapter 6: Organizing Content with Tabs, Sections, and Panels</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-04.html" class="btn btn-neutral float-left" title="Chapter 4: Working with DataTables and Data Grids" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-06.html" class="btn btn-neutral float-right" title="Chapter 6: Organizing Content with Tabs, Sections, and Panels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1: What is PSWriteHTML? &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 2: Installation, Dependencies, and Setup" href="chapter-02.html" />
+    <link rel="prev" title="PSWriteHTML: the unofficial Reference Manual" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 1: What is PSWriteHTML?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#about-this-manual">About this manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pswritehtml-overview">PSWriteHTML Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-pswritehtml">Why PSWriteHTML?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-benefits">Key Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-use-cases">Common Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-example">Quick Start Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-architecture-dsl-concept">Core Architecture &amp; DSL Concept</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#component-hierarchy">Component Hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-pswritehtml-works-the-rendering-engine">How PSWriteHTML Works: The Rendering Engine</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 1: What is PSWriteHTML?</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-01.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-1-what-is-pswritehtml">
+<h1>Chapter 1: What is PSWriteHTML?<a class="headerlink" href="#chapter-1-what-is-pswritehtml" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#about-this-manual" id="id4">About this manual</a></p></li>
+<li><p><a class="reference internal" href="#pswritehtml-overview" id="id5">PSWriteHTML Overview</a></p></li>
+<li><p><a class="reference internal" href="#why-pswritehtml" id="id6">Why PSWriteHTML?</a></p>
+<ul>
+<li><p><a class="reference internal" href="#key-benefits" id="id7">Key Benefits</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#common-use-cases" id="id8">Common Use Cases</a></p></li>
+<li><p><a class="reference internal" href="#quick-start-example" id="id9">Quick Start Example</a></p></li>
+<li><p><a class="reference internal" href="#core-architecture-dsl-concept" id="id10">Core Architecture &amp; DSL Concept</a></p>
+<ul>
+<li><p><a class="reference internal" href="#component-hierarchy" id="id11">Component Hierarchy</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#how-pswritehtml-works-the-rendering-engine" id="id12">How PSWriteHTML Works: The Rendering Engine</a></p></li>
+</ul>
+</nav>
+<section id="about-this-manual">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">About this manual</a><a class="headerlink" href="#about-this-manual" title="Link to this heading"></a></h2>
+<p>This manual is designed to help you quickly understand the capabilities of PSWriteHTML and how to implement it in your PowerShell scripts.
+Each chapter provides practical examples, best practices, and detailed explanations of the module’s features.</p>
+<p>Nico Zanferrari (<a class="reference external" href="https://github.com/nicozanf">https://github.com/nicozanf</a>) assembled it, after reading all the available documentations - mainly from the author
+Przemysław Kłys (EvotecIT) - see the last chapter for a list of sources, including video tutorials.  Surely AI made a lot of work, but most of the
+results were manually refined and carefully reviewed. Nowadays it is maintained as an open-source
+project on GitHub at <a class="reference external" href="https://github.com/nicozanf/PSWriteHTML-doc">https://github.com/nicozanf/PSWriteHTML-doc</a> . The resulting web manual
+is automatically generated from the repository on <a class="reference external" href="https://nicozanf.github.io/PSWriteHTML-doc">https://nicozanf.github.io/PSWriteHTML-doc</a> , along with the pdf and epub versions.</p>
+<p>Contributions, feedback, and suggestions are always welcome! Just open an issue or submit a pull request on the GitHub repository.
+If you find this manual useful, please consider starring the repository to show your support.</p>
+</section>
+<section id="pswritehtml-overview">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">PSWriteHTML Overview</a><a class="headerlink" href="#pswritehtml-overview" title="Link to this heading"></a></h2>
+<p><strong>PSWriteHTML</strong> is an open-source PowerShell module created by Przemysław Kłys (<a class="reference external" href="https://github.com/EvotecIT">Evotec</a>) designed
+to automate the creation of rich, interactive, and modern HTML documents, reports, dashboards, and emails without requiring manual
+HTML, CSS, or JavaScript authoring.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/01-logo.png"><img alt="EvotecIT Logo" src="_images/01-logo.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>PSWriteHTML makes report generation in PowerShell simple, flexible, and visually engaging.</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="PSWriteHTML report generation engine" class="with-shadow" src="_images/01-engine.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The PSWriteHTML rendering engine transforms PowerShell data into HTML reports.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="why-pswritehtml">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Why PSWriteHTML?</a><a class="headerlink" href="#why-pswritehtml" title="Link to this heading"></a></h2>
+<p>Generating IT reports, audit logs, system health dashboards, or automated client emails often requires presenting complex datasets clearly. PSWriteHTML
+bridges the gap between raw data collection in PowerShell and professional presentation.</p>
+<section id="key-benefits">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Key Benefits</a><a class="headerlink" href="#key-benefits" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Zero Web Development Required:</strong> Write pure PowerShell using a declarative Domain-Specific Language (DSL).</p></li>
+<li><p><strong>Interactive Data Representation:</strong> Out-of-the-box support for search, pagination, sorting, and export (PDF, CSV, Excel) powered
+by <a class="reference external" href="https://datatables.net/">DataTables</a>.</p></li>
+<li><p><strong>Rich Visualization:</strong> Integrate interactive charts (bar, line, pie, donut, gauge) powered by <a class="reference external" href="https://apexcharts.com/">ApexCharts</a> and <cite>Chart.js</cite>.</p></li>
+<li><p><strong>Flexible Layout Systems:</strong> Organize content using tabs, accordions, multi-column panels, grids, and collapsible sections.</p></li>
+<li><p><strong>Network &amp; Flow Diagrams:</strong> Render visual topology, organizational charts, and relational graphs using <a class="reference external" href="https://visjs.org/">Vis Network</a>.</p></li>
+<li><p><strong>Email &amp; Document Ready:</strong> Generate inline CSS emails optimized for Microsoft Outlook or standalone single-file HTML reports.</p></li>
+</ul>
+<p>Native PowerShell includes the <code class="docutils literal notranslate"><span class="pre">ConvertTo-Html</span></code> cmdlet, but its output is static, unstyled, and difficult to format. PSWriteHTML
+replaces plain text tables with dynamic dashboards featuring interactive tables, real-time charts, tabbed navigation,
+collapsible sections, custom styling, and diagramming capabilities.</p>
+</section>
+</section>
+<section id="common-use-cases">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Common Use Cases</a><a class="headerlink" href="#common-use-cases" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Active Directory Auditing:</strong> Reporting on inactive accounts, password expiration dates, and group membership changes.</p></li>
+<li><p><strong>Infrastructure Monitoring:</strong> Daily health-check summaries for VMware, Hyper-V, Azure resources, or network devices.</p></li>
+<li><p><strong>Office 365 &amp; Exchange Reports:</strong> Displaying mailbox usage, license allocation, and security compliance scores.</p></li>
+<li><p><strong>Automated HTML Emails:</strong> Sending formatted, inline-styled alert notifications via SMTP.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Because PSWriteHTML bundles required JavaScript and CSS libraries into self-contained HTML files (or references CDN sources), the output reports can
+easily be hosted on static web servers, AWS S3, or sent directly as email attachments. See <a class="reference internal" href="chapter-10.html"><span class="doc">Chapter 10: Advanced Features, Tips, and Troubleshooting</span></a></p>
+</div>
+</section>
+<section id="quick-start-example">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Quick Start Example</a><a class="headerlink" href="#quick-start-example" title="Link to this heading"></a></h2>
+<p>Here is a minimal working example that collects services data from your computer and generates an interactive report saved to disk:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Get-Service</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span> <span class="nb">Out-HtmlView</span>
+</pre></div>
+</div>
+<p>This is an example of the power of PSWriteHTML: with a single command you can transform some data into a beautiful html page, with
+pagination, sorting, advanced searching capabilities, and even export in Excel/CSV/PDF !</p>
+<figure class="align-default" id="id3">
+<img alt="_images/01-HTML_simple_table.png" class="with-shadow" src="_images/01-HTML_simple_table.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">An interactive HTML table generated with the <code class="docutils literal notranslate"><span class="pre">Out-HtmlView</span></code> shortcut.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>But this simple <em>Out-HtmlView</em> cmdlet in fact is a shortcut for the underlying <em>New-HTML</em> command, which allows you to further customize
+the report (for example selecting the columns included):</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Import-Module</span> <span class="n">PSWriteHTML</span> <span class="c"># need PSWriteHTML already installed</span>
+
+<span class="c"># Gather services while suppressing permission errors</span>
+<span class="nv">$Services</span> <span class="p">=</span> <span class="nb">Get-Service</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span>
+    <span class="nb">Select-Object</span> <span class="n">-Property</span> <span class="n">Name</span><span class="p">,</span> <span class="n">DisplayName</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">StartType</span>
+
+<span class="c"># Generate HTML Report</span>
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Service Status"</span> <span class="n">-Show</span> <span class="p">{</span>
+             <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="nv">$Services</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="core-architecture-dsl-concept">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Core Architecture &amp; DSL Concept</a><a class="headerlink" href="#core-architecture-dsl-concept" title="Link to this heading"></a></h2>
+<section id="component-hierarchy">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Component Hierarchy</a><a class="headerlink" href="#component-hierarchy" title="Link to this heading"></a></h3>
+<p>The general layout structure follows a logical container model:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>New-HTML
+├── New-HTMLTab (Tab 1)
+│   └── New-HTMLSection
+│       └── New-HTMLPanel
+│           └── New-HTMLTable / New-HTMLChart
+└── New-HTMLTab (Tab 2)
+    └── New-HTMLSection
+        └── New-HTMLPanel
+            └── New-HTMLDiagram
+</pre></div>
+</div>
+</section>
+</section>
+<section id="how-pswritehtml-works-the-rendering-engine">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">How PSWriteHTML Works: The Rendering Engine</a><a class="headerlink" href="#how-pswritehtml-works-the-rendering-engine" title="Link to this heading"></a></h2>
+<p>PSWriteHTML acts as an abstraction layer over modern front-end web technologies. When you execute a <code class="docutils literal notranslate"><span class="pre">New-HTML</span></code> script block:</p>
+<ol class="arabic simple">
+<li><p><strong>AST &amp; DSL Evaluation:</strong> The module processes your nested PowerShell commands (<code class="docutils literal notranslate"><span class="pre">New-HTMLTab</span></code>, <code class="docutils literal notranslate"><span class="pre">New-HTMLSection</span></code>, <code class="docutils literal notranslate"><span class="pre">New-HTMLTable</span></code>,
+<code class="docutils literal notranslate"><span class="pre">New-HTMLChart</span></code>) and translates your PowerShell objects into structured JSON and HTML markup.</p></li>
+<li><p><strong>Library Dependency Resolution:</strong> The engine automatically attaches and configures industry-standard web libraries behind the scenes:</p>
+<ul class="simple">
+<li><p><strong>DataTables:</strong> For dynamic searching, column filtering, pagination, and multi-format data exports (CSV, Excel, PDF).</p></li>
+<li><p><strong>ApexCharts / Chart.js:</strong> For rendering interactive line, bar, pie, radial, and donut charts.</p></li>
+<li><p><strong>FontAwesome:</strong> For vector icons across cards, buttons, and navigation tabs.</p></li>
+<li><p><strong>Bootstrap &amp; Custom Layout CSS:</strong> For responsive grids, modern flexbox containers, and card styling.</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-02.html"><span class="doc">Chapter 2: Installation and Module Setup</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="PSWriteHTML: the unofficial Reference Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-02.html" class="btn btn-neutral float-right" title="Chapter 2: Installation, Dependencies, and Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

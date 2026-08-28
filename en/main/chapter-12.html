@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 12: The Evotec PowerShell Module Suite &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 13: Documentation and Resources" href="chapter-13.html" />
+    <link rel="prev" title="Chapter 11: Advanced Features, Layout Customization, and Troubleshooting" href="chapter-11.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 12: The Evotec PowerShell Module Suite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#evotec-products-overview">Evotec products Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-frameworks-helper-libraries">Core Frameworks &amp; Helper Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#communication-notification-modules">Communication &amp; Notification Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#office-document-generation">Office &amp; Document Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#active-directory-security-auditing">Active Directory, Security &amp; Auditing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-transfer-security-cryptography">File Transfer, Security &amp; Cryptography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphics-ui-desktop-customization">Graphics, UI &amp; Desktop Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-service-vendor-integrations">Cloud, Service &amp; Vendor Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecosystem-integration-pattern">Ecosystem Integration Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 12: The Evotec PowerShell Module Suite</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-12.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-12-the-evotec-powershell-module-suite">
+<h1>Chapter 12: The Evotec PowerShell Module Suite<a class="headerlink" href="#chapter-12-the-evotec-powershell-module-suite" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#evotec-products-overview" id="id1">Evotec products Overview</a></p></li>
+<li><p><a class="reference internal" href="#core-frameworks-helper-libraries" id="id2">Core Frameworks &amp; Helper Libraries</a></p></li>
+<li><p><a class="reference internal" href="#communication-notification-modules" id="id3">Communication &amp; Notification Modules</a></p></li>
+<li><p><a class="reference internal" href="#office-document-generation" id="id4">Office &amp; Document Generation</a></p></li>
+<li><p><a class="reference internal" href="#active-directory-security-auditing" id="id5">Active Directory, Security &amp; Auditing</a></p></li>
+<li><p><a class="reference internal" href="#file-transfer-security-cryptography" id="id6">File Transfer, Security &amp; Cryptography</a></p></li>
+<li><p><a class="reference internal" href="#graphics-ui-desktop-customization" id="id7">Graphics, UI &amp; Desktop Customization</a></p></li>
+<li><p><a class="reference internal" href="#cloud-service-vendor-integrations" id="id8">Cloud, Service &amp; Vendor Integrations</a></p></li>
+<li><p><a class="reference internal" href="#ecosystem-integration-pattern" id="id9">Ecosystem Integration Pattern</a></p></li>
+</ul>
+</nav>
+<section id="evotec-products-overview">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Evotec products Overview</a><a class="headerlink" href="#evotec-products-overview" title="Link to this heading"></a></h2>
+<p><strong>PSWriteHTML</strong> is part of an extensive suite of over 80 open-source PowerShell modules created and maintained
+by <strong>Przemysław Kłys</strong> (<a class="reference external" href="https://www.powershellgallery.com/profiles/Przemyslaw.Klys">Przemyslaw.Klys on PowerShell Gallery</a>).</p>
+<p>This chapter categorizes the complete ecosystem of modules into distinct administrative domains—ranging from messaging, office document
+generation, and Active Directory auditing to security policies, image processing, and system customization.</p>
+</section>
+<section id="core-frameworks-helper-libraries">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Core Frameworks &amp; Helper Libraries</a><a class="headerlink" href="#core-frameworks-helper-libraries" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>PSSharedGoods:</strong> The core foundation library containing hundreds of shared helper functions for string manipulation, file handling,
+logging, and object processing across all Evotec modules.</p></li>
+<li><p><strong>PSPublishModule:</strong> A project build and publishing framework for preparing, testing, and uploading PowerShell modules to the PowerShell Gallery.</p></li>
+<li><p><strong>PSParseHTML:</strong> An HTML/CSS/JavaScript parser designed to extract, inspect, and analyze web content programmatically.</p></li>
+</ul>
+</section>
+<section id="communication-notification-modules">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Communication &amp; Notification Modules</a><a class="headerlink" href="#communication-notification-modules" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Mailozaurr:</strong> An advanced email engine utilizing MailKit and MimeKit supporting SMTP, POP3, IMAP, Graph API, and OAuth2.</p></li>
+<li><p><strong>PSTeams:</strong> Sends rich webhook notifications to Microsoft Teams (supports Adaptive Cards, Hero Cards, and List Cards).</p></li>
+<li><p><strong>PSDiscord:</strong> A lightweight module for sending structured webhooks and notifications to Discord channels.</p></li>
+<li><p><strong>Connectimo:</strong> A connectivity module for handling network checks and remote endpoint testing.</p></li>
+<li><p><strong>Emailimo:</strong> Helper module for managing inline email body structures and templates.</p></li>
+</ul>
+</section>
+<section id="office-document-generation">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Office &amp; Document Generation</a><a class="headerlink" href="#office-document-generation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>PSWriteOffice:</strong> Creates and reads Word (<code class="docutils literal notranslate"><span class="pre">.docx</span></code>), Excel (<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>), PowerPoint (<code class="docutils literal notranslate"><span class="pre">.pptx</span></code>), Markdown, and CSV files natively without
+Microsoft Office installed. See <a class="reference external" href="https://github.com/EvotecIT/PSWriteOffice">https://github.com/EvotecIT/PSWriteOffice</a></p></li>
+<li><p><strong>PSWriteWord / Documentimo:</strong> Dedicated tools for building Microsoft Word documentation and structured reports. (obsolete, functionality merged into PSWriteOffice)</p></li>
+<li><p><strong>PSWriteExcel / Excelimo:</strong> Modules for creating and formatting Excel workbooks without requiring local Office installations. (obsolete, functionality merged into PSWriteOffice)</p></li>
+<li><p><strong>PSWritePDF:</strong> Programmatically creates, edits, merges, splits, and formats PDF documents. (obsolete, functionality merged into PSWriteOffice)</p></li>
+<li><p><strong>MarkdownPrince:</strong> A utility for parsing, converting, and processing Markdown files. (obsolete, functionality merged into PSWriteOffice)</p></li>
+</ul>
+</section>
+<section id="active-directory-security-auditing">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Active Directory, Security &amp; Auditing</a><a class="headerlink" href="#active-directory-security-auditing" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Testimo:</strong> An Active Directory health and security audit framework evaluating domains against hundreds of best-practice checks.</p></li>
+<li><p><strong>GPOZaurr:</strong> Group Policy analysis and repair tool designed to audit, troubleshoot, and fix GPO inconsistencies.</p></li>
+<li><p><strong>PSWinReporting / PSWinReportingV2:</strong> Event log viewing, collecting, and security reporting engine focused on Domain Controllers.</p></li>
+<li><p><strong>SecurityPolicy:</strong> A module wrapping <code class="docutils literal notranslate"><span class="pre">secedit</span></code> for managing Windows User Rights Assignments and local security policies.</p></li>
+<li><p><strong>AuditPolicy:</strong> Replaces <code class="docutils literal notranslate"><span class="pre">auditpol.exe</span></code> with a custom wrapper to view and adjust Windows Security Audit policies.</p></li>
+<li><p><strong>PSPasswordExpiryNotifications:</strong> Automates password expiry warning emails to users and managers using customizable templates.</p></li>
+<li><p><strong>PSWinDocumentation (AD, DNS, Exchange, O365, AWS):</strong> Datasets and extraction tools that document infrastructure components into Word,
+Excel, or SQL databases.</p></li>
+<li><p><strong>AccountTracker:</strong> Tracks non-compliant account placement in Active Directory services and OUs.</p></li>
+<li><p><strong>PSBlackListChecker:</strong> Verifies IP addresses against global DNS blacklists and sends automated alert reports.</p></li>
+</ul>
+</section>
+<section id="file-transfer-security-cryptography">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">File Transfer, Security &amp; Cryptography</a><a class="headerlink" href="#file-transfer-security-cryptography" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Transferetto:</strong> A reusable module/library for FTP, FTPS, SFTP, SCP, FXP, SSH commands, shell access, and SSH tunneling.</p></li>
+<li><p><strong>PSPGP:</strong> Encrypts and decrypts files, folders, and text strings using PGP keys natively.</p></li>
+<li><p><strong>VirusTotalAnalyzer:</strong> Interacts with the VirusTotal API to scan files, hashes, and URLs for threat intelligence.</p></li>
+<li><p><strong>PowerShellManager:</strong> Extracts and recovers deleted or execution-flagged PowerShell scripts straight from Windows Event Logs for malware analysis.</p></li>
+</ul>
+</section>
+<section id="graphics-ui-desktop-customization">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Graphics, UI &amp; Desktop Customization</a><a class="headerlink" href="#graphics-ui-desktop-customization" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>ImagePlayground:</strong> Image processing engine capable of generating QR codes, barcodes, charts, and applying image filters.</p></li>
+<li><p><strong>PowerBGInfo:</strong> Modern BGInfo replacement that generates dynamic system information desktop background wallpapers.</p></li>
+<li><p><strong>DesktopManager:</strong> Manages, positions, and switches wallpapers across multi-monitor setups.</p></li>
+<li><p><strong>ConsoleMonster:</strong> Terminal UI engine for building rich interactive console applications using Spectre.Console.</p></li>
+<li><p><strong>Statusimo / Dashimo:</strong> Legacy status page and dashboard builders (integrated into modern PSWriteHTML workflows).</p></li>
+</ul>
+</section>
+<section id="cloud-service-vendor-integrations">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Cloud, Service &amp; Vendor Integrations</a><a class="headerlink" href="#cloud-service-vendor-integrations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>O365Essentials / GraphEssentials / Graphimo:</strong> Helper modules for managing Microsoft 365, Azure AD, and Intune via Microsoft Graph API.</p></li>
+<li><p><strong>O365Synchronizer:</strong> Cross-tenant synchronization utility for sync-ing personal contacts, users, and guest objects.</p></li>
+<li><p><strong>PowerInfoblox:</strong> Helper module for managing Infoblox IPAM and DNS appliance configurations.</p></li>
+<li><p><strong>PSLansweeper:</strong> Queries Lansweeper asset databases for reporting and inventory tracking.</p></li>
+<li><p><strong>IISParser:</strong> High-performance IIS log parsing module for traffic and diagnostic audits.</p></li>
+<li><p><strong>UnifiStockTracker:</strong> Utility for tracking product stock in the Ubiquiti Unifi online store.</p></li>
+<li><p><strong>PSWordPress:</strong> Interacts with WordPress web instances via REST API endpoints.</p></li>
+</ul>
+</section>
+<section id="ecosystem-integration-pattern">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Ecosystem Integration Pattern</a><a class="headerlink" href="#ecosystem-integration-pattern" title="Link to this heading"></a></h2>
+<p>Combining these specialized modules yields robust automation solutions. For example, auditing AD security, rendering an HTML report, converting to PDF,
+and emailing a summary via Microsoft Graph:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Import-Module</span> <span class="n">Testimo</span>
+<span class="nb">Import-Module</span> <span class="n">PSWriteHTML</span>
+<span class="nb">Import-Module</span> <span class="n">Mailozaurr</span>
+
+<span class="c"># 1. Run Active Directory Health Audit</span>
+<span class="nv">$AuditData</span> <span class="p">=</span> <span class="nb">Invoke-Testimo</span> <span class="n">-RootDomain</span>
+
+<span class="c"># 2. Build Interactive HTML Report</span>
+<span class="nv">$ReportPath</span> <span class="p">=</span> <span class="s2">"$env:TEMP\ADHealthReport.html"</span>
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"AD Security Audit"</span> <span class="n">-FilePath</span> <span class="nv">$ReportPath</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Audit Details"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Testimo Results"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="nv">$AuditData</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c"># 3. Generate HTML Email Body</span>
+<span class="nv">$Body</span> <span class="p">=</span> <span class="nb">New-EmailBody</span> <span class="p">{</span>
+    <span class="nb">New-EmailSection</span> <span class="p">{</span>
+        <span class="nb">New-EmailPanel</span> <span class="p">{</span>
+            <span class="nb">New-EmailText</span> <span class="n">-Text</span> <span class="s2">"The Active Directory health audit completed successfully. Attached is the interactive report."</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c"># 4. Send via Mailozaurr Graph API</span>
+<span class="nb">Send-MgEmail</span> <span class="n">-To</span> <span class="s2">"admin@domain.com"</span> <span class="p">`</span>
+             <span class="n">-Subject</span> <span class="s2">"Weekly AD Audit Report"</span> <span class="p">`</span>
+             <span class="n">-Body</span> <span class="nv">$Body</span> <span class="p">`</span>
+             <span class="n">-BodyType</span> <span class="n">HTML</span> <span class="p">`</span>
+             <span class="n">-Attachments</span> <span class="nv">$ReportPath</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-13.html"><span class="doc">Chapter 13: Documentation and Resources</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-11.html" class="btn btn-neutral float-left" title="Chapter 11: Advanced Features, Layout Customization, and Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-13.html" class="btn btn-neutral float-right" title="Chapter 13: Documentation and Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

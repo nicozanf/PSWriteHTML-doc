@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 11: Advanced Features, Layout Customization, and Troubleshooting &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 12: The Evotec PowerShell Module Suite" href="chapter-12.html" />
+    <link rel="prev" title="Chapter 10: Publishing Live Dashboards on Windows" href="chapter-10.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-features-overview">Advanced features Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modern-dashboard-components-styling">Modern Dashboard Components &amp; Styling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-metrics-with-new-htmlinfocard">Key Metrics with <code class="docutils literal notranslate"><span class="pre">New-HTMLInfoCard</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controlling-layout-density-with-density">Controlling Layout Density with <code class="docutils literal notranslate"><span class="pre">-Density</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-scripting-patterns">Advanced Scripting Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-component-loop-generation">Dynamic Component Loop Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#embedding-raw-client-side-javascript">Embedding Raw Client-Side JavaScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#correlating-tables-and-charts-with-events-new-chartevent-new-diagramevent-and-new-tableevent">Correlating Tables and Charts with Events (<code class="docutils literal notranslate"><span class="pre">New-ChartEvent</span></code>, <code class="docutils literal notranslate"><span class="pre">New-DiagramEvent</span></code>, and <code class="docutils literal notranslate"><span class="pre">New-TableEvent</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-optimization-for-enterprise-scaling">Performance Optimization for Enterprise Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-common-pitfalls">Troubleshooting Common Pitfalls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#issue-1-empty-tables-or-missing-infocards">Issue 1: Empty Tables or Missing InfoCards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issue-2-iis-404-or-access-denied-during-dashboard-update">Issue 2: IIS 404 or Access Denied During Dashboard Update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issue-3-missing-icons-in-air-gapped-environments">Issue 3: Missing Icons in Air-Gapped Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostic-checklist">Diagnostic Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-11.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-11-advanced-features-layout-customization-and-troubleshooting">
+<h1>Chapter 11: Advanced Features, Layout Customization, and Troubleshooting<a class="headerlink" href="#chapter-11-advanced-features-layout-customization-and-troubleshooting" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#advanced-features-overview" id="id3">Advanced features Overview</a></p></li>
+<li><p><a class="reference internal" href="#modern-dashboard-components-styling" id="id4">Modern Dashboard Components &amp; Styling</a></p>
+<ul>
+<li><p><a class="reference internal" href="#key-metrics-with-new-htmlinfocard" id="id5">Key Metrics with <code class="docutils literal notranslate"><span class="pre">New-HTMLInfoCard</span></code></a></p></li>
+<li><p><a class="reference internal" href="#controlling-layout-density-with-density" id="id6">Controlling Layout Density with <code class="docutils literal notranslate"><span class="pre">-Density</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#advanced-scripting-patterns" id="id7">Advanced Scripting Patterns</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dynamic-component-loop-generation" id="id8">Dynamic Component Loop Generation</a></p></li>
+<li><p><a class="reference internal" href="#embedding-raw-client-side-javascript" id="id9">Embedding Raw Client-Side JavaScript</a></p></li>
+<li><p><a class="reference internal" href="#correlating-tables-and-charts-with-events-new-chartevent-new-diagramevent-and-new-tableevent" id="id10">Correlating Tables and Charts with Events (<code class="docutils literal notranslate"><span class="pre">New-ChartEvent</span></code>, <code class="docutils literal notranslate"><span class="pre">New-DiagramEvent</span></code>, and <code class="docutils literal notranslate"><span class="pre">New-TableEvent</span></code>)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#performance-optimization-for-enterprise-scaling" id="id11">Performance Optimization for Enterprise Scaling</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting-common-pitfalls" id="id12">Troubleshooting Common Pitfalls</a></p>
+<ul>
+<li><p><a class="reference internal" href="#issue-1-empty-tables-or-missing-infocards" id="id13">Issue 1: Empty Tables or Missing InfoCards</a></p></li>
+<li><p><a class="reference internal" href="#issue-2-iis-404-or-access-denied-during-dashboard-update" id="id14">Issue 2: IIS 404 or Access Denied During Dashboard Update</a></p></li>
+<li><p><a class="reference internal" href="#issue-3-missing-icons-in-air-gapped-environments" id="id15">Issue 3: Missing Icons in Air-Gapped Environments</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#diagnostic-checklist" id="id16">Diagnostic Checklist</a></p></li>
+</ul>
+</nav>
+<section id="advanced-features-overview">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Advanced features Overview</a><a class="headerlink" href="#advanced-features-overview" title="Link to this heading"></a></h2>
+<p>As you scale <strong>PSWriteHTML</strong> across enterprise environments, building reports evolves beyond basic tables into crafting high-density,
+visually appealing dashboards.</p>
+<p>This chapter covers modern UI components like <strong>InfoCards</strong>, dynamic layout density controls, advanced JavaScript/CSS customization,
+performance tuning, and diagnostic troubleshooting.</p>
+</section>
+<section id="modern-dashboard-components-styling">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Modern Dashboard Components &amp; Styling</a><a class="headerlink" href="#modern-dashboard-components-styling" title="Link to this heading"></a></h2>
+<section id="key-metrics-with-new-htmlinfocard">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Key Metrics with <code class="docutils literal notranslate"><span class="pre">New-HTMLInfoCard</span></code></a><a class="headerlink" href="#key-metrics-with-new-htmlinfocard" title="Link to this heading"></a></h3>
+<p>To display high-level KPIs, operational counters, or status summaries at the top of a dashboard, use
+<a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLInfoCard.md">New-HTMLInfoCard</a> . InfoCards support
+icons (emojis, FontAwesome), custom colors, subtitle text, and distinct visual styles:</p>
+<ul class="simple">
+<li><p><strong>-Styles:</strong> <code class="docutils literal notranslate"><span class="pre">Standard</span></code>, <code class="docutils literal notranslate"><span class="pre">Compact</span></code>, <code class="docutils literal notranslate"><span class="pre">Fixed</span></code>, <code class="docutils literal notranslate"><span class="pre">Classic</span></code>, <code class="docutils literal notranslate"><span class="pre">NoIcon</span></code>.</p></li>
+<li><p><strong>-ShadowIntensity:</strong> <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">Subtle</span></code>, <code class="docutils literal notranslate"><span class="pre">Normal</span></code>, <code class="docutils literal notranslate"><span class="pre">Bold</span></code>, <code class="docutils literal notranslate"><span class="pre">ExtraBold</span></code>, <code class="docutils literal notranslate"><span class="pre">Custom</span></code> (with <code class="docutils literal notranslate"><span class="pre">-CustomShadowColor</span></code>).</p></li>
+<li><p><strong>-Icon:</strong> Icon to display on the card. Can be an emoji (like 👥, 🔒, 💪).</p></li>
+<li><p><strong>-IconSolid, -IconRegular, -IconBrands:</strong> Use FontAwesome icons with different styles</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Executive Security Summary"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Overview"</span> <span class="n">-IconSolid</span> <span class="s2">"user-shield"</span> <span class="p">{</span>
+        
+        <span class="c"># Section wrapping InfoCards with Comfortable spacing</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Key Security Metrics"</span> <span class="n">-Density</span> <span class="n">Comfortable</span> <span class="p">{</span>
+            
+            <span class="nb">New-HTMLInfoCard</span> <span class="n">-Title</span> <span class="s2">"Identity Protection"</span> <span class="p">`</span>
+                            <span class="n">-Number</span> <span class="s2">"Active"</span> <span class="p">`</span>
+                            <span class="n">-Subtitle</span> <span class="s2">"0 Risky Users Flagged"</span> <span class="p">`</span>
+                            <span class="n">-Icon</span> <span class="s2">"Shield"</span>  <span class="p">`</span>
+                            <span class="n">-IconColor</span> <span class="s1">'#0078d4'</span>
+
+            <span class="nb">New-HTMLInfoCard</span> <span class="n">-Title</span> <span class="s2">"Failed Logins (24h)"</span> <span class="p">`</span>
+                            <span class="n">-Number</span> <span class="s2">"142"</span> <span class="p">`</span>
+                            <span class="n">-Subtitle</span> <span class="s2">"Within expected threshold"</span> <span class="p">`</span>
+                            <span class="n">-Icon</span> <span class="s2">"Error"</span> <span class="p">`</span>
+                            <span class="n">-IconColor</span> <span class="s1">'#d9534f'</span>
+
+            <span class="nb">New-HTMLInfoCard</span> <span class="n">-Title</span> <span class="s2">"MFA Enrollment"</span> <span class="p">`</span>
+                            <span class="n">-Number</span> <span class="s2">"98.4%"</span> <span class="p">`</span>
+                            <span class="n">-Subtitle</span> <span class="s2">"+1.2% from last week"</span> <span class="p">`</span>
+                            <span class="n">-Icon</span> <span class="s2">"Report"</span> <span class="p">`</span>
+                            <span class="n">-IconColor</span> <span class="s1">'#5cb85c'</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id1">
+<img alt="Rendered InfoCard Example" src="_images/chapter-11-infocards.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Dashboard information cards displaying high-level operational metrics.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="controlling-layout-density-with-density">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Controlling Layout Density with <code class="docutils literal notranslate"><span class="pre">-Density</span></code></a><a class="headerlink" href="#controlling-layout-density-with-density" title="Link to this heading"></a></h3>
+<p>To handle responsive grid layouts without manually computing pixel widths or complex CSS flexbox rules, use the <code class="docutils literal notranslate"><span class="pre">-Density</span></code> parameter
+on <code class="docutils literal notranslate"><span class="pre">New-HTMLSection</span></code> or <code class="docutils literal notranslate"><span class="pre">New-HTMLPanel</span></code>. This automatically enables responsive wrapping and adjusts card/element margins:</p>
+<ul class="simple">
+<li><p><strong>``Spacious``:</strong> Generous padding and whitespace; ideal for high-level executive summaries.</p></li>
+<li><p><strong>``Comfortable``:</strong> Balanced spacing suited for standard multi-card layouts.</p></li>
+<li><p><strong>``Compact``:</strong> Reduced margins for viewing dense telemetry datasets.</p></li>
+<li><p><strong>``Dense`` / ``VeryDense``:</strong> Tight alignment maximizing screen real estate for NOC display walls.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"NOC Operations Grid"</span> <span class="n">-Wrap</span> <span class="n">wrap</span> <span class="n">-Density</span> <span class="n">VeryDense</span> <span class="p">{</span>
+    <span class="c"># InfoCards or panels rendered here auto-wrap tightly to fit dense monitor setups</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$Metric</span> <span class="k">in</span> <span class="nv">$NocMetrics</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">New-HTMLInfoCard</span> <span class="n">-Title</span> <span class="nv">$Metric</span><span class="p">.</span><span class="n">Name</span> <span class="n">-Number</span> <span class="nv">$Metric</span><span class="p">.</span><span class="n">Value</span> <span class="n">-Icon</span> <span class="s2">"server"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-scripting-patterns">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Advanced Scripting Patterns</a><a class="headerlink" href="#advanced-scripting-patterns" title="Link to this heading"></a></h2>
+<section id="dynamic-component-loop-generation">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Dynamic Component Loop Generation</a><a class="headerlink" href="#dynamic-component-loop-generation" title="Link to this heading"></a></h3>
+<p>Instead of hardcoding every tab, section, or table, generate PSWriteHTML layout components dynamically using standard PowerShell
+loops (<code class="docutils literal notranslate"><span class="pre">foreach</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code>).</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$Servers</span> <span class="p">=</span> <span class="p">@(</span><span class="s1">'DC01'</span><span class="p">,</span> <span class="s1">'DC02'</span><span class="p">,</span> <span class="s1">'SQL01'</span><span class="p">,</span> <span class="s1">'WEB01'</span><span class="p">)</span>
+
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Multi-Server Assessment"</span> <span class="n">-FilePath</span> <span class="s2">"MultiServer.html"</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$Server</span> <span class="k">in</span> <span class="nv">$Servers</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="nv">$Server</span> <span class="n">-IconSolid</span> <span class="s2">"server"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Diagnostic Summary for $Server"</span> <span class="n">-Density</span> <span class="n">Compact</span> <span class="p">{</span>
+                <span class="nb">New-HTMLInfoCard</span> <span class="n">-Title</span> <span class="s2">"Health"</span> <span class="n">-Number</span> <span class="s2">"OK"</span> <span class="n">-Icon</span> <span class="s2">"check-circle"</span>
+                <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                    <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Detailed diagnostic metrics captured for node: &lt;b&gt;$Server&lt;/b&gt;"</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="embedding-raw-client-side-javascript">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Embedding Raw Client-Side JavaScript</a><a class="headerlink" href="#embedding-raw-client-side-javascript" title="Link to this heading"></a></h3>
+<p>Inject custom JavaScript directly into the document using the <code class="docutils literal notranslate"><span class="pre">-UseJavaScriptLinks</span></code> parameter
+on <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTML.md">New-HTML</a>  to handle bespoke interactions:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$ScriptBlock</span> <span class="p">=</span> <span class="sh">@"</span>
+<span class="sh">    document.addEventListener('DOMContentLoaded', function() {</span>
+<span class="sh">        console.log('PSWriteHTML Dashboard Execution Initialized.');</span>
+<span class="sh">    });</span>
+<span class="sh">"@</span>
+
+<span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Custom Scripting"</span> <span class="n">-FilePath</span> <span class="s2">"Scripting.html"</span> <span class="n">-UseJavaScriptLinks</span> <span class="nv">$ScriptBlock</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Main"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Console Verification"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Open browser developer console (F12) to inspect client execution logs."</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="correlating-tables-and-charts-with-events-new-chartevent-new-diagramevent-and-new-tableevent">
+<span id="correlating-tables-and-charts"></span><h3><a class="toc-backref" href="#id10" role="doc-backlink">Correlating Tables and Charts with Events (<code class="docutils literal notranslate"><span class="pre">New-ChartEvent</span></code>, <code class="docutils literal notranslate"><span class="pre">New-DiagramEvent</span></code>, and <code class="docutils literal notranslate"><span class="pre">New-TableEvent</span></code>)</a><a class="headerlink" href="#correlating-tables-and-charts-with-events-new-chartevent-new-diagramevent-and-new-tableevent" title="Link to this heading"></a></h3>
+<p>Interactive charts can be connected to a table so that selecting a chart value searches for and highlights the matching table rows.
+This is implemented using <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartEvent.md">New-ChartEvent</a>  or
+<a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-DiagramEvent.md">New-DiagramEvent</a>  cmdlets with
+the <code class="docutils literal notranslate"><span class="pre">-DataTableID</span></code> parameter on <code class="docutils literal notranslate"><span class="pre">New-HTMLTable</span></code> and the <code class="docutils literal notranslate"><span class="pre">-ID</span></code> and <code class="docutils literal notranslate"><span class="pre">-ColumnID</span></code> parameters on the chart or diagram event.
+The table must be rendered before the chart or diagram for proper correlation.</p>
+<p>The parameters used to connect the components are:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>``-ID``:</strong> Identifies the target table when used with <code class="docutils literal notranslate"><span class="pre">New-DiagramEvent</span></code>. It is also an alias for <code class="docutils literal notranslate"><span class="pre">-TableID</span></code> in</dt><dd><p><code class="docutils literal notranslate"><span class="pre">New-TableEvent</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>``-ColumnID``:</strong> Selects the zero-based table column used to match a chart or diagram event. The number follows the property</dt><dd><p>order passed to <code class="docutils literal notranslate"><span class="pre">-DataTable</span></code>, with the first property being column <code class="docutils literal notranslate"><span class="pre">0</span></code>. For example, if the table is built
+from <code class="docutils literal notranslate"><span class="pre">Select-Object</span> <span class="pre">Name,</span> <span class="pre">Status</span></code>, then <code class="docutils literal notranslate"><span class="pre">Name</span></code> is column <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">Status</span></code> is column <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>``-DataTable``:</strong> Supplies the objects or records that <code class="docutils literal notranslate"><span class="pre">New-HTMLTable</span></code> renders as rows.</p></li>
+<li><dl class="simple">
+<dt><strong>``-DataTableID``:</strong> Assigns a stable identifier to the table. Use the same value in <code class="docutils literal notranslate"><span class="pre">New-ChartEvent</span></code> or <code class="docutils literal notranslate"><span class="pre">-ID</span></code> on a related</dt><dd><p>diagram/table event.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>``-DataStore``:</strong> Selects how <code class="docutils literal notranslate"><span class="pre">New-HTMLTable</span></code> provides its data to the page. The supported values are <code class="docutils literal notranslate"><span class="pre">HTML</span></code> (the</dt><dd><p>default, renders the table data directly as HTML), <code class="docutils literal notranslate"><span class="pre">JavaScript</span></code> (embeds the data in the page as JavaScript and is required for
+browser-side chart or diagram correlation), and <code class="docutils literal notranslate"><span class="pre">AjaxJSON</span></code> (loads the data from a JSON endpoint for hosted/server-side tables).
+Use <code class="docutils literal notranslate"><span class="pre">JavaScript</span></code> for complex scenarios with client-side data; <code class="docutils literal notranslate"><span class="pre">AjaxJSON</span></code> requires a <code class="docutils literal notranslate"><span class="pre">-FilePath</span></code> on <code class="docutils literal notranslate"><span class="pre">New-HTML</span></code> and a web server that
+can serve the generated JSON data.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Give the table a stable identifier with <code class="docutils literal notranslate"><span class="pre">-DataTableID</span></code> and pass the same value to <code class="docutils literal notranslate"><span class="pre">New-ChartEvent</span> <span class="pre">-DataTableID</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">-ColumnID</span></code> parameter is zero-based and identifies the table column used for matching, so it must follow the order of the
+properties supplied to <code class="docutils literal notranslate"><span class="pre">-DataTable</span></code>. Table and diagram event commands also use <code class="docutils literal notranslate"><span class="pre">-ID</span></code> (an alias for the target table ID) and
+<code class="docutils literal notranslate"><span class="pre">-ColumnID</span></code>. This event ID is separate from the chart’s own <code class="docutils literal notranslate"><span class="pre">-Id</span></code> parameter.</p>
+<p>Emit the table before the chart event consumer and
+use <code class="docutils literal notranslate"><span class="pre">-DataStore</span> <span class="pre">JavaScript</span></code> when the chart should correlate with client-side table data. For a diagram, place
+<code class="docutils literal notranslate"><span class="pre">New-DiagramEvent</span> <span class="pre">-ID</span> <span class="pre">$TableID</span> <span class="pre">-ColumnID</span> <span class="pre">0</span></code> inside <code class="docutils literal notranslate"><span class="pre">New-HTMLDiagram</span></code>; <code class="docutils literal notranslate"><span class="pre">-ID</span></code> identifies the table and <code class="docutils literal notranslate"><span class="pre">-ColumnID</span></code> selects
+the table column used by the diagram event.</p>
+<p>The following example creates a pie chart and a table from the same data. Clicking a pie slice searches the first table column,
+<code class="docutils literal notranslate"><span class="pre">Name</span></code>, because it is column <code class="docutils literal notranslate"><span class="pre">0</span></code> in the selected property order:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$Data</span> <span class="p">=</span> <span class="p">@(</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s1">'Alpha'</span><span class="p">;</span> <span class="n">Value</span> <span class="p">=</span> <span class="n">12</span> <span class="p">}</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s1">'Beta'</span><span class="p">;</span>  <span class="n">Value</span> <span class="p">=</span> <span class="n">18</span> <span class="p">}</span>
+    <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s1">'Gamma'</span><span class="p">;</span> <span class="n">Value</span> <span class="p">=</span> <span class="n">9</span> <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nv">$TableID</span> <span class="p">=</span> <span class="s1">'ChartTable'</span>
+
+<span class="nb">New-HTML</span> <span class="n">-TitleText</span> <span class="s1">'Chart and Table'</span> <span class="n">-FilePath</span> <span class="s2">"$PWD\chart-table.html"</span> <span class="n">-Online</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="nv">$Data</span> <span class="n">-DataTableID</span> <span class="nv">$TableID</span> <span class="n">-DataStore</span> <span class="n">HTML</span>
+
+    <span class="nb">New-HTMLChart</span> <span class="n">-Title</span> <span class="s1">'Values by Name'</span> <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$Item</span> <span class="k">in</span> <span class="nv">$Data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">New-ChartPie</span> <span class="n">-Name</span> <span class="nv">$Item</span><span class="p">.</span><span class="n">Name</span> <span class="n">-Value</span> <span class="nv">$Item</span><span class="p">.</span><span class="n">Value</span>
+        <span class="p">}</span>
+
+        <span class="nb">New-ChartEvent</span> <span class="n">-DataTableID</span> <span class="nv">$TableID</span> <span class="n">-ColumnID</span> <span class="n">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It produces the following interactive correlation:</p>
+<figure class="align-center" id="id2">
+<img alt="Rendered Graph-DataTable Correlation Example" src="_images/chapter-11-correlation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">A chart and DataTable connected through an interactive correlation event.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can also use  <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-TableEvent.md">New-TableEvent</a>.
+It listens for a row selection in one table and filters another table.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PSWriteHTML provides built-in events for chart-to-table, diagram-to-table, and
+table-to-table correlation through <strong>New-ChartEvent</strong>, <strong>New-DiagramEvent</strong>, and
+<strong>New-TableEvent</strong>. There is no built-in table-to-chart event. If you need to
+filter a chart based on table row selection, implement a custom JavaScript event
+handler using the <code class="docutils literal notranslate"><span class="pre">-UseJavaScriptLinks</span></code> parameter on <code class="docutils literal notranslate"><span class="pre">New-HTML</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="performance-optimization-for-enterprise-scaling">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Performance Optimization for Enterprise Scaling</a><a class="headerlink" href="#performance-optimization-for-enterprise-scaling" title="Link to this heading"></a></h2>
+<p>Generating reports with tens of thousands of records can impact initial creation time or browser responsiveness. Follow these tuning rules:</p>
+<ol class="arabic">
+<li><p><strong>Filter Data Upfront:</strong>
+Select required properties <em>before</em> passing objects into <code class="docutils literal notranslate"><span class="pre">New-HTMLTable</span></code>. Avoid passing raw, unfiltered WMI/CIM or Active Directory objects directly.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Bad: Passing raw AD objects with 100+ un-needed properties</span>
+<span class="nv">$Users</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-Properties</span> <span class="p">*</span>
+
+<span class="c"># Good: Selecting target properties upfront</span>
+<span class="nv">$Users</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-Properties</span> <span class="n">DisplayName</span><span class="p">,</span> <span class="n">Mail</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">SamAccountName</span><span class="p">,</span> <span class="n">DisplayName</span><span class="p">,</span> <span class="n">Mail</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Balance Online vs. Offline Mode:</strong></p>
+<ul class="simple">
+<li><p>Use <strong>``-Online``</strong> for live internal dashboards where client web endpoints have internet access. Web dependencies (Bootstrap,
+DataTables, ApexCharts) pull from fast CDNs, keeping output file sizes below 50 KB.</p></li>
+<li><p>Use <strong>``-Offline``</strong> when deploying reports into air-gapped corporate subnets. Note that offline asset bundling increases file size.</p></li>
+</ul>
+</li>
+<li><p><strong>Limit DataTables Page Lengths:</strong>
+Keep <code class="docutils literal notranslate"><span class="pre">-PageLength</span> <span class="pre">25</span></code> or <code class="docutils literal notranslate"><span class="pre">-PageLength</span> <span class="pre">50</span></code> on <code class="docutils literal notranslate"><span class="pre">New-HTMLTable</span></code>. Defaulting page lengths to <code class="docutils literal notranslate"><span class="pre">All</span></code> forces client browsers to render
+thousands of dynamic DOM elements concurrently, causing tab freezing.</p></li>
+</ol>
+</section>
+<section id="troubleshooting-common-pitfalls">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Troubleshooting Common Pitfalls</a><a class="headerlink" href="#troubleshooting-common-pitfalls" title="Link to this heading"></a></h2>
+<section id="issue-1-empty-tables-or-missing-infocards">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Issue 1: Empty Tables or Missing InfoCards</a><a class="headerlink" href="#issue-1-empty-tables-or-missing-infocards" title="Link to this heading"></a></h3>
+<ul>
+<li><p><strong>Symptom:</strong> Page renders, but card sections or tables are completely blank.</p></li>
+<li><p><strong>Root Cause:</strong> Variable supplied to <code class="docutils literal notranslate"><span class="pre">-DataTable</span></code>, <code class="docutils literal notranslate"><span class="pre">-Data</span></code>, or <code class="docutils literal notranslate"><span class="pre">-Number</span></code> is null or unpopulated.</p></li>
+<li><p><strong>Solution:</strong> Add upfront data validation before building HTML containers:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$null</span> <span class="o">-eq</span> <span class="nv">$MyData</span> <span class="o">-or</span> <span class="nv">$MyData</span><span class="p">.</span><span class="n">Count</span> <span class="o">-eq</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-Warning</span> <span class="s2">"Data array empty. Rendering fallback card."</span>
+    <span class="nv">$MyData</span> <span class="p">=</span> <span class="no">[PSCustomObject]</span><span class="p">@{</span> <span class="n">Status</span> <span class="p">=</span> <span class="s2">"No Records Available"</span><span class="p">;</span> <span class="n">Count</span> <span class="p">=</span> <span class="n">0</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="issue-2-iis-404-or-access-denied-during-dashboard-update">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Issue 2: IIS 404 or Access Denied During Dashboard Update</a><a class="headerlink" href="#issue-2-iis-404-or-access-denied-during-dashboard-update" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Symptom:</strong> Scheduled task fails to overwrite <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in <code class="docutils literal notranslate"><span class="pre">C:\inetpub\wwwroot\</span></code>.</p></li>
+<li><p><strong>Root Cause:</strong> The service account executing the PowerShell scheduled task lacks file Modify/Write permissions.</p></li>
+<li><p><strong>Solution:</strong> Grant full folder permissions on the target web root to the execution user account or <code class="docutils literal notranslate"><span class="pre">NT</span> <span class="pre">AUTHORITY\SYSTEM</span></code>.</p></li>
+</ul>
+</section>
+<section id="issue-3-missing-icons-in-air-gapped-environments">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Issue 3: Missing Icons in Air-Gapped Environments</a><a class="headerlink" href="#issue-3-missing-icons-in-air-gapped-environments" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Symptom:</strong> FontAwesome icons or InfoCard symbols display as hollow square glyphs on internal servers.</p></li>
+<li><p><strong>Root Cause:</strong> Report was generated with <code class="docutils literal notranslate"><span class="pre">-Online</span></code>, but client browsers cannot reach CDN endpoints.</p></li>
+<li><p><strong>Solution:</strong> Pass <code class="docutils literal notranslate"><span class="pre">-Offline</span></code> to <code class="docutils literal notranslate"><span class="pre">New-HTML</span></code> to bundle static local assets into the target path.</p></li>
+</ul>
+</section>
+</section>
+<section id="diagnostic-checklist">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Diagnostic Checklist</a><a class="headerlink" href="#diagnostic-checklist" title="Link to this heading"></a></h2>
+<p>Verify this checklist when diagnosing reporting pipelines:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ ] 1. Is PSWriteHTML up to date on the build host? (Update-Module PSWriteHTML -Force)
+[ ] 2. Does the target IIS folder permit Write actions for the Scheduled Task user?
+[ ] 3. Are layout density settings (-Density) applied to appropriate section levels?
+[ ] 4. Is the browser refresh meta header present for real-time NOC dashboards?
+[ ] 5. Are script blocks and curly braces balanced across all nested sections?
+[ ] 6. If emailing alerts: Is Email-HTML used instead of New-HTML?
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-12.html"><span class="doc">Chapter 12: The Evotec PowerShell Module Suite</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-10.html" class="btn btn-neutral float-left" title="Chapter 10: Publishing Live Dashboards on Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-12.html" class="btn btn-neutral float-right" title="Chapter 12: The Evotec PowerShell Module Suite" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

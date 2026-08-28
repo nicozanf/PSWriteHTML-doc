@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 6: Organizing Content with Tabs, Sections, and Panels &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 7: Network Diagrams, Flowcharts, and Visualizations" href="chapter-07.html" />
+    <link rel="prev" title="Chapter 5: Visualizing Data with Charts and Graphs" href="chapter-05.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#report-structure-overview">Report Structure Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#layout-architecture-deep-dive">Layout Architecture Deep-Dive</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#component-responsibilities">Component Responsibilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mastering-tabs-new-htmltab">Mastering Tabs (<code class="docutils literal notranslate"><span class="pre">New-HTMLTab</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tab-customization-options">Tab Customization Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tab-icon-example">Tab Icon Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#section-column-grid-layouts-new-htmlpanel-and-new-htmlsection">Section &amp; Column Grid Layouts  (<code class="docutils literal notranslate"><span class="pre">New-HTMLPanel</span></code> and <code class="docutils literal notranslate"><span class="pre">New-HTMLSection</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-multi-column-layouts">Creating Multi-Column Layouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collapsible-sections">Collapsible Sections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#panel-styling-backgrounds">Panel Styling &amp; Backgrounds</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#complete-operational-dashboard-example">Complete Operational Dashboard Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#layout-design-rules">Layout Design Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 6: Organizing Content with Tabs, Sections, and Panels</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-06.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-6-organizing-content-with-tabs-sections-and-panels">
+<h1>Chapter 6: Organizing Content with Tabs, Sections, and Panels<a class="headerlink" href="#chapter-6-organizing-content-with-tabs-sections-and-panels" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#report-structure-overview" id="id6">Report Structure Overview</a></p></li>
+<li><p><a class="reference internal" href="#layout-architecture-deep-dive" id="id7">Layout Architecture Deep-Dive</a></p>
+<ul>
+<li><p><a class="reference internal" href="#component-responsibilities" id="id8">Component Responsibilities</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#mastering-tabs-new-htmltab" id="id9">Mastering Tabs (<code class="docutils literal notranslate"><span class="pre">New-HTMLTab</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tab-customization-options" id="id10">Tab Customization Options</a></p></li>
+<li><p><a class="reference internal" href="#tab-icon-example" id="id11">Tab Icon Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#section-column-grid-layouts-new-htmlpanel-and-new-htmlsection" id="id12">Section &amp; Column Grid Layouts  (<code class="docutils literal notranslate"><span class="pre">New-HTMLPanel</span></code> and <code class="docutils literal notranslate"><span class="pre">New-HTMLSection</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-multi-column-layouts" id="id13">Creating Multi-Column Layouts</a></p></li>
+<li><p><a class="reference internal" href="#collapsible-sections" id="id14">Collapsible Sections</a></p></li>
+<li><p><a class="reference internal" href="#panel-styling-backgrounds" id="id15">Panel Styling &amp; Backgrounds</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#complete-operational-dashboard-example" id="id16">Complete Operational Dashboard Example</a></p></li>
+<li><p><a class="reference internal" href="#layout-design-rules" id="id17">Layout Design Rules</a></p></li>
+</ul>
+</nav>
+<section id="report-structure-overview">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Report Structure Overview</a><a class="headerlink" href="#report-structure-overview" title="Link to this heading"></a></h2>
+<p>As reports grow in scope and complexity, structure becomes as vital as the data itself. <strong>PSWriteHTML</strong> provides a
+modular, responsive layout engine based on a hierarchical grid model.</p>
+<p>By strategically combining <strong>Tabs</strong>, <strong>Sections</strong>, <strong>Panels</strong>, and <strong>Columns</strong>, you can transform long, overwhelming
+operational logs into structured, executive-ready dashboards.</p>
+<p>We’ve already introduced the basic building blocks in Chapter 3, but this chapter delves deeper into advanced layout techniques,
+best practices for multi-tab navigation, and strategies for creating visually appealing, data-rich reports.</p>
+</section>
+<section id="layout-architecture-deep-dive">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Layout Architecture Deep-Dive</a><a class="headerlink" href="#layout-architecture-deep-dive" title="Link to this heading"></a></h2>
+<p>The layout engine uses a nested container model that flows from top-level navigation down to individual content cards:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>New-HTML
+└── New-HTMLTab (Top Navigation)
+    └── New-HTMLSection (Horizontal Row)
+        └── New-HTMLPanel (Card Container)
+            └── Content Widgets (Tables, Charts, Text, Diagrams)
+</pre></div>
+</div>
+<section id="component-responsibilities">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Component Responsibilities</a><a class="headerlink" href="#component-responsibilities" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>New-HTMLTab:</strong> Acts as the primary top-level menu item. Each tab hides or shows full logical sub-pages without reloading
+the browser.</p></li>
+<li><p><strong>New-HTMLSection:</strong> Functions as a full-width horizontal row or banner within a tab. Sections isolate distinct reporting
+topics (e.g., “CPU Metrics” vs “Memory Usage”).</p></li>
+<li><p><strong>New-HTMLPanel:</strong> Acts as a floating card or column block within a section. Panels wrap specific tables, charts, or text
+blocks with clean borders and background padding.</p></li>
+</ul>
+</section>
+</section>
+<section id="mastering-tabs-new-htmltab">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Mastering Tabs (<code class="docutils literal notranslate"><span class="pre">New-HTMLTab</span></code>)</a><a class="headerlink" href="#mastering-tabs-new-htmltab" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HtmlTab.md">New-HTMLTab</a>  allow you to pack dozens of metrics
+into a single standalone HTML document while keeping the viewport clutter-free.</p>
+<section id="tab-customization-options">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Tab Customization Options</a><a class="headerlink" href="#tab-customization-options" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>-Name:</strong> Text displayed on the navigation button.</p></li>
+<li><p><strong>-IconSolid / ``-IconRegular`` / ``-IconBrands``:</strong> Adds a <a class="reference external" href="https://fontawesome.com/">FontAwesome</a> icon to the tab title
+(e.g., <code class="docutils literal notranslate"><span class="pre">-IconSolid</span> <span class="pre">'server'</span></code>  or <code class="docutils literal notranslate"><span class="pre">-IconBrands</span> <span class="pre">'windows'</span></code>).</p></li>
+<li><p><strong>-IconColor:</strong> Hex or color text for the FontAwesome icon (e.g., <code class="docutils literal notranslate"><span class="pre">-IconColor</span> <span class="pre">'Red'</span></code> or <code class="docutils literal notranslate"><span class="pre">-IconColor</span> <span class="pre">'#FF0000'</span></code>).</p></li>
+</ul>
+</section>
+<section id="tab-icon-example">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Tab Icon Example</a><a class="headerlink" href="#tab-icon-example" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Infrastructure Status"</span> <span class="n">-FilePath</span> <span class="s2">"MultiTab.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    
+    <span class="c"># Tab 1: Server Health with FontAwesome Icon</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Servers"</span> <span class="n">-IconSolid</span> <span class="s2">"server"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Active Nodes"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Server details go here."</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c"># Tab 2: Security Alerts with a Red Warning Badge</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Alerts"</span> <span class="n">-IconSolid</span> <span class="s2">"exclamation-triangle"</span> <span class="n">-IconColor</span> <span class="s2">"Red"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Unresolved Incident Reports"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Security incident details go here."</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id3">
+<img alt="Rendered Tab Example" src="_images/chapter-06-tabs.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">A report organized with tabbed navigation.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="section-column-grid-layouts-new-htmlpanel-and-new-htmlsection">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Section &amp; Column Grid Layouts  (<code class="docutils literal notranslate"><span class="pre">New-HTMLPanel</span></code> and <code class="docutils literal notranslate"><span class="pre">New-HTMLSection</span></code>)</a><a class="headerlink" href="#section-column-grid-layouts-new-htmlpanel-and-new-htmlsection" title="Link to this heading"></a></h2>
+<p>By default, every <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLPanel.md">New-HTMLPanel</a>  added inside a
+<a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLSection.md">New-HTMLSection</a>  expands to fill the available width. When multiple
+panels are placed within the same section, PSWriteHTML automatically arranges them into multi-column side-by-side card grids.</p>
+<section id="creating-multi-column-layouts">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Creating Multi-Column Layouts</a><a class="headerlink" href="#creating-multi-column-layouts" title="Link to this heading"></a></h3>
+<p>To create a 2-column or 3-column dashboard row, place multiple <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLPanel.md">New-HTMLPanel</a>
+blocks inside a single <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLSection.md">New-HTMLSection</a> .</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"System Resource Utilization"</span> <span class="p">{</span>
+        
+        <span class="c"># Left Column (Panel 1)</span>
+        <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+            <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"CPU Load History Chart"</span>
+        <span class="p">}</span>
+
+        <span class="c"># Middle Column (Panel 2)</span>
+        <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+            <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"RAM Consumption Chart"</span>
+        <span class="p">}</span>
+
+        <span class="c"># Right Column (Panel 3)</span>
+        <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+            <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Storage Allocation Summary"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id4">
+<img alt="Rendered Panel Example" src="_images/chapter-06-panels.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Three panels arranged in a responsive multi-column section.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+<div class="legend">
+<p><em>Three panels placed inside a single section, automatically flowing into an aligned multi-column grid.</em></p>
+</div>
+</figcaption>
+</figure>
+</section>
+<section id="collapsible-sections">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Collapsible Sections</a><a class="headerlink" href="#collapsible-sections" title="Link to this heading"></a></h3>
+<p>For detailed logs or secondary diagnostic details that do not need to be visible immediately, make a section collapsible with the switch <code class="docutils literal notranslate"><span class="pre">-CanCollapse</span></code> and start it
+collapsed with the related switch <code class="docutils literal notranslate"><span class="pre">-Collapsed</span></code>:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Advanced Active Directory Diagnostics"</span> <span class="n">-CanCollapse</span> <span class="n">-Collapsed</span> <span class="p">{</span>
+    <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+        <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Detailed diagnostic logs and raw output parameters..."</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="panel-styling-backgrounds">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Panel Styling &amp; Backgrounds</a><a class="headerlink" href="#panel-styling-backgrounds" title="Link to this heading"></a></h3>
+<p>You can highlight critical information by applying custom background shades or text styles directly to panels:</p>
+<ul class="simple">
+<li><p><strong>-BackgroundColor:</strong> Hex code or CSS color name for the panel background.</p></li>
+<li><p><strong>-HeaderText on New-HTMLSection:</strong> Adds a header above the section, which can also be made collapsible.</p></li>
+</ul>
+</section>
+</section>
+<section id="complete-operational-dashboard-example">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Complete Operational Dashboard Example</a><a class="headerlink" href="#complete-operational-dashboard-example" title="Link to this heading"></a></h2>
+<p>The following script combines multi-tab navigation, FontAwesome icons, status badges, multi-column sections, and a collapsible diagnostic section:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>   <span class="c"># 1. Mock Health Check Data</span>
+   <span class="nv">$Nodes</span>  <span class="p">=</span> <span class="nb">Get-CimInstance</span> <span class="n">Win32_OperatingSystem</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">CSName</span><span class="p">,</span> <span class="n">Caption</span><span class="p">,</span> <span class="n">OSArchitecture</span><span class="p">,</span> <span class="n">Version</span>
+   <span class="nv">$Disks</span>  <span class="p">=</span> <span class="nb">Get-CimInstance</span> <span class="n">Win32_LogicalDisk</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">DeviceID</span><span class="p">,</span> <span class="p">@{</span><span class="n">N</span><span class="p">=</span><span class="s1">'FreeGB'</span><span class="p">;</span> <span class="n">E</span><span class="p">={</span><span class="no">[math]</span><span class="p">::</span><span class="n">Round</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">FreeSpace</span><span class="p">/</span><span class="n">1GB</span><span class="p">,</span> <span class="n">2</span><span class="p">)}}</span>
+
+   <span class="c"># 2. Build Dashboard</span>
+   <span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Enterprise Health Monitor"</span> <span class="n">-FilePath</span> <span class="s2">"$env:USERPROFILE\Desktop\HealthMonitor.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+
+       <span class="c"># Tab 1: Executive Overview</span>
+       <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Overview"</span> <span class="n">-IconSolid</span> <span class="s2">"chart-line"</span> <span class="p">{</span>
+           
+           <span class="c"># Top Row: Side-by-Side Cards</span>
+           <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Environment Snapshot"</span> <span class="p">{</span>
+               <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                   <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="nv">$Nodes</span> <span class="n">-DisablePaging</span> <span class="n">-DisableSearch</span>
+               <span class="p">}</span>
+
+               <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                   <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="nv">$Disks</span> <span class="n">-DisablePaging</span> <span class="n">-DisableSearch</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+
+           <span class="c"># Bottom Row: Collapsible Raw Logs</span>
+           <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Raw WMI Event Logs"</span> <span class="n">-CanCollapse</span> <span class="n">-Collapsed</span> <span class="p">{</span>
+               <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                   <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Verbose event trace logs captured during system boot sequence."</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+
+       <span class="c"># Tab 2: Security &amp; Compliance</span>
+       <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Compliance"</span> <span class="n">-IconSolid</span> <span class="s2">"shield-alt"</span> <span class="p">{</span>
+           <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Audit Trail"</span> <span class="p">{</span>
+               <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                   <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Status: OK. All local security policies match baseline standards."</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id5">
+<img alt="Rendered Full design Example" src="_images/chapter-06-full.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">A complete operational dashboard with tabs, panels, icons, and collapsible content.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="layout-design-rules">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Layout Design Rules</a><a class="headerlink" href="#layout-design-rules" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Keep Related Metrics Grouped:</strong> Use a single <code class="docutils literal notranslate"><span class="pre">New-HTMLSection</span></code> for metrics that need side-by-side visual comparison (e.g., Disk Space and Disk I/O).</p></li>
+<li><p><strong>Limit Primary Tabs:</strong> Limit top-level tabs to 5–7 items to prevent tab-bar wrapping on lower-resolution screens.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-07.html"><span class="doc">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-05.html" class="btn btn-neutral float-left" title="Chapter 5: Visualizing Data with Charts and Graphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-07.html" class="btn btn-neutral float-right" title="Chapter 7: Network Diagrams, Flowcharts, and Visualizations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

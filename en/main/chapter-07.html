@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 7: Network Diagrams, Flowcharts, and Visualizations &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 8: Custom Styling, CSS, and Themes" href="chapter-08.html" />
+    <link rel="prev" title="Chapter 6: Organizing Content with Tabs, Sections, and Panels" href="chapter-06.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#complex-visualizations-overview">Complex visualizations overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-diagram-concepts-nodes-and-links-new-htmldiagram">Core Diagram Concepts: Nodes and links (<code class="docutils literal notranslate"><span class="pre">New-HTMLDiagram</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-diagram-syntax">Basic Diagram Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-nodes-new-diagramnode">Customizing Nodes (<code class="docutils literal notranslate"><span class="pre">New-DiagramNode</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#node-parameters-options">Node Parameters &amp; Options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-connections-new-diagramlink">Customizing Connections (<code class="docutils literal notranslate"><span class="pre">New-DiagramLink</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#link-customization-parameters">Link Customization Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directional-dashed-link-example">Directional &amp; Dashed Link Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-icon-color-example">Node Icon &amp; Color Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#layout-hierarchies-physics-engines-new-diagramoptionslayout">Layout Hierarchies &amp; Physics Engines (<code class="docutils literal notranslate"><span class="pre">New-DiagramOptionsLayout</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchical-layouts-org-charts-tree-diagrams">Hierarchical Layouts (Org Charts &amp; Tree Diagrams)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#complete-practical-example-infrastructure-network-topology-map">Complete Practical Example: Infrastructure Network Topology Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagramming-best-practices">Diagramming Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-07.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-7-network-diagrams-flowcharts-and-visualizations">
+<h1>Chapter 7: Network Diagrams, Flowcharts, and Visualizations<a class="headerlink" href="#chapter-7-network-diagrams-flowcharts-and-visualizations" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#complex-visualizations-overview" id="id5">Complex visualizations overview</a></p></li>
+<li><p><a class="reference internal" href="#core-diagram-concepts-nodes-and-links-new-htmldiagram" id="id6">Core Diagram Concepts: Nodes and links (<code class="docutils literal notranslate"><span class="pre">New-HTMLDiagram</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basic-diagram-syntax" id="id7">Basic Diagram Syntax</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#customizing-nodes-new-diagramnode" id="id8">Customizing Nodes (<code class="docutils literal notranslate"><span class="pre">New-DiagramNode</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#node-parameters-options" id="id9">Node Parameters &amp; Options</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#customizing-connections-new-diagramlink" id="id10">Customizing Connections (<code class="docutils literal notranslate"><span class="pre">New-DiagramLink</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#link-customization-parameters" id="id11">Link Customization Parameters</a></p></li>
+<li><p><a class="reference internal" href="#directional-dashed-link-example" id="id12">Directional &amp; Dashed Link Example</a></p></li>
+<li><p><a class="reference internal" href="#node-icon-color-example" id="id13">Node Icon &amp; Color Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#layout-hierarchies-physics-engines-new-diagramoptionslayout" id="id14">Layout Hierarchies &amp; Physics Engines (<code class="docutils literal notranslate"><span class="pre">New-DiagramOptionsLayout</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#hierarchical-layouts-org-charts-tree-diagrams" id="id15">Hierarchical Layouts (Org Charts &amp; Tree Diagrams)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#complete-practical-example-infrastructure-network-topology-map" id="id16">Complete Practical Example: Infrastructure Network Topology Map</a></p></li>
+<li><p><a class="reference internal" href="#diagramming-best-practices" id="id17">Diagramming Best Practices</a></p></li>
+</ul>
+</nav>
+<section id="complex-visualizations-overview">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Complex visualizations overview</a><a class="headerlink" href="#complex-visualizations-overview" title="Link to this heading"></a></h2>
+<p>Beyond tables and charts, complex IT environments frequently require structural visualization—such as Active Directory trust maps,
+network topology diagrams, cloud architecture maps, and organizational hierarchies.</p>
+<p><strong>PSWriteHTML</strong> includes native support for interactive diagramming powered by <a class="reference external" href="https://visjs.org/">Vis Network</a> through the <code class="docutils literal notranslate"><span class="pre">New-HTMLDiagram</span></code>
+cmdlet. You can build nodes, connections, flowcharts, and relational graphs dynamically using pure PowerShell syntax without needing external
+design tools like Visio or Lucidchart.</p>
+</section>
+<section id="core-diagram-concepts-nodes-and-links-new-htmldiagram">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Core Diagram Concepts: Nodes and links (<code class="docutils literal notranslate"><span class="pre">New-HTMLDiagram</span></code>)</a><a class="headerlink" href="#core-diagram-concepts-nodes-and-links-new-htmldiagram" title="Link to this heading"></a></h2>
+<p>Diagrams in PSWriteHTML are constructed using two primary structural primitives inside
+a <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLDiagram.md">New-HTMLDiagram</a> container:</p>
+<ol class="arabic simple">
+<li><p><strong>Nodes (New-DiagramNode):</strong> Visual entities (e.g., servers, routers, switches, user accounts, cloud databases).</p></li>
+<li><p><strong>Links (New-DiagramLink):</strong> Directional or non-directional connection lines connecting two nodes (e.g., network cables, trust
+relationships, data flows).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Links in some outdated diagramming libraries are called “edges” or “connections.” In PSWriteHTML, we use the term “links” to align with common
+networking terminology. <code class="docutils literal notranslate"><span class="pre">New-DiagramLink</span></code> has many aliases: <code class="docutils literal notranslate"><span class="pre">DiagramLink</span></code>, <code class="docutils literal notranslate"><span class="pre">DiagramEdge</span></code>, <code class="docutils literal notranslate"><span class="pre">DiagramEdges</span></code> and <code class="docutils literal notranslate"><span class="pre">New-DiagramEdge</span></code>
+for backward compatibility.</p>
+</div>
+<section id="basic-diagram-syntax">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Basic Diagram Syntax</a><a class="headerlink" href="#basic-diagram-syntax" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Basic Topology Map"</span> <span class="n">-FilePath</span> <span class="s2">"Topology.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Network Map"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Local Network Topology"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLDiagram</span> <span class="n">-Diagram</span> <span class="p">{</span>
+                    
+                    <span class="c"># Define Nodes</span>
+                    <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="n">1</span> <span class="n">-Label</span> <span class="s2">"Core Router"</span> <span class="n">-Shape</span> <span class="s2">"box"</span>
+                    <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="n">2</span> <span class="n">-Label</span> <span class="s2">"Switch-01"</span>   <span class="n">-Shape</span> <span class="s2">"box"</span>
+                    <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="n">3</span> <span class="n">-Label</span> <span class="s2">"Server-DB"</span>   <span class="n">-Shape</span> <span class="s2">"ellipse"</span>
+
+                    <span class="c"># Define Connections (Links)</span>
+                    <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="n">1</span> <span class="n">-To</span> <span class="n">2</span> <span class="n">-Label</span> <span class="s2">"10Gbps Trunk"</span>
+                    <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="n">2</span> <span class="n">-To</span> <span class="n">3</span> <span class="n">-Label</span> <span class="s2">"1Gbps Link"</span>
+                <span class="p">}</span> <span class="n">-Height</span> <span class="s2">"500px"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result, a simple network diagram with three nodes and two links, fully interactive with zooming, panning, and node dragging:</p>
+<figure class="align-center" id="id1">
+<img alt="Rendered Basic Diagram Example" src="_images/chapter-07-basic-diagram.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">A basic interactive diagram containing nodes and links.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="customizing-nodes-new-diagramnode">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Customizing Nodes (<code class="docutils literal notranslate"><span class="pre">New-DiagramNode</span></code>)</a><a class="headerlink" href="#customizing-nodes-new-diagramnode" title="Link to this heading"></a></h2>
+<p>Nodes are defined with <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-DiagramNode.md">New-DiagramNode</a> . They can be customized with
+specific shapes, background colors, font styles, and FontAwesome icons to represent specific hardware or service roles.</p>
+<section id="node-parameters-options">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Node Parameters &amp; Options</a><a class="headerlink" href="#node-parameters-options" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>-Id:</strong> Unique identifier (integer or string) used to reference the node in link definitions. If
+not set, label will be used as Id.</p></li>
+<li><p><strong>-Label:</strong> Display text shown on or below the node.</p></li>
+<li><p><strong>-Shape:</strong> Geometry of the node (<code class="docutils literal notranslate"><span class="pre">circle</span></code>, <code class="docutils literal notranslate"><span class="pre">dot</span></code>, <code class="docutils literal notranslate"><span class="pre">diamond</span></code>, <code class="docutils literal notranslate"><span class="pre">ellipse</span></code>, <code class="docutils literal notranslate"><span class="pre">database</span></code>, <code class="docutils literal notranslate"><span class="pre">box</span></code>,
+<code class="docutils literal notranslate"><span class="pre">square</span></code>, <code class="docutils literal notranslate"><span class="pre">triangle</span></code>, <code class="docutils literal notranslate"><span class="pre">triangleDown</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">star</span></code>, <code class="docutils literal notranslate"><span class="pre">hexagon</span></code>).</p></li>
+<li><p><strong>-ColorBackground:</strong> Hex color code for the internal node fill.</p></li>
+<li><p><strong>-ColorBorder:</strong> Hex color code for the node outline.</p></li>
+<li><p><strong>-IconSolid / -IconBrands:</strong> Embeds a FontAwesome vector icon inside the node. Cannot be used with <code class="docutils literal notranslate"><span class="pre">-Shape</span></code> values like <code class="docutils literal notranslate"><span class="pre">box</span></code> or <code class="docutils literal notranslate"><span class="pre">ellipse</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="customizing-connections-new-diagramlink">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Customizing Connections (<code class="docutils literal notranslate"><span class="pre">New-DiagramLink</span></code>)</a><a class="headerlink" href="#customizing-connections-new-diagramlink" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-DiagramLink.md">New-DiagramLink</a>  control how relationships between nodes are
+visualized, supporting directional arrows, line styling, color coding, and labels.</p>
+<section id="link-customization-parameters">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Link Customization Parameters</a><a class="headerlink" href="#link-customization-parameters" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>-From / -To:</strong> IDs of the source and target nodes.</p></li>
+<li><p><strong>-ArrowsToEnabled:</strong> Switch parameter to enable arrows at the end of the link.</p></li>
+<li><p><strong>-ArrowsToType:</strong> Type of arrowhead to display at the end of the link. Valid values are ‘arrow’, ‘bar’, or ‘circle’.</p></li>
+<li><p><strong>-Color:</strong> Hex color code for the connection line.</p></li>
+<li><p><strong>-Dashed:</strong> Boolean (<code class="docutils literal notranslate"><span class="pre">$true</span></code>/<code class="docutils literal notranslate"><span class="pre">$false</span></code>) to switch between solid and dashed lines (ideal for backup links or optional paths).</p></li>
+<li><p><strong>-Label:</strong> Text annotation displayed along the link line.</p></li>
+</ul>
+</section>
+<section id="directional-dashed-link-example">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Directional &amp; Dashed Link Example</a><a class="headerlink" href="#directional-dashed-link-example" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"Firewall"</span> <span class="n">-To</span> <span class="s2">"DMZ-Host"</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-Color</span> <span class="s2">"#E53935"</span> <span class="n">-Label</span> <span class="s2">"HTTPS (443)"</span>
+<span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"DMZ-Host"</span> <span class="n">-To</span> <span class="s2">"Backup-Srv"</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-Dashed</span> <span class="nv">$true</span> <span class="n">-Color</span> <span class="s2">"#757575"</span> <span class="n">-Label</span> <span class="s2">"Replication"</span>
+</pre></div>
+</div>
+</section>
+<section id="node-icon-color-example">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Node Icon &amp; Color Example</a><a class="headerlink" href="#node-icon-color-example" title="Link to this heading"></a></h3>
+<p>A simple workflow diagram with three nodes and two directional links, fully interactive with customized icons, colors, and labels:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Basic Topology Map"</span> <span class="n">-FilePath</span> <span class="s2">"Topology.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Network Map"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Local Network Topology"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                
+                  
+                <span class="nb">New-HTMLDiagram</span> <span class="n">-EnableFiltering</span> <span class="n">-EnableFilteringButton</span> <span class="n">-Diagram</span> <span class="p">{</span>
+
+                    <span class="nb">New-DiagramOptionsInteraction</span> <span class="n">-Hover</span> <span class="nv">$true</span>
+
+                    <span class="c"># Define Nodes</span>
+                    <span class="c">#New-DiagramNode -Id 1 -Label "Core Router"  -IconSolid broadcast-tower</span>
+                    
+                    <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"GW"</span> <span class="n">-Label</span> <span class="s2">"Gateway Router"</span>  <span class="n">-IconBrands</span> <span class="n">hubspot</span>  <span class="n">-IconColor</span> <span class="n">Blue</span>
+                    <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"DB"</span> <span class="n">-Label</span> <span class="s2">"SQL Cluster"</span>  <span class="n">-Shape</span> <span class="n">database</span>
+                    <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"WEB"</span> <span class="n">-Label</span> <span class="s2">"Web Server"</span>  <span class="n">-IconSolid</span> <span class="n">server</span>  <span class="n">-IconColor</span> <span class="n">Blue</span>
+
+                    <span class="c"># Define Connections (Edges)</span>
+                    <span class="nb">New-DiagramEdge</span> <span class="n">-From</span> <span class="s2">"GW"</span> <span class="n">-To</span> <span class="s2">"WEB"</span> <span class="n">-ArrowsToEnabled</span>
+                    <span class="nb">New-DiagramEdge</span> <span class="n">-From</span> <span class="s2">"WEB"</span> <span class="n">-To</span> <span class="s2">"DB"</span> <span class="n">-Label</span> <span class="s2">"1Gbps"</span> <span class="n">-ArrowsToEnabled</span>
+
+  
+                <span class="p">}</span> <span class="n">-Height</span> <span class="s2">"500px"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id2">
+<img alt="Rendered Basic Network Diagram Example" src="_images/chapter-07-basic-network.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">A directional network diagram with customized nodes and links.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="layout-hierarchies-physics-engines-new-diagramoptionslayout">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Layout Hierarchies &amp; Physics Engines (<code class="docutils literal notranslate"><span class="pre">New-DiagramOptionsLayout</span></code>)</a><a class="headerlink" href="#layout-hierarchies-physics-engines-new-diagramoptionslayout" title="Link to this heading"></a></h2>
+<p>Vis Network includes physics engines that automatically arrange nodes dynamically or snap them into rigid hierarchical trees.</p>
+<section id="hierarchical-layouts-org-charts-tree-diagrams">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Hierarchical Layouts (Org Charts &amp; Tree Diagrams)</a><a class="headerlink" href="#hierarchical-layouts-org-charts-tree-diagrams" title="Link to this heading"></a></h3>
+<p>For structured trees like Active Directory domain trust structures or organizational charts, enable hierarchical positioning
+using <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-DiagramOptionsLayout.md">New-DiagramOptionsLayout</a> :</p>
+<ul class="simple">
+<li><p><strong>-HierarchicalEnabled:</strong> Switch parameter to enable hierarchical layout.</p></li>
+<li><p><strong>-HierarchicalDirection:</strong> The direction of the hierarchical layout. Valid values are: FromUpToDown, FromDownToUp, FromLeftToRight, FromRigthToLeft.</p></li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"AD Topology Map"</span> <span class="n">-FilePath</span> <span class="s2">"ADTopology.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"AD Map"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Local AD Topology"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLDiagram</span> <span class="n">-Diagram</span> <span class="p">{</span>
+                
+                <span class="c"># Layout Engine Configuration</span>
+                <span class="nb">New-DiagramOptionsLayout</span> <span class="n">-HierarchicalEnabled</span> <span class="nv">$true</span> <span class="n">-HierarchicalDirection</span> <span class="n">FromUpToDown</span>
+
+                <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="n">1</span> <span class="n">-Level</span> <span class="n">1</span> <span class="n">-Label</span> <span class="s2">"Forest Root Domain"</span> <span class="n">-Shape</span> <span class="s2">"box"</span>
+                <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="n">2</span> <span class="n">-Level</span> <span class="n">2</span> <span class="n">-Label</span> <span class="s2">"Child Domain A"</span>     <span class="n">-Shape</span> <span class="s2">"box"</span>
+                <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="n">3</span> <span class="n">-Level</span> <span class="n">2</span> <span class="n">-Label</span> <span class="s2">"Child Domain B"</span>     <span class="n">-Shape</span> <span class="s2">"box"</span>
+
+                <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="n">1</span> <span class="n">-To</span> <span class="n">2</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-ArrowsFromEnabled</span> <span class="n">-Label</span> <span class="s2">"Two-Way Trust"</span>
+                <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="n">1</span> <span class="n">-To</span> <span class="n">3</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-ArrowsFromEnabled</span> <span class="n">-Label</span> <span class="s2">"Two-Way Trust"</span>
+            <span class="p">}</span> <span class="n">-Height</span> <span class="s2">"500px"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id3">
+<img alt="Rendered AD Topology Diagram Example" src="_images/chapter-07-ad.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">An Active Directory topology diagram using a hierarchical layout.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="complete-practical-example-infrastructure-network-topology-map">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Complete Practical Example: Infrastructure Network Topology Map</a><a class="headerlink" href="#complete-practical-example-infrastructure-network-topology-map" title="Link to this heading"></a></h2>
+<p>The following script gathers network interface data and constructs a multi-tier network map complete with interactive node dragging, zooming,
+directional paths, and FontAwesome status indicators:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>   <span class="nb">New-HTML</span> <span class="n">-Title</span> <span class="s2">"Data Center Network Diagram"</span> <span class="n">-FilePath</span> <span class="s2">"$env:USERPROFILE\Desktop\NetworkMap.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+       <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Topology"</span> <span class="n">-IconSolid</span> <span class="s2">"network-wired"</span> <span class="p">{</span>
+           <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Production Infrastructure Mesh"</span> <span class="p">{</span>
+               <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                   <span class="nb">New-HTMLDiagram</span> <span class="n">-Diagram</span> <span class="p">{</span>
+
+                       <span class="c"># 1. External &amp; Perimeter Layer</span>
+                       <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"INET"</span> <span class="n">-Label</span> <span class="s2">"Internet / WAN"</span> <span class="n">-Shape</span> <span class="s2">"circle"</span> <span class="n">-ColorBackground</span> <span class="s2">"#0288D1"</span>
+                       <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"FW01"</span> <span class="n">-Label</span> <span class="s2">"Perimeter Firewall"</span> <span class="n">-Shape</span> <span class="s2">"box"</span> <span class="n">-ColorBackground</span> <span class="s2">"#D32F2F"</span>
+
+                       <span class="c"># 2. Distribution Layer</span>
+                       <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"SW01"</span> <span class="n">-Label</span> <span class="s2">"Core Switch 01"</span> <span class="n">-Shape</span> <span class="s2">"box"</span> <span class="n">-ColorBackground</span> <span class="s2">"#1976D2"</span>
+                       <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"SW02"</span> <span class="n">-Label</span> <span class="s2">"Core Switch 02 (HA)"</span> <span class="n">-Shape</span> <span class="s2">"box"</span> <span class="n">-ColorBackground</span> <span class="s2">"#1976D2"</span>
+
+                       <span class="c"># 3. Workload Layer</span>
+                       <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"APP"</span>  <span class="n">-Label</span> <span class="s2">"App Tier Cluster"</span> <span class="n">-Shape</span> <span class="s2">"ellipse"</span> <span class="n">-ColorBackground</span> <span class="s2">"#388E3C"</span>
+                       <span class="nb">New-DiagramNode</span> <span class="n">-Id</span> <span class="s2">"DB"</span>   <span class="n">-Label</span> <span class="s2">"SQL Availability Group"</span> <span class="n">-Shape</span> <span class="s2">"database"</span> <span class="n">-ColorBackground</span> <span class="s2">"#F57C00"</span>
+
+                       <span class="c"># 4. Define Interconnects</span>
+                       <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"INET"</span> <span class="n">-To</span> <span class="s2">"FW01"</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-Label</span> <span class="s2">"Inbound Traffic"</span>
+                       <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"FW01"</span> <span class="n">-To</span> <span class="s2">"SW01"</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-Color</span> <span class="s2">"#D32F2F"</span>
+                       <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"FW01"</span> <span class="n">-To</span> <span class="s2">"SW02"</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-Color</span> <span class="s2">"#D32F2F"</span> <span class="n">-Dashes</span> <span class="nv">$true</span>
+                       
+                       <span class="c"># Core Switch Trunking</span>
+                       <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"SW01"</span> <span class="n">-To</span> <span class="s2">"SW02"</span> <span class="n">-ArrowsToEnabled</span> <span class="n">-ArrowsFromEnabled</span> <span class="n">-Label</span> <span class="s2">"LACP Trunk"</span> <span class="n">-Color</span> <span class="s2">"#1976D2"</span>
+                       
+                       <span class="c"># App &amp; DB Connects</span>
+                       <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"SW01"</span> <span class="n">-To</span> <span class="s2">"APP"</span>  <span class="n">-ArrowsToEnabled</span>
+                       <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"SW02"</span> <span class="n">-To</span> <span class="s2">"APP"</span>  <span class="n">-ArrowsToEnabled</span>
+                       <span class="nb">New-DiagramLink</span> <span class="n">-From</span> <span class="s2">"APP"</span>  <span class="n">-To</span> <span class="s2">"DB"</span>   <span class="n">-ArrowsToEnabled</span> <span class="n">-Label</span> <span class="s2">"Port 1433"</span>
+                   <span class="p">}</span> <span class="n">-Height</span> <span class="s2">"650px"</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id4">
+<img alt="Rendered Basic Diagram Example" src="_images/chapter-07-network.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">An infrastructure network topology map with directional paths and status icons.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="diagramming-best-practices">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Diagramming Best Practices</a><a class="headerlink" href="#diagramming-best-practices" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Explicit Heights:</strong> Always set a explicit <code class="docutils literal notranslate"><span class="pre">-Height</span></code> parameter (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;500px&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;700px&quot;</span></code>) on <code class="docutils literal notranslate"><span class="pre">New-HTMLDiagram</span></code> to prevent canvas
+collapse inside panels.</p></li>
+<li><p><strong>Unique Node IDs:</strong> Ensure every node has a strictly unique <code class="docutils literal notranslate"><span class="pre">-Id</span></code> string or integer. Duplicate IDs cause link routing failures in Vis.js.</p></li>
+<li><p><strong>Use Hierarchy for Trees:</strong> When displaying parent-child structures (such as management org charts or DNS delegation trees), always
+enable <code class="docutils literal notranslate"><span class="pre">New-DiagramOptionsLayout</span> <span class="pre">-HierarchicalEnabled</span> <span class="pre">$true</span></code> to prevent nodes from drifting into floating physics clusters.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-08.html"><span class="doc">Chapter 8: Custom Styling, CSS, and Themes</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-06.html" class="btn btn-neutral float-left" title="Chapter 6: Organizing Content with Tabs, Sections, and Panels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-08.html" class="btn btn-neutral float-right" title="Chapter 8: Custom Styling, CSS, and Themes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

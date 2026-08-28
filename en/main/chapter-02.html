@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 2: Installation, Dependencies, and Setup &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 3: Basic HTML Structure and Document Flow" href="chapter-03.html" />
+    <link rel="prev" title="Chapter 1: What is PSWriteHTML?" href="chapter-01.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 2: Installation, Dependencies, and Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-overview">Installation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites-requirements">Prerequisites &amp; Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dependencies">Module Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#primary-dependencies">Primary Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-installation-from-powershell-gallery-recommended">Method 1: Installation from PowerShell Gallery (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-offline-air-gapped-installation">Method 2: Offline / Air-Gapped Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-3-automated-scripting-ci-cd-pipeline">Method 3: Automated Scripting / CI/CD Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-the-installation">Verifying the Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-uninstalling">Updating &amp; Uninstalling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#updating-to-the-latest-version">Updating to the Latest Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uninstalling-the-module">Uninstalling the Module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-the-module">Importing the module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-common-setup-issues">Troubleshooting Common Setup Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-08.html">Chapter 8: Custom Styling, CSS, and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 2: Installation, Dependencies, and Setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-02.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-2-installation-dependencies-and-setup">
+<h1>Chapter 2: Installation, Dependencies, and Setup<a class="headerlink" href="#chapter-2-installation-dependencies-and-setup" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#installation-overview" id="id2">Installation Overview</a></p></li>
+<li><p><a class="reference internal" href="#prerequisites-requirements" id="id3">Prerequisites &amp; Requirements</a></p></li>
+<li><p><a class="reference internal" href="#module-dependencies" id="id4">Module Dependencies</a></p>
+<ul>
+<li><p><a class="reference internal" href="#primary-dependencies" id="id5">Primary Dependencies</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#installation-methods" id="id6">Installation Methods</a></p>
+<ul>
+<li><p><a class="reference internal" href="#method-1-installation-from-powershell-gallery-recommended" id="id7">Method 1: Installation from PowerShell Gallery (Recommended)</a></p></li>
+<li><p><a class="reference internal" href="#method-2-offline-air-gapped-installation" id="id8">Method 2: Offline / Air-Gapped Installation</a></p></li>
+<li><p><a class="reference internal" href="#method-3-automated-scripting-ci-cd-pipeline" id="id9">Method 3: Automated Scripting / CI/CD Pipeline</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#verifying-the-installation" id="id10">Verifying the Installation</a></p></li>
+<li><p><a class="reference internal" href="#updating-uninstalling" id="id11">Updating &amp; Uninstalling</a></p>
+<ul>
+<li><p><a class="reference internal" href="#updating-to-the-latest-version" id="id12">Updating to the Latest Version</a></p></li>
+<li><p><a class="reference internal" href="#uninstalling-the-module" id="id13">Uninstalling the Module</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#importing-the-module" id="id14">Importing the module</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting-common-setup-issues" id="id15">Troubleshooting Common Setup Issues</a></p></li>
+</ul>
+</nav>
+<section id="installation-overview">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Installation Overview</a><a class="headerlink" href="#installation-overview" title="Link to this heading"></a></h2>
+<p>Before using <strong>PSWriteHTML</strong> to construct interactive reports, dashboards, or emails, you must properly set up the PowerShell environment and ensure
+all core and optional module dependencies are available.</p>
+<p>PSWriteHTML is distributed via the <a class="reference external" href="https://www.powershellgallery.com/packages/PSWriteHTML">PowerShell Gallery</a> and supports cross-platform
+execution on Windows, macOS, and Linux.</p>
+</section>
+<section id="prerequisites-requirements">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Prerequisites &amp; Requirements</a><a class="headerlink" href="#prerequisites-requirements" title="Link to this heading"></a></h2>
+<p>PSWriteHTML works across major PowerShell editions and operating systems:</p>
+<ul class="simple">
+<li><p><strong>PowerShell 5.1</strong> (Windows PowerShell included with Windows 10/11 &amp; Windows Server 2016+)</p></li>
+<li><p><strong>PowerShell 7.x+</strong> (PowerShell Core — Windows, macOS, Linux)</p></li>
+<li><p><strong>Execution Policy:</strong> Must permit running locally installed scripts (e.g., <code class="docutils literal notranslate"><span class="pre">RemoteSigned</span></code> or <code class="docutils literal notranslate"><span class="pre">Unrestricted</span></code>).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PowerShell 7.x is recommended for optimal performance, especially when processing large datasets or generating complex multi-tab reports with heavy DataTables integration.</p>
+</div>
+<p>This manual was written for version 1.41.0 and later of PSWriteHTML. For older versions, refer to the archived documentation on the GitHub repository.</p>
+</section>
+<section id="module-dependencies">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Module Dependencies</a><a class="headerlink" href="#module-dependencies" title="Link to this heading"></a></h2>
+<p>PSWriteHTML is designed as an ecosystem parent/child module. Depending on the visual components you use (charts, diagrams, color palettes), PSWriteHTML automatically utilizes or suggests complementary modules developed by Evotec:</p>
+<section id="primary-dependencies">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Primary Dependencies</a><a class="headerlink" href="#primary-dependencies" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module Name</p></th>
+<th class="head"><p>Purpose / Functionality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PSSharedGoods</strong></p></td>
+<td><p>Core helper functions, file handling, and string manipulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PSWriteColor</strong></p></td>
+<td><p>Enhanced console output formatting during report generation.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Connectimo</strong></p></td>
+<td><p>Optional network visualizer integration for topology diagrams.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When installing PSWriteHTML via <code class="docutils literal notranslate"><span class="pre">Install-Module</span></code>, PowerShell automatically resolves and installs required dependencies like <code class="docutils literal notranslate"><span class="pre">PSSharedGoods</span></code>. If installing manually in an isolated/air-gapped environment, you must copy these dependency modules manually.</p>
+</div>
+</section>
+</section>
+<section id="installation-methods">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Installation Methods</a><a class="headerlink" href="#installation-methods" title="Link to this heading"></a></h2>
+<section id="method-1-installation-from-powershell-gallery-recommended">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Method 1: Installation from PowerShell Gallery (Recommended)</a><a class="headerlink" href="#method-1-installation-from-powershell-gallery-recommended" title="Link to this heading"></a></h3>
+<p>The quickest way to install PSWriteHTML for the current user or system-wide is using <code class="docutils literal notranslate"><span class="pre">Install-Module</span></code>.</p>
+<p><strong>For the Current User (No Admin Rights Required):</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">-Repository</span> <span class="n">PSGallery</span> <span class="n">-Force</span>
+</pre></div>
+</div>
+<p><strong>System-Wide (Requires Administrator Privilege):</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span> <span class="n">-Scope</span> <span class="n">AllUsers</span> <span class="n">-Repository</span> <span class="n">PSGallery</span> <span class="n">-Force</span>
+</pre></div>
+</div>
+</section>
+<section id="method-2-offline-air-gapped-installation">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Method 2: Offline / Air-Gapped Installation</a><a class="headerlink" href="#method-2-offline-air-gapped-installation" title="Link to this heading"></a></h3>
+<p>If your target machine lacks direct internet access (e.g., secure production servers), download the module on an internet-connected machine and transfer it.</p>
+<ol class="arabic">
+<li><p><strong>Save the module and dependencies to a local folder:</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Save-Module</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span> <span class="n">-Path</span> <span class="s2">"C:\OfflineModules"</span> <span class="n">-Repository</span> <span class="n">PSGallery</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Copy the folder</strong> to the target machine’s PowerShell module directory:</p>
+<ul class="simple">
+<li><p><strong>Windows PowerShell 5.1:</strong> <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\WindowsPowerShell\Modules\</span></code></p></li>
+<li><p><strong>PowerShell 7 (All Users):</strong> <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PowerShell\7\Modules\</span></code></p></li>
+<li><p><strong>PowerShell 7 (Current User):</strong> <code class="docutils literal notranslate"><span class="pre">$HOME\Documents\PowerShell\Modules\</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Verify the path is listed in environment variables:</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$env:PSModulePath</span> <span class="n">-split</span> <span class="s1">';'</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="method-3-automated-scripting-ci-cd-pipeline">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Method 3: Automated Scripting / CI/CD Pipeline</a><a class="headerlink" href="#method-3-automated-scripting-ci-cd-pipeline" title="Link to this heading"></a></h3>
+<p>For automated deployment pipelines (GitHub Actions, Azure DevOps, Jenkins), ensure the package provider is updated before installing:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Trust PowerShell Gallery and install silently</span>
+<span class="nb">Set-PSRepository</span> <span class="n">-Name</span> <span class="s1">'PSGallery'</span> <span class="n">-InstallationPolicy</span> <span class="n">Trusted</span>
+<span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">-Force</span> <span class="n">-AllowClobber</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verifying-the-installation">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Verifying the Installation</a><a class="headerlink" href="#verifying-the-installation" title="Link to this heading"></a></h2>
+<p>After completing installation, verify that the module is imported correctly and inspect available cmdlets.</p>
+<ol class="arabic">
+<li><p><strong>Check Installed Version:</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Get-InstalledModule</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Import and Inspect Available Cmdlets:</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Import-Module</span> <span class="n">PSWriteHTML</span> <span class="n">-Verbose</span>
+<span class="nb">Get-Command</span> <span class="n">-Module</span> <span class="n">PSWriteHTML</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">10</span>
+</pre></div>
+</div>
+<p><em>Expected output includes core functions like ``New-HTML``, ``New-HTMLTab``, ``New-HTMLTable``, and ``New-HTMLChart``.</em></p>
+</li>
+</ol>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/02-modules.png"><img alt="PSWriteHTML Verification Example" src="_images/02-modules.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">PowerShell modules available after installing PSWriteHTML and its dependencies.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<div class="legend">
+<p><em>Successful setup allows instant execution of DSL-based layout commands.</em></p>
+</div>
+</figcaption>
+</figure>
+<p>If you should face any errors with the PowerShell execution policy that prevents script execution, you can normally resolve it by
+running the following command:</p>
+<blockquote>
+<div><div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="updating-uninstalling">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Updating &amp; Uninstalling</a><a class="headerlink" href="#updating-uninstalling" title="Link to this heading"></a></h2>
+<section id="updating-to-the-latest-version">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Updating to the Latest Version</a><a class="headerlink" href="#updating-to-the-latest-version" title="Link to this heading"></a></h3>
+<p>To update PSWriteHTML and pull in the latest web libraries (ApexCharts, DataTables, FontAwesome updates):</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Update-Module</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span> <span class="n">-Force</span>
+</pre></div>
+</div>
+</section>
+<section id="uninstalling-the-module">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Uninstalling the Module</a><a class="headerlink" href="#uninstalling-the-module" title="Link to this heading"></a></h3>
+<p>To remove PSWriteHTML and clean up the environment:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Remove-Module</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<span class="nb">Uninstall-Module</span> <span class="n">-Name</span> <span class="n">PSWriteHTML</span> <span class="n">-AllVersions</span> <span class="n">-Force</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="importing-the-module">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Importing the module</a><a class="headerlink" href="#importing-the-module" title="Link to this heading"></a></h2>
+<p>As usual with PowerShell modules, before using the module you should import it with the following command:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Import-Module</span> <span class="n">PSWriteHTML</span>
+</pre></div>
+</div>
+<p>But this is not mandatory because PowerShell 3.0+ supports module auto-loading: when you execute a command belonging to an
+installed module, PowerShell automatically imports the module, provided the module is in $env:PSModulePath and you’re using a modern version of
+PowerShell. From now on, all examples in this manual will not explicitly import the module at the beginning of the script.</p>
+<p>On the other hand, if you want to use the module in a script, it is recommended to import it explicitly at the beginning of the script, so that:</p>
+<ul class="simple">
+<li><p>makes the script’s dependency obvious</p></li>
+<li><p>causes a failure immediately if PSWriteHTML cannot be loaded</p></li>
+<li><p>makes troubleshooting easier</p></li>
+</ul>
+</section>
+<section id="troubleshooting-common-setup-issues">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Troubleshooting Common Setup Issues</a><a class="headerlink" href="#troubleshooting-common-setup-issues" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>Issue: Script Execution Disabled</strong></dt><dd><ul class="simple">
+<li><p><em>Error:</em> <code class="docutils literal notranslate"><span class="pre">...cannot</span> <span class="pre">be</span> <span class="pre">loaded</span> <span class="pre">because</span> <span class="pre">running</span> <span class="pre">scripts</span> <span class="pre">is</span> <span class="pre">disabled</span> <span class="pre">on</span> <span class="pre">this</span> <span class="pre">system.</span></code></p></li>
+<li><p><em>Solution:</em> Run <code class="docutils literal notranslate"><span class="pre">Set-ExecutionPolicy</span> <span class="pre">-ExecutionPolicy</span> <span class="pre">RemoteSigned</span> <span class="pre">-Scope</span> <span class="pre">CurrentUser</span></code>.</p></li>
+</ul>
+</dd>
+<dt><strong>Issue: NuGet Provider Prompt</strong></dt><dd><ul class="simple">
+<li><p><em>Error:</em> <code class="docutils literal notranslate"><span class="pre">NuGet</span> <span class="pre">provider</span> <span class="pre">is</span> <span class="pre">required</span> <span class="pre">to</span> <span class="pre">continue...</span></code></p></li>
+<li><p><em>Solution:</em> Force NuGet provider installation with <code class="docutils literal notranslate"><span class="pre">Install-PackageProvider</span> <span class="pre">-Name</span> <span class="pre">NuGet</span> <span class="pre">-MinimumVersion</span> <span class="pre">2.8.5.201</span> <span class="pre">-Force</span></code>.</p></li>
+</ul>
+</dd>
+<dt><strong>Issue: Dependency Conflict</strong></dt><dd><ul class="simple">
+<li><p><em>Error:</em> Multiple versions of <code class="docutils literal notranslate"><span class="pre">PSSharedGoods</span></code> loaded.</p></li>
+<li><p><em>Solution:</em> Remove older module versions using <code class="docutils literal notranslate"><span class="pre">Uninstall-Module</span> <span class="pre">PSSharedGoods</span> <span class="pre">-AllVersions</span></code> and re-import PSWriteHTML.</p></li>
+</ul>
+</dd>
+</dl>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-03.html"><span class="doc">Chapter 3: Basic HTML Structure and Document Flow</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-01.html" class="btn btn-neutral float-left" title="Chapter 1: What is PSWriteHTML?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-03.html" class="btn btn-neutral float-right" title="Chapter 3: Basic HTML Structure and Document Flow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

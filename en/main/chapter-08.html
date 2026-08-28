@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 8: Custom Styling, CSS, and Themes &mdash; PSWriteHTML 1.41.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/toggle.css?v=029c1802" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9157b3eb"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/js/toggle.js?v=2a4072c2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 9: Automated Reporting and Email Integration" href="chapter-09.html" />
+    <link rel="prev" title="Chapter 7: Network Diagrams, Flowcharts, and Visualizations" href="chapter-07.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PSWriteHTML
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter-01.html">Chapter 1: What is PSWriteHTML?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-02.html">Chapter 2: Installation, Dependencies, and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-03.html">Chapter 3: Basic HTML Structure and Document Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-04.html">Chapter 4: Working with DataTables and Data Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-05.html">Chapter 5: Visualizing Data with Charts and Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-06.html">Chapter 6: Organizing Content with Tabs, Sections, and Panels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-07.html">Chapter 7: Network Diagrams, Flowcharts, and Visualizations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chapter 8: Custom Styling, CSS, and Themes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#styling-overview">Styling Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#document-level-theme-configuration">Document-Level Theme Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#built-in-themes-header-colors">Built-in Themes &amp; Header Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-color-override-example">Basic Color Override Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-css-injection-add-htmlstyle">Custom CSS Injection (<code class="docutils literal notranslate"><span class="pre">Add-HTMLStyle</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#injecting-raw-css">Injecting Raw CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-level-styles">Component-Level Styles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#icon-integration-typography-new-htmlfonticon">Icon Integration &amp; Typography (<code class="docutils literal notranslate"><span class="pre">New-HTMLFontIcon</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-fontawesome-icons">Using FontAwesome Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-icon-example">Inline Icon Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#inserting-a-company-logo">Inserting a company logo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-dark-mode-corporate-theme-templates">Building Dark Mode &amp; Corporate Theme Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enterprise-dark-theme-template">Enterprise Dark Theme Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#styling-best-practices">Styling Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-09.html">Chapter 9: Automated Reporting and Email Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-10.html">Chapter 10: Publishing Live Dashboards on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-11.html">Chapter 11: Advanced Features, Layout Customization, and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-12.html">Chapter 12: The Evotec PowerShell Module Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-13.html">Chapter 13: Documentation and Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PSWriteHTML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Chapter 8: Custom Styling, CSS, and Themes</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nicozanf/PSWriteHTML-doc/blob/master/docs/chapter-08.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-8-custom-styling-css-and-themes">
+<h1>Chapter 8: Custom Styling, CSS, and Themes<a class="headerlink" href="#chapter-8-custom-styling-css-and-themes" title="Link to this heading"></a></h1>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#styling-overview" id="id2">Styling Overview</a></p></li>
+<li><p><a class="reference internal" href="#document-level-theme-configuration" id="id3">Document-Level Theme Configuration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#built-in-themes-header-colors" id="id4">Built-in Themes &amp; Header Colors</a></p></li>
+<li><p><a class="reference internal" href="#basic-color-override-example" id="id5">Basic Color Override Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#custom-css-injection-add-htmlstyle" id="id6">Custom CSS Injection (<code class="docutils literal notranslate"><span class="pre">Add-HTMLStyle</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#injecting-raw-css" id="id7">Injecting Raw CSS</a></p></li>
+<li><p><a class="reference internal" href="#component-level-styles" id="id8">Component-Level Styles</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#icon-integration-typography-new-htmlfonticon" id="id9">Icon Integration &amp; Typography (<code class="docutils literal notranslate"><span class="pre">New-HTMLFontIcon</span></code>)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-fontawesome-icons" id="id10">Using FontAwesome Icons</a></p></li>
+<li><p><a class="reference internal" href="#inline-icon-example" id="id11">Inline Icon Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#inserting-a-company-logo" id="id12">Inserting a company logo</a></p></li>
+<li><p><a class="reference internal" href="#building-dark-mode-corporate-theme-templates" id="id13">Building Dark Mode &amp; Corporate Theme Templates</a></p>
+<ul>
+<li><p><a class="reference internal" href="#enterprise-dark-theme-template" id="id14">Enterprise Dark Theme Template</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#styling-best-practices" id="id15">Styling Best Practices</a></p></li>
+</ul>
+</nav>
+<section id="styling-overview">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Styling Overview</a><a class="headerlink" href="#styling-overview" title="Link to this heading"></a></h2>
+<p>While <strong>PSWriteHTML</strong> ships with clean, modern styling out of the box, enterprise environments often require matching corporate design standards,
+applying dark modes, or injecting custom typography and custom headers.</p>
+<p>This chapter details how to inject custom CSS, apply custom typography, use FontAwesome icons, and override component styling directly using
+PowerShell DSL parameters.</p>
+</section>
+<section id="document-level-theme-configuration">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Document-Level Theme Configuration</a><a class="headerlink" href="#document-level-theme-configuration" title="Link to this heading"></a></h2>
+<p>The root <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTML.md">New-HTML</a> cmdlet provides the document container for
+component-level styling and custom CSS. Header colors are configured on sections or through the corresponding style cmdlets.</p>
+<section id="built-in-themes-header-colors">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Built-in Themes &amp; Header Colors</a><a class="headerlink" href="#built-in-themes-header-colors" title="Link to this heading"></a></h3>
+<p>You can alter section colors directly with supported <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLSection.md">New-HTMLSection</a>
+parameters:</p>
+<ul class="simple">
+<li><p><strong>``-HeaderBackGroundColor``:</strong> Sets the background color of a section header (Hex, RGB, or standard CSS color names).</p></li>
+<li><p><strong>``-HeaderTextColor``:</strong> Controls the font color of a section header.</p></li>
+<li><p><strong>``-BackgroundColor``:</strong> Sets the background color of a section (Hex, RGB, or standard CSS color names).</p></li>
+</ul>
+</section>
+<section id="basic-color-override-example">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Basic Color Override Example</a><a class="headerlink" href="#basic-color-override-example" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-TitleText</span> <span class="s2">"Corporate Security Audit"</span> <span class="n">-FilePath</span> <span class="s2">"Audit.html"</span> <span class="n">-ShowHTML</span> <span class="p">{</span>
+
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Overview"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Executive Summary"</span> <span class="p">`</span>
+                       <span class="n">-HeaderBackGroundColor</span> <span class="s2">"#309135"</span> <span class="p">`</span>
+                       <span class="n">-HeaderTextColor</span> <span class="s2">"#e01965"</span> <span class="n">-BackgroundColor</span> <span class="s2">"lightyellow"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLText</span> <span class="n">-Color</span> <span class="n">Amazon</span> <span class="n">-Text</span> <span class="s2">"All perimeter checks passed corporate baseline guidelines."</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="custom-css-injection-add-htmlstyle">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Custom CSS Injection (<code class="docutils literal notranslate"><span class="pre">Add-HTMLStyle</span></code>)</a><a class="headerlink" href="#custom-css-injection-add-htmlstyle" title="Link to this heading"></a></h2>
+<p>For fine-grained visual control, PSWriteHTML uses the <a class="reference external" href="https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/Add-HTMLStyle.md">Add-HTMLStyle</a>
+function allows you to add CSS styles to HTML documents in various ways such as inline styles, external stylesheets,and content from files or strings.</p>
+<section id="injecting-raw-css">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Injecting Raw CSS</a><a class="headerlink" href="#injecting-raw-css" title="Link to this heading"></a></h3>
+<p>Pass custom CSS rules to <code class="docutils literal notranslate"><span class="pre">Add-HTMLStyle</span> <span class="pre">-Placement</span> <span class="pre">Header</span> <span class="pre">-Content</span></code> to override fonts, table borders, panel padding, or background gradients
+across the entire page:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Define custom CSS rules for the entire document</span>
+<span class="nv">$CustomStyles</span> <span class="p">=</span> <span class="sh">@"</span>
+<span class="sh">    body {</span>
+<span class="sh">        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</span>
+<span class="sh">        background-color: #f4f6f9;</span>
+<span class="sh">    }</span>
+<span class="sh">    .card {</span>
+<span class="sh">        border-radius: 8px !important;</span>
+<span class="sh">        box-shadow: 0 4px 6px rgba(0,0,0,0.1);</span>
+<span class="sh">    }</span>
+<span class="sh">    h1, h2, h3 {</span>
+<span class="sh">        color: #1a202c;</span>
+<span class="sh">    }</span>
+<span class="sh">"@</span>
+
+<span class="nb">New-HTML</span> <span class="n">-TitleText</span> <span class="s2">"Custom Styled Report"</span> <span class="n">-FilePath</span> <span class="s2">"CustomCSS.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+    <span class="nb">Add-HTMLStyle</span> <span class="n">-Placement</span> <span class="n">Header</span> <span class="n">-Content</span> <span class="nv">$CustomStyles</span>
+
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Dashboard"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Custom UI Styling"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"This panel features custom rounded corners and subtle dropshadows."</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="component-level-styles">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Component-Level Styles</a><a class="headerlink" href="#component-level-styles" title="Link to this heading"></a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Add-HTMLStyle</span></code> <strong>inside</strong> the script block passed to New-HTML to add CSS to the generated document:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTML</span> <span class="n">-TitleText</span> <span class="s2">"Scoped Styling"</span> <span class="n">-FilePath</span> <span class="s2">"ScopedStyle.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+
+    <span class="c"># Inject scoped CSS rule inside HTML head</span>
+    <span class="nb">Add-HTMLStyle</span> <span class="n">-Placement</span> <span class="n">Header</span> <span class="n">-Content</span> <span class="sh">@'</span>
+<span class="sh">        .custom-highlight {</span>
+<span class="sh">            background-color: #fff3cd;</span>
+<span class="sh">            border-left: 5px solid #ffc107;</span>
+<span class="sh">            padding: 15px;</span>
+<span class="sh">            font-weight: bold;</span>
+<span class="sh">        }</span>
+<span class="sh">'@</span>
+
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Audit"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Notifications"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"&lt;div class='custom-highlight'&gt;Warning: 2 backup targets are approaching capacity.&lt;/div&gt;"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="icon-integration-typography-new-htmlfonticon">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Icon Integration &amp; Typography (<code class="docutils literal notranslate"><span class="pre">New-HTMLFontIcon</span></code>)</a><a class="headerlink" href="#icon-integration-typography-new-htmlfonticon" title="Link to this heading"></a></h2>
+<p>PSWriteHTML natively integrates <a class="reference external" href="https://fontawesome.com/">FontAwesome</a> icons in supported components, including tabs. Other layout
+elements can include an icon with <code class="docutils literal notranslate"><span class="pre">New-HTMLFontIcon</span></code> where appropriate. FontAwesome provides icons, not a general-purpose typography
+provider; custom fonts should be configured with CSS or component font parameters.</p>
+<section id="using-fontawesome-icons">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Using FontAwesome Icons</a><a class="headerlink" href="#using-fontawesome-icons" title="Link to this heading"></a></h3>
+<p>Supported components expose dedicated icon parameters. The icon names below link to the corresponding
+<a class="reference external" href="https://fontawesome.com/icons">Font Awesome icon gallery</a> so you can browse and preview the available icons before using them:</p>
+<ul class="simple">
+<li><p><strong>``-IconSolid``:</strong> Solid-style icons (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;server&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;shield-alt&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;database&quot;</span></code>).</p></li>
+<li><p><strong>``-IconRegular``:</strong> Outline-style icons (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;file-alt&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;clock&quot;</span></code>).</p></li>
+<li><p><strong>``-IconBrands``:</strong> Brand logos (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;windows&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;linux&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;aws&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;github&quot;</span></code>).</p></li>
+</ul>
+</section>
+<section id="inline-icon-example">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Inline Icon Example</a><a class="headerlink" href="#inline-icon-example" title="Link to this heading"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"Cloud Infrastructure"</span> <span class="n">-IconBrands</span> <span class="s2">"aws"</span> <span class="p">{</span>
+    <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"EC2 Instances"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+            <span class="nb">New-HTMLFontIcon</span> <span class="n">-IconSolid</span> <span class="s2">"server"</span>
+            <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Region: us-east-1"</span>
+            <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Active instance nodes in availability zone A."</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="inserting-a-company-logo">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Inserting a company logo</a><a class="headerlink" href="#inserting-a-company-logo" title="Link to this heading"></a></h2>
+<p>To place a company logo at the far left of a tab label or navigation item, add a scoped CSS rule to the document and use the logo URL as the
+<code class="docutils literal notranslate"><span class="pre">background-image</span></code> of a <code class="docutils literal notranslate"><span class="pre">::before</span></code> pseudo-element. This keeps the logo aligned with the label while preserving any existing icon or text.
+The complete example below demonstrates this technique with an external image URL.</p>
+</section>
+<section id="building-dark-mode-corporate-theme-templates">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Building Dark Mode &amp; Corporate Theme Templates</a><a class="headerlink" href="#building-dark-mode-corporate-theme-templates" title="Link to this heading"></a></h2>
+<p>To enforce consistent corporate branding across all enterprise reports, wrap your standard <code class="docutils literal notranslate"><span class="pre">New-HTML</span></code> configuration into reusable PowerShell
+helper functions or script execution templates.</p>
+<section id="enterprise-dark-theme-template">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Enterprise Dark Theme Template</a><a class="headerlink" href="#enterprise-dark-theme-template" title="Link to this heading"></a></h3>
+<p>The following complete script demonstrates how to combine custom CSS, section header colors, and FontAwesome icons into a cohesive dark-mode
+dashboard:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># 1. Define Corporate Dark Palette CSS</span>
+<span class="nv">$DarkThemeCSS</span> <span class="p">=</span> <span class="sh">@"</span>
+<span class="sh">    body {</span>
+<span class="sh">        background-color: #121212 !important;</span>
+<span class="sh">        color: #e0e0e0 !important;</span>
+<span class="sh">    }</span>
+<span class="sh">    .card, .panel {</span>
+<span class="sh">        background-color: #1e1e1e !important;</span>
+<span class="sh">        border: 1px solid #333333 !important;</span>
+<span class="sh">        color: #ffffff !important;</span>
+<span class="sh">    }</span>
+<span class="sh">    .table {</span>
+<span class="sh">        color: #e0e0e0 !important;</span>
+<span class="sh">        background-color: #1e1e1e !important;</span>
+<span class="sh">    }</span>
+<span class="sh">    .table-striped tbody tr:nth-of-type(odd) {</span>
+<span class="sh">        background-color: #252525 !important;</span>
+<span class="sh">    }</span>
+<span class="sh">    .tabsWrapper &gt; .tabsSlimmer &gt; div[data-tabs="true"] &gt; div:first-child::before {</span>
+<span class="sh">        content: "";</span>
+<span class="sh">        display: inline-block;</span>
+<span class="sh">        width: 60px;</span>
+<span class="sh">        height: 60px;</span>
+<span class="sh">        margin-right: 8px;</span>
+<span class="sh">        background-image: url("https://avatars.githubusercontent.com/u/15376314?s=60&amp;v=4");</span>
+<span class="sh">        background-size: cover;</span>
+<span class="sh">        background-position: center;</span>
+<span class="sh">        vertical-align: middle;</span>
+<span class="sh">    }</span>
+<span class="sh">"@</span>
+
+<span class="c"># 2. Collect System Sample Data</span>
+<span class="nv">$Data</span> <span class="p">=</span> <span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">10</span> <span class="n">ID</span><span class="p">,</span> <span class="n">ProcessName</span><span class="p">,</span> <span class="n">CPU</span><span class="p">,</span> <span class="n">WorkingSet</span>
+
+<span class="c"># 3. Generate Dark Mode Report</span>
+<span class="nb">New-HTML</span> <span class="n">-TitleText</span> <span class="s2">"Dark Mode Enterprise Report"</span> <span class="p">`</span>
+        <span class="n">-FilePath</span> <span class="s2">"$env:USERPROFILE\Desktop\DarkReport.html"</span> <span class="n">-Show</span> <span class="p">{</span>
+
+    <span class="nb">Add-HTMLStyle</span> <span class="n">-Placement</span> <span class="n">Header</span> <span class="n">-Content</span> <span class="nv">$DarkThemeCSS</span>
+
+    <span class="nb">New-HTMLTab</span> <span class="n">-Name</span> <span class="s2">"SYSTEM METRICS"</span> <span class="n">-IconSolid</span> <span class="s2">"chart-bar"</span> <span class="p">{</span>
+        <span class="nb">New-HTMLSection</span> <span class="n">-HeaderText</span> <span class="s2">"Resource Monitoring"</span> <span class="p">`</span>
+                        <span class="n">-HeaderBackGroundColor</span> <span class="s2">"#000000"</span> <span class="p">`</span>
+                        <span class="n">-HeaderTextColor</span> <span class="s2">"#00E676"</span> <span class="p">{</span>
+            <span class="nb">New-HTMLPanel</span> <span class="p">{</span>
+                <span class="nb">New-HTMLText</span> <span class="n">-Text</span> <span class="s2">"Top Processes"</span>
+                <span class="nb">New-HTMLTable</span> <span class="n">-DataTable</span> <span class="nv">$Data</span> <span class="n">-Filtering</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is the result:</p>
+<figure class="align-center" id="id1">
+<img alt="Rendered Dark Mode Example" src="_images/chapter-08-dark.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">A dark-themed PSWriteHTML dashboard with custom colors and styles.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="styling-best-practices">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Styling Best Practices</a><a class="headerlink" href="#styling-best-practices" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Use ``!important`` flags for CSS Overrides:</strong> PSWriteHTML loads third-party framework CSS (Bootstrap/DataTables). When writing custom CSS
+to override default component colors, add <code class="docutils literal notranslate"><span class="pre">!important</span></code> to ensure your rules take precedence.</p></li>
+<li><p><strong>Prefer Hex Codes over Named Colors:</strong> Use explicit 6-digit hex color codes (e.g., <code class="docutils literal notranslate"><span class="pre">#1A365D</span></code>) rather than named colors
+(<code class="docutils literal notranslate"><span class="pre">blue</span></code>, <code class="docutils literal notranslate"><span class="pre">navy</span></code>) to guarantee uniform rendering across different web browsers.</p></li>
+<li><p><strong>Keep Inline HTML Minimal:</strong> Use PowerShell DSL parameters (like <code class="docutils literal notranslate"><span class="pre">New-HTMLTableCondition</span></code> or section <code class="docutils literal notranslate"><span class="pre">-HeaderBackGroundColor</span></code>) whenever
+possible rather than embedding raw HTML tags directly inside string parameters.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Next Chapter:</strong> <a class="reference internal" href="chapter-09.html"><span class="doc">Chapter 9: Automated Reporting and Email Integration</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter-07.html" class="btn btn-neutral float-left" title="Chapter 7: Network Diagrams, Flowcharts, and Visualizations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter-09.html" class="btn btn-neutral float-right" title="Chapter 9: Automated Reporting and Email Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, BSDv3 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      
+      
+     <span class="fa fa-element">
+     <input class="container_toggle" type="checkbox" id="switch" name="mode">
+     <label for="switch"></label>
+     </span>
+      
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Languages</dt>
+        
+          
+          <dd><a href="/PSWriteHTML-doc/en/main/">en</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/PSWriteHTML-doc/en/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.pdf">pdf</a></dd>
+        
+          <dd><a href="/PSWriteHTML-doc/en/main/PSWriteHTML-doc_en_main.epub">epub</a></dd>
+        
+      </dl>
+      
+      
+      <hr/>
+      Free document hosting provided by <a href="https://pages.github.com/">GitHub Pages</a>.
+ 
+    </div>
+  </div>
+
+ <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>
