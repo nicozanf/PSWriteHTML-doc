@@ -1,5 +1,5 @@
 ========================================================================
-Chapter 11: Advanced Features, Layout Customization, and Troubleshooting
+Chapter 12: Advanced Features, Layout Customization, and Troubleshooting
 ========================================================================
 
 .. contents:: Table of Contents

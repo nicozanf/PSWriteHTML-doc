@@ -20,8 +20,9 @@ project on GitHub at https://github.com/nicozanf/PSWriteHTML-doc . The resulting
 is automatically generated from the repository on https://nicozanf.github.io/PSWriteHTML-doc , along with the pdf and epub versions.
 
 
-Contributions, feedback, and suggestions are always welcome! Just open an issue or submit a pull request on the GitHub repository.
-If you find this manual useful, please consider starring the repository to show your support.
+Contributions, feedback, and suggestions are always welcome! Just open an issue or submit a pull request on the
+`GitHub repository <https://github.com/nicozanf/PSWriteHTML-doc>`_. If you find this manual useful, please consider starring 
+the repository to show your support.
 
 
 
@@ -78,7 +79,7 @@ Common Use Cases
 
 .. tip::
    Because PSWriteHTML bundles required JavaScript and CSS libraries into self-contained HTML files (or references CDN sources), the output reports can
-   easily be hosted on static web servers, AWS S3, or sent directly as email attachments. See :doc:`Chapter 10: Advanced Features, Tips, and Troubleshooting <chapter-10>`
+   easily be hosted on static web servers, AWS S3, or sent directly as email attachments. See :doc:`Chapter 12: Advanced Features, Tips, and Troubleshooting <chapter-12>`
 
 
 Quick Start Example
