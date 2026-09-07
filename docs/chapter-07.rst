@@ -169,4 +169,4 @@ Diagramming Best Practices
 
 ----
 
-**Next Chapter:** :doc:`Chapter 8: Custom Styling, CSS, and Themes <chapter-08>`
+**Next Chapter:** :doc:`Chapter 8: Miscellaneous commandlets <chapter-08>`

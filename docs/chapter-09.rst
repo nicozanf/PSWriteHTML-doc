@@ -1,209 +1,229 @@
 ========================================================================
-Chapter 9: Automated Reporting and Email Integration
+Chapter 9: Custom Styling, CSS, and Themes
 ========================================================================
 
 .. contents:: Table of Contents
    :local:
    :depth: 2
 
-Automation Overview
-===================
+Styling Overview
+================
 
-Beyond producing interactive browser-based dashboards saved as local `.html` files, **PSWriteHTML** includes specialized functionality for
-automated email reporting. Sending rich HTML emails via PowerShell often presents challenges because major mail clients (especially desktop
-Microsoft Outlook) use restrictive rendering engines that strips external stylesheets, CSS grids, and JavaScript.
+While **PSWriteHTML** ships with clean, modern styling out of the box, enterprise environments often require matching corporate design standards,
+applying dark modes, or injecting custom typography and custom headers.
 
-PSWriteHTML solves this by providing dedicated email layout cmdlets (``Email``, ``EmailBody``, ``EmailLayoutRow``, ``EmailLayoutColumn``)
-that automatically inline CSS styles into raw table-based HTML compatible with legacy email clients.
-
+This chapter details how to inject custom CSS, apply custom typography, use FontAwesome icons, and override component styling directly using
+PowerShell DSL parameters.
 
 
-HTML Email Architecture vs. Web Dashboards
-==========================================
 
-When building content for email delivery, standard web layouts (like ``New-HTML``, JavaScript-based DataTables, and ApexCharts) should not be used
-directly because email clients block external scripts and dynamic DOM manipulation for security reasons.
+Document-Level Theme Configuration
+==================================
 
-Key Email Constraints & Differences
------------------------------------
+The root `New-HTML <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTML.md>`_ cmdlet provides the document container for
+component-level styling and custom CSS. Header colors are configured on sections or through the corresponding style cmdlets.
 
-+------------------------+----------------------------------+----------------------------------------------------+
-| Feature                | Web Dashboard (``New-HTML``)     | Email Report (``Email``)                           |
-+========================+==================================+====================================================+
-| **Primary Container**  | ``New-HTML``                     | ``Email`` / ``EmailBody``                          |
-+------------------------+----------------------------------+----------------------------------------------------+
-| **Layout Model**       | Responsive CSS Flex/Grid Panels  | Inlined Table-based Rows & Columns                 |
-+------------------------+----------------------------------+----------------------------------------------------+
-| **JavaScript Support** | Full (DataTables, ApexCharts)    | None (Blocked by mail clients)                     |
-+------------------------+----------------------------------+----------------------------------------------------+
-| **CSS Handling**       | Linked / Embedded Head Styles    | Direct Inline CSS (``style="..."``)                |
-+------------------------+----------------------------------+----------------------------------------------------+
-| **Image Delivery**     | Web URLs or local relative paths | Inline images or CID (Content-ID) MIME attachments |
-+------------------------+----------------------------------+----------------------------------------------------+
+Built-in Themes & Header Colors
+-------------------------------
 
+You can alter section colors directly with supported `New-HTMLSection <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLSection.md>`_ 
+parameters:
 
-Building HTML Emails (``Email`` / ``EmailBody``)
-=========================================================
+* **``-HeaderBackGroundColor``:** Sets the background color of a section header (Hex, RGB, or standard CSS color names).
+* **``-HeaderTextColor``:** Controls the font color of a section header.
+* **``-BackgroundColor``:** Sets the background color of a section (Hex, RGB, or standard CSS color names).
 
-To construct and send an email, use the `Email <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/Email.md>`_
-cmdlet with an ``-Email`` script block. Use `EmailBody <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/EmailBody.md>`_
-together with ``EmailLayout``, ``EmailLayoutRow``, and ``EmailLayoutColumn`` to build the table-based body. These commands apply
-email-safe layout and styling directly to the generated HTML.
-
-Basic Email Template Structure
-------------------------------
+Basic Color Override Example
+----------------------------
 
 .. code-block:: powershell
 
-   # Generate and send an email with an inlined HTML body
-   Email -To 'infrastructure@example.com' -From 'reports@example.com' `
-       -Subject 'Morning backup status' -Server 'smtp.example.com' -Port 587 -SSL -Email {
-       EmailBody {
-           EmailLayout {
-               EmailLayoutRow {
-           EmailLayoutRow {
-               EmailLayoutColumn {
-                       New-HTMLText -Text "Below is the automated morning backup status summary."
-                   }
-               }
-           EmailLayoutRow {
-               EmailLayoutColumn {
-                       New-HTMLTable -DataTable $BackupResults -DisablePaging
-                   }
-               }
-           EmailLayoutRow {
-               EmailLayoutColumn {
-   }
-
-.. note::
-    `EmailLayoutRow <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/EmailLayoutRow.md>`_ and
-    `EmailLayoutColumn <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/EmailLayoutColumn.md>`_ replace dashboard sections and panels
-    for this purpose. They ensure email clients render the multi-column layout using native HTML ``<table>`` rows and cells.
-
-
-Embedding Images in Email Reports (``New-HTMLImage``)
-=====================================================
-
-External image links (e.g., ``<img src="https://...">``) may be blocked by default in Microsoft Outlook and Apple Mail until the recipient
-clicks "Download Images". To ensure logos and status icons display immediately, embed images directly using
-`New-HTMLImage <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTMLImage.md>`_ .
-For a self-contained HTML body, use ``New-HTMLImage -Inline``. This embeds the image data in the generated markup and avoids relying on
-external image URLs. CID inline images are delivery-library-specific. The mail client library must add the image as an inline MIME
-attachment, assign it a unique Content-ID such as ``CompanyLogo``, and include that same identifier in the HTML as
-``src="cid:CompanyLogo"``. A ``cid:`` reference by itself is only a pointer; without the matching MIME attachment and Content-ID, the
-recipient's mail client cannot load the image.
-
-.. code-block:: powershell
-
-   Email -Email {
-       EmailBody {
-           EmailLayout {
-               EmailLayoutRow {
-                   EmailLayoutColumn {
-                       New-HTMLImage -Source 'C:\Reports\CompanyLogo.png' -Inline -AlternativeText 'Company logo' -Width 150
-                       New-HTMLText -Text '<h2>Daily Audit Summary</h2>'
-                   }
+   New-HTML -TitleText "Corporate Security Audit" -FilePath "Audit.html" -ShowHTML {
+       
+       New-HTMLTab -Name "Overview" {
+           New-HTMLSection -HeaderText "Executive Summary" `
+                          -HeaderBackGroundColor "#309135" `
+                          -HeaderTextColor "#e01965" -BackgroundColor "lightyellow" {
+               New-HTMLPanel {
+                   New-HTMLText -Color Amazon -Text "All perimeter checks passed corporate baseline guidelines."
                }
            }
        }
    }
 
 
-Sending the Email Report via SMTP or Microsoft Graph
-====================================================
+Custom CSS Injection (``Add-HTMLStyle``)
+=========================================
 
-The ``Email`` cmdlet can deliver the generated body directly. If another delivery library is required, use its HTML-body option and pass
-the output from ``Email -OutputHTML`` to that library.
-
-Method 1: Native ``Send-MailMessage`` (Legacy SMTP)
----------------------------------------------------
-
-.. code-block:: powershell
-
-   # The built-in PowerShell cmdlet Send-MailMessage is obsolete.
-   # Keep this only for existing legacy SMTP scripts.
-   Send-MailMessage -To 'admin@company.com' -From 'reports@company.com' `
-       -Subject "Daily System Health Check - $(Get-Date -Format 'yyyy-MM-dd')" `
-       -Body $EmailBody -BodyAsHtml -SmtpServer 'smtp.company.com' -Port 25
+For fine-grained visual control, PSWriteHTML uses the `Add-HTMLStyle <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/Add-HTMLStyle.md>`_ 
+function allows you to add CSS styles to HTML documents in various ways such as inline styles, external stylesheets,and content from files or strings.
 
 
-Method 2: Microsoft Graph API (Modern Cloud Delivery)
-------------------------------------------------------
+Injecting Raw CSS
+-----------------
 
-For Office 365 environments where basic SMTP authentication is disabled, send the generated HTML email via Microsoft
-Graph PowerShell SDK:
+Pass custom CSS rules to ``Add-HTMLStyle -Placement Header -Content`` to override fonts, table borders, panel padding, or background gradients
+across the entire page:
 
 .. code-block:: powershell
 
-   # Requires Microsoft.Graph.Mail module
-   Import-Module Microsoft.Graph.Mail
-
-   $Message = @{
-       Subject = "Automated Storage Alert"
-       Body = @{
-           ContentType = "Html"
-           Content     = $EmailBody
+   # Define custom CSS rules for the entire document 
+   $CustomStyles = @"
+       body {
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           background-color: #f4f6f9;
        }
-       ToRecipients = @(
-           @{ EmailAddress = @{ Address = "admin@company.com" } }
-       )
+       .card {
+           border-radius: 8px !important;
+           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+       }
+       h1, h2, h3 {
+           color: #1a202c;
+       }
+   "@
+
+   New-HTML -TitleText "Custom Styled Report" -FilePath "CustomCSS.html" -Show {
+       Add-HTMLStyle -Placement Header -Content $CustomStyles
+
+       New-HTMLTab -Name "Dashboard" {
+           New-HTMLSection -HeaderText "Custom UI Styling" {
+               New-HTMLPanel {
+                   New-HTMLText -Text "This panel features custom rounded corners and subtle dropshadows."
+               }
+           }
+       }
    }
 
-   Send-MgUserMail -UserId "reports@company.com" -Message $Message
 
+Component-Level Styles
+----------------------
 
-Automating Generation via Windows Scheduled Tasks
-=================================================
-
-To run reports automatically on a daily or weekly schedule, wrap your PowerShell data gathering and PSWriteHTML script
-into an automated Scheduled Task.
-
-Creating the Scheduled Task via PowerShell
-------------------------------------------
-
-The following administrative script registers a daily task that executes an automated PSWriteHTML report at
-06:00 AM every morning:
+Use ``Add-HTMLStyle`` **inside** the script block passed to New-HTML to add CSS to the generated document:
 
 .. code-block:: powershell
 
-   # Define Script Path
-   $ScriptPath = "C:\Automation\Scripts\Generate-DailyReport.ps1"
+   New-HTML -TitleText "Scoped Styling" -FilePath "ScopedStyle.html" -Show {
+       
+       # Inject scoped CSS rule inside HTML head
+       Add-HTMLStyle -Placement Header -Content @'
+           .custom-highlight {
+               background-color: #fff3cd;
+               border-left: 5px solid #ffc107;
+               padding: 15px;
+               font-weight: bold;
+           }
+   '@
 
-   # Create Action: Execute PowerShell 7 / Windows PowerShell silently
-   $Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-ExecutionPolicy Bypass -NoProfile -File `"$ScriptPath`""
-
-   # Create Trigger: Daily at 06:00 AM
-   $Trigger = New-ScheduledTaskTrigger -Daily -At "06:00 AM"
-
-   # Register Task under SYSTEM or Dedicated Service Account
-   Register-ScheduledTask -TaskName "PSWriteHTML_DailyReport" `
-                          -Action $Action `
-                          -Trigger $Trigger `
-                          -User "NT AUTHORITY\SYSTEM" `
-                          -RunLevel Highest
+       New-HTMLTab -Name "Audit" {
+           New-HTMLSection -HeaderText "Notifications" {
+               New-HTMLPanel {
+                   New-HTMLText -Text "<div class='custom-highlight'>Warning: 2 backup targets are approaching capacity.</div>"
+               }
+           }
+       }
+   }
 
 
-Complete End-to-End Operational Example
-=======================================
+Icon Integration & Typography (``New-HTMLFontIcon``)
+=====================================================
 
-The following complete script collects disk space usage, builds a highlighted inline HTML table, generates an email body, and dispatches
-an automated alert email if any drive drops below critical thresholds:
+PSWriteHTML natively integrates `FontAwesome <https://fontawesome.com/>`_ icons in supported components, including tabs. Other layout
+elements can include an icon with ``New-HTMLFontIcon`` where appropriate. FontAwesome provides icons, not a general-purpose typography
+provider; custom fonts should be configured with CSS or component font parameters.
 
-.. literalinclude:: sources/chapter-09-operational.ps1
+Using FontAwesome Icons
+-----------------------
+
+Supported components expose dedicated icon parameters. The icon names below link to the corresponding
+`Font Awesome icon gallery <https://fontawesome.com/icons>`_ so you can browse and preview the available icons before using them:
+
+* **``-IconSolid``:** Solid-style icons (e.g., ``"server"``, ``"shield-alt"``, ``"database"``).
+* **``-IconRegular``:** Outline-style icons (e.g., ``"file-alt"``, ``"clock"``).
+* **``-IconBrands``:** Brand logos (e.g., ``"windows"``, ``"linux"``, ``"aws"``, ``"github"``).
+
+Inline Icon Example
+-------------------
+
+.. code-block:: powershell
+
+   New-HTMLTab -Name "Cloud Infrastructure" -IconBrands "aws" {
+       New-HTMLSection -HeaderText "EC2 Instances" {
+           New-HTMLPanel {
+               New-HTMLFontIcon -IconSolid "server"
+               New-HTMLText -Text "Region: us-east-1"
+               New-HTMLText -Text "Active instance nodes in availability zone A."
+           }
+       }
+   }
+
+
+Controlling Layout Density with ``-Density``
+-----------------------------------------------------
+
+To handle responsive grid layouts without manually computing pixel widths or complex CSS flexbox rules, use the ``-Density`` parameter
+on ``New-HTMLSection`` or ``New-HTMLPanel``. This automatically enables responsive wrapping and adjusts card/element margins:
+
+* **``Spacious``:** Generous padding and whitespace; ideal for high-level executive summaries.
+* **``Comfortable``:** Balanced spacing suited for standard multi-card layouts.
+* **``Compact``:** Reduced margins for viewing dense telemetry datasets.
+* **``Dense`` / ``VeryDense``:** Tight alignment maximizing screen real estate for NOC display walls.
+
+.. code-block:: powershell
+
+   New-HTMLSection -HeaderText "NOC Operations Grid" -Wrap wrap -Density VeryDense {
+       # InfoCards or panels rendered here auto-wrap tightly to fit dense monitor setups
+       foreach ($Metric in $NocMetrics) {
+           New-HTMLInfoCard -Title $Metric.Name -Number $Metric.Value -Icon "server"
+       }
+   }
+
+
+
+Inserting a company logo
+=========================
+
+To place a company logo at the far left of a tab label or navigation item, add a scoped CSS rule to the document and use the logo URL as the
+``background-image`` of a ``::before`` pseudo-element. This keeps the logo aligned with the label while preserving any existing icon or text.
+The complete example below demonstrates this technique with an external image URL.
+
+
+Building Dark Mode & Corporate Theme Templates
+==============================================
+
+To enforce consistent corporate branding across all enterprise reports, wrap your standard ``New-HTML`` configuration into reusable PowerShell
+helper functions or script execution templates.
+
+Enterprise Dark Theme Template
+------------------------------
+
+The following complete script demonstrates how to combine custom CSS, section header colors, and FontAwesome icons into a cohesive dark-mode
+dashboard:
+
+
+
+.. literalinclude:: sources/chapter-09-dark.ps1
    :language: powershell
 
+This is the result:
 
-Email Automation Best Practices
-===============================
+.. figure:: images/chapter-09-dark.png
+   :alt: Rendered Dark Mode Example
+   :align: center
 
-1. **Use ``Email`` for Emails, ``New-HTML`` for Web Pages:** Never use standard ``New-HTML`` directly inside an email
-   body. Desktop mail clients like Outlook will strip non-inlined CSS and script blocks.
-2. **Disable DataTables Interactivity in Emails:** Always set ``-Paging $false`` and ``-Filtering $false`` on
-   ``New-HTMLTable`` inside email blocks, as email clients cannot run the JavaScript engine required for search and
-   paging.
-3. **Specify Explicit Widths:** Use explicit table and column percentage widths (e.g., ``width="100%"``) to prevent
-   email templates from rendering distorted on mobile email clients.
+   A dark-themed PSWriteHTML dashboard with custom colors and styles.
+
+
+
+Styling Best Practices
+======================
+
+1. **Use ``!important`` flags for CSS Overrides:** PSWriteHTML loads third-party framework CSS (Bootstrap/DataTables). When writing custom CSS
+   to override default component colors, add ``!important`` to ensure your rules take precedence.
+2. **Prefer Hex Codes over Named Colors:** Use explicit 6-digit hex color codes (e.g., ``#1A365D``) rather than named colors
+   (``blue``, ``navy``) to guarantee uniform rendering across different web browsers.
+3. **Keep Inline HTML Minimal:** Use PowerShell DSL parameters (like ``New-HTMLTableCondition`` or section ``-HeaderBackGroundColor``) whenever
+   possible rather than embedding raw HTML tags directly inside string parameters.
 
 ----
 
-**Next Chapter:** :doc:`Chapter 10: Advanced Features, Tips, and Troubleshooting <chapter-10>`
+**Next Chapter:** :doc:`Chapter 10: Automated Reporting and Email Integration <chapter-10>`

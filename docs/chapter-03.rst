@@ -103,8 +103,8 @@ Output Controls
 HTML generation Options
 -----------------------
 
-* **-Online:** Loads web assets (Bootstrap, DataTables, FontAwesome) from Internet via public CDN URLs. [default]
-* **-Offline:** Embeds all static script assets  in the HTML file itself (ideal for air-gapped environment reporting).
+* **-Online or -Online:$true** Loads web assets (Bootstrap, DataTables, FontAwesome) from Internet via public CDN URLs.
+* **-Online:$false** Embeds all static script assets  in the HTML file itself (ideal for air-gapped environment reporting). [default if not specified]
 
 
 Simple Example of PSWriteHTML usage
@@ -147,28 +147,29 @@ Deep Dive: Online vs. Offline Resource Embedding
 One of the most critical architecture features of PSWriteHTML is how it handles web assets (JavaScript libraries, CSS stylesheets, and font glyphs).
 Understanding this mechanism ensures your reports function reliably across both internet-connected and air-gapped enterprise environments.
 
-Online Mode (Default)
+Online Mode 
 ---------------------
 
-When generating a document without extra asset flags (or explicitly using ``-Online``):
+When generating a document explicitly using ``-Online``:
 
 * **Mechanism:** The generated HTML file includes lightweight link tags pointing to high-speed public Content Delivery Networks (CDNs) for DataTables,
   FontAwesome, ApexCharts, and jQuery.
 * **File Size:** Output `.html` files remain tiny—often under **50 KB**—because no asset binaries are stored inside the document.
 * **Best Used For:** Internal dashboards hosted on corporate web servers where endpoint devices have open internet access.
 
-Offline Mode (100% Self-Contained Output)
------------------------------------------
+Offline Mode (100% Self-Contained Output) (Default)
+----------------------------------------------------
 
-When building reports for secure, isolated, or air-gapped networks, add the ``-Offline`` switch parameter to ``New-HTML``:
+When building reports for secure, isolated, or air-gapped networks, do not add the ``-Online`` switch. Alternatively, specify the ``-Online:$false``
+switch parameter to ``New-HTML``:
 
 .. code-block:: powershell
 
-   New-HTML -Title "Air-Gapped Infrastructure Report" -FilePath "C:\Reports\Status.html" -Offline {
+   New-HTML -Title "Air-Gapped Infrastructure Report" -FilePath "C:\Reports\Status.html" -Online:$false {
        ...
    }
 
-When ``-Offline`` is specified, PSWriteHTML changes how it builds the document:
+In these cases, PSWriteHTML changes how it builds the document:
 
 1. **Local File Extraction:** Instead of referencing external CDN URLs, the engine reads the bundled JavaScript libraries, CSS stylesheets, and web font
    files directly from the installed PSWriteHTML module directory on your build server.
@@ -179,14 +180,14 @@ When ``-Offline`` is specified, PSWriteHTML changes how it builds the document:
 Key Architectural Takeaway
 --------------------------
 
-Because ``-Offline`` mode creates a **single, 100% self-contained HTML file**, you can copy, relocate, or host that single `.html` file anywhere:
+Because Offline mode creates a **single, 100% self-contained HTML file**, you can copy, relocate, or host that single `.html` file anywhere:
 
 * You can move it to an isolated IIS server without needing to copy accompanying asset subfolders.
 * You can attach it to an email, open it off a USB drive, or view it on an isolated machine with no network connection.
 * All table sorting, search filtering, dynamic charts, and vector icons will function completely offline.
 
 .. note::
-   Because all JavaScript engines and vector fonts are embedded into the file, an ``-Offline`` report file size typically starts around **2 MB to 5 MB**.
+   Because all JavaScript engines and vector fonts are embedded into the file, an Offline report file size typically starts around **2 MB to 5 MB**.
    For high-density reporting, this trade-off guarantees total portability across secure subnets.
 
 

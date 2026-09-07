@@ -1,141 +1,222 @@
 ========================================================================
-Chapter 12: The Evotec PowerShell Module Suite
+Chapter 11: Advanced Features, Layout Customization, and Troubleshooting
 ========================================================================
 
 .. contents:: Table of Contents
    :local:
    :depth: 2
 
-Evotec products Overview
-========================
+Advanced features Overview
+==========================
 
-**PSWriteHTML** is part of an extensive suite of over 80 open-source PowerShell modules created and maintained
-by **Przemysław Kłys** (`Przemyslaw.Klys on PowerShell Gallery <https://www.powershellgallery.com/profiles/Przemyslaw.Klys>`_).
+As you scale **PSWriteHTML** across enterprise environments, building reports evolves beyond basic tables into crafting high-density,
+visually appealing dashboards. 
 
-This chapter categorizes the complete ecosystem of modules into distinct administrative domains—ranging from messaging, office document
-generation, and Active Directory auditing to security policies, image processing, and system customization.
-
-
-Core Frameworks & Helper Libraries
-===================================
-
-* **PSSharedGoods:** The core foundation library containing hundreds of shared helper functions for string manipulation, file handling,
-  logging, and object processing across all Evotec modules.
-* **PSPublishModule:** A project build and publishing framework for preparing, testing, and uploading PowerShell modules to the PowerShell Gallery.
-* **PSParseHTML:** An HTML/CSS/JavaScript parser designed to extract, inspect, and analyze web content programmatically.
+This chapter covers modern UI components like **InfoCards**, dynamic layout density controls, advanced JavaScript/CSS customization,
+performance tuning, and diagnostic troubleshooting.
 
 
-Communication & Notification Modules
-====================================
+Advanced Scripting Patterns
+===========================
 
-* **Mailozaurr:** An advanced email engine utilizing MailKit and MimeKit supporting SMTP, POP3, IMAP, Graph API, and OAuth2.
-* **PSTeams:** Sends rich webhook notifications to Microsoft Teams (supports Adaptive Cards, Hero Cards, and List Cards).
-* **PSDiscord:** A lightweight module for sending structured webhooks and notifications to Discord channels.
-* **Connectimo:** A connectivity module for handling network checks and remote endpoint testing.
-* **Emailimo:** Helper module for managing inline email body structures and templates.
+Dynamic Component Loop Generation
+---------------------------------
 
-
-Office & Document Generation
-============================
-
-* **PSWriteOffice:** Creates and reads Word (``.docx``), Excel (``.xlsx``), PowerPoint (``.pptx``), Markdown, and CSV files natively without
-  Microsoft Office installed. See https://github.com/EvotecIT/PSWriteOffice
-* **PSWriteWord / Documentimo:** Dedicated tools for building Microsoft Word documentation and structured reports. (obsolete, functionality merged into PSWriteOffice)
-* **PSWriteExcel / Excelimo:** Modules for creating and formatting Excel workbooks without requiring local Office installations. (obsolete, functionality merged into PSWriteOffice)
-* **PSWritePDF:** Programmatically creates, edits, merges, splits, and formats PDF documents. (obsolete, functionality merged into PSWriteOffice)
-* **MarkdownPrince:** A utility for parsing, converting, and processing Markdown files. (obsolete, functionality merged into PSWriteOffice)
-
-
-Active Directory, Security & Auditing
-======================================
-
-* **Testimo:** An Active Directory health and security audit framework evaluating domains against hundreds of best-practice checks.
-* **GPOZaurr:** Group Policy analysis and repair tool designed to audit, troubleshoot, and fix GPO inconsistencies.
-* **PSWinReporting / PSWinReportingV2:** Event log viewing, collecting, and security reporting engine focused on Domain Controllers.
-* **SecurityPolicy:** A module wrapping ``secedit`` for managing Windows User Rights Assignments and local security policies.
-* **AuditPolicy:** Replaces ``auditpol.exe`` with a custom wrapper to view and adjust Windows Security Audit policies.
-* **PSPasswordExpiryNotifications:** Automates password expiry warning emails to users and managers using customizable templates.
-* **PSWinDocumentation (AD, DNS, Exchange, O365, AWS):** Datasets and extraction tools that document infrastructure components into Word,
-  Excel, or SQL databases.
-* **AccountTracker:** Tracks non-compliant account placement in Active Directory services and OUs.
-* **PSBlackListChecker:** Verifies IP addresses against global DNS blacklists and sends automated alert reports.
-
-
-File Transfer, Security & Cryptography
-======================================
-
-* **Transferetto:** A reusable module/library for FTP, FTPS, SFTP, SCP, FXP, SSH commands, shell access, and SSH tunneling.
-* **PSPGP:** Encrypts and decrypts files, folders, and text strings using PGP keys natively.
-* **VirusTotalAnalyzer:** Interacts with the VirusTotal API to scan files, hashes, and URLs for threat intelligence.
-* **PowerShellManager:** Extracts and recovers deleted or execution-flagged PowerShell scripts straight from Windows Event Logs for malware analysis.
-
-
-Graphics, UI & Desktop Customization
-=====================================
-
-* **ImagePlayground:** Image processing engine capable of generating QR codes, barcodes, charts, and applying image filters.
-* **PowerBGInfo:** Modern BGInfo replacement that generates dynamic system information desktop background wallpapers.
-* **DesktopManager:** Manages, positions, and switches wallpapers across multi-monitor setups.
-* **ConsoleMonster:** Terminal UI engine for building rich interactive console applications using Spectre.Console.
-* **Statusimo / Dashimo:** Legacy status page and dashboard builders (integrated into modern PSWriteHTML workflows).
-
-
-Cloud, Service & Vendor Integrations
-====================================
-
-* **O365Essentials / GraphEssentials / Graphimo:** Helper modules for managing Microsoft 365, Azure AD, and Intune via Microsoft Graph API.
-* **O365Synchronizer:** Cross-tenant synchronization utility for sync-ing personal contacts, users, and guest objects.
-* **PowerInfoblox:** Helper module for managing Infoblox IPAM and DNS appliance configurations.
-* **PSLansweeper:** Queries Lansweeper asset databases for reporting and inventory tracking.
-* **IISParser:** High-performance IIS log parsing module for traffic and diagnostic audits.
-* **UnifiStockTracker:** Utility for tracking product stock in the Ubiquiti Unifi online store.
-* **PSWordPress:** Interacts with WordPress web instances via REST API endpoints.
-
-
-Ecosystem Integration Pattern
-=============================
-
-Combining these specialized modules yields robust automation solutions. For example, auditing AD security, rendering an HTML report, converting to PDF,
-and emailing a summary via Microsoft Graph:
+Instead of hardcoding every tab, section, or table, generate PSWriteHTML layout components dynamically using standard PowerShell
+loops (``foreach``, ``for``).
 
 .. code-block:: powershell
 
-   Import-Module Testimo
-   Import-Module PSWriteHTML
-   Import-Module Mailozaurr
+   $Servers = @('DC01', 'DC02', 'SQL01', 'WEB01')
 
-   # 1. Run Active Directory Health Audit
-   $AuditData = Invoke-Testimo -RootDomain
-
-   # 2. Build Interactive HTML Report
-   $ReportPath = "$env:TEMP\ADHealthReport.html"
-   New-HTML -Title "AD Security Audit" -FilePath $ReportPath {
-       New-HTMLTab -Name "Audit Details" {
-           New-HTMLSection -HeaderText "Testimo Results" {
-               New-HTMLTable -DataTable $AuditData
+   New-HTML -Title "Multi-Server Assessment" -FilePath "MultiServer.html" {
+       foreach ($Server in $Servers) {
+           New-HTMLTab -Name $Server -IconSolid "server" {
+               New-HTMLSection -HeaderText "Diagnostic Summary for $Server" -Density Compact {
+                   New-HTMLInfoCard -Title "Health" -Number "OK" -Icon "check-circle"
+                   New-HTMLPanel {
+                       New-HTMLText -Text "Detailed diagnostic metrics captured for node: <b>$Server</b>"
+                   }
+               }
            }
        }
    }
 
-   # 3. Generate HTML Email Body
-   $Body = New-EmailBody {
-       New-EmailSection {
-           New-EmailPanel {
-               New-EmailText -Text "The Active Directory health audit completed successfully. Attached is the interactive report."
+
+
+Embedding Raw Client-Side JavaScript
+------------------------------------
+
+Inject custom JavaScript directly into the document using the ``-UseJavaScriptLinks`` parameter
+on `New-HTML <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-HTML.md>`_  to handle bespoke interactions:
+
+.. code-block:: powershell
+
+   $ScriptBlock = @"
+       document.addEventListener('DOMContentLoaded', function() {
+           console.log('PSWriteHTML Dashboard Execution Initialized.');
+       });
+   "@
+
+   New-HTML -Title "Custom Scripting" -FilePath "Scripting.html" -UseJavaScriptLinks $ScriptBlock {
+       New-HTMLTab -Name "Main" {
+           New-HTMLSection -HeaderText "Console Verification" {
+               New-HTMLPanel {
+                   New-HTMLText -Text "Open browser developer console (F12) to inspect client execution logs."
+               }
            }
        }
    }
 
-   # 4. Send via Mailozaurr Graph API
-   Send-MgEmail -To "admin@domain.com" `
-                -Subject "Weekly AD Audit Report" `
-                -Body $Body `
-                -BodyType HTML `
-                -Attachments $ReportPath
+
+.. _correlating-tables-and-charts:
+
+Correlating Tables and Charts with Events (``New-ChartEvent``, ``New-DiagramEvent``, and ``New-TableEvent``)
+-------------------------------------------------------------------------------------------------------------
+
+Interactive charts can be connected to a table so that selecting a chart value searches for and highlights the matching table rows.
+This is implemented using `New-ChartEvent <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-ChartEvent.md>`_  or
+`New-DiagramEvent <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-DiagramEvent.md>`_  cmdlets with
+the ``-DataTableID`` parameter on ``New-HTMLTable`` and the ``-ID`` and ``-ColumnID`` parameters on the chart or diagram event.
+The table must be rendered before the chart or diagram for proper correlation.
+
+The parameters used to connect the components are:
+
+* **``-ID``:** Identifies the target table when used with ``New-DiagramEvent``. It is also an alias for ``-TableID`` in
+    ``New-TableEvent``.
+* **``-ColumnID``:** Selects the zero-based table column used to match a chart or diagram event. The number follows the property
+    order passed to ``-DataTable``, with the first property being column ``0``. For example, if the table is built
+    from ``Select-Object Name, Status``, then ``Name`` is column ``0`` and ``Status`` is column ``1``.
+* **``-DataTable``:** Supplies the objects or records that ``New-HTMLTable`` renders as rows.
+* **``-DataTableID``:** Assigns a stable identifier to the table. Use the same value in ``New-ChartEvent`` or ``-ID`` on a related
+    diagram/table event.
+* **``-DataStore``:** Selects how ``New-HTMLTable`` provides its data to the page. The supported values are ``HTML`` (the
+    default, renders the table data directly as HTML), ``JavaScript`` (embeds the data in the page as JavaScript and is required for
+    browser-side chart or diagram correlation), and ``AjaxJSON`` (loads the data from a JSON endpoint for hosted/server-side tables).
+    Use ``JavaScript`` for complex scenarios with client-side data; ``AjaxJSON`` requires a ``-FilePath`` on ``New-HTML`` and a web server that
+    can serve the generated JSON data.
 
 
+
+
+Give the table a stable identifier with ``-DataTableID`` and pass the same value to ``New-ChartEvent -DataTableID``. The
+``-ColumnID`` parameter is zero-based and identifies the table column used for matching, so it must follow the order of the
+properties supplied to ``-DataTable``. Table and diagram event commands also use ``-ID`` (an alias for the target table ID) and
+``-ColumnID``. This event ID is separate from the chart's own ``-Id`` parameter.
+
+Emit the table before the chart event consumer and
+use ``-DataStore JavaScript`` when the chart should correlate with client-side table data. For a diagram, place
+``New-DiagramEvent -ID $TableID -ColumnID 0`` inside ``New-HTMLDiagram``; ``-ID`` identifies the table and ``-ColumnID`` selects
+the table column used by the diagram event.
+
+
+
+
+The following example creates a pie chart and a table from the same data. Clicking a pie slice searches the first table column,
+``Name``, because it is column ``0`` in the selected property order:
+
+.. literalinclude:: sources/chapter-12-correlation.ps1
+   :language: powershell
+
+It produces the following interactive correlation:
+
+.. figure:: images/chapter-12-correlation.png
+   :alt: Rendered Graph-DataTable Correlation Example
+   :align: center
+
+   A chart and DataTable connected through an interactive correlation event.
+
+
+You can also use  `New-TableEvent <https://github.com/EvotecIT/PSWriteHTML/blob/master/Docs/New-TableEvent.md>`_.
+It listens for a row selection in one table and filters another table.
+
+.. note::
+
+    PSWriteHTML provides built-in events for chart-to-table, diagram-to-table, and
+    table-to-table correlation through **New-ChartEvent**, **New-DiagramEvent**, and
+    **New-TableEvent**. There is no built-in table-to-chart event. If you need to
+    filter a chart based on table row selection, implement a custom JavaScript event
+    handler using the ``-UseJavaScriptLinks`` parameter on ``New-HTML``.
+
+
+
+Performance Optimization for Enterprise Scaling
+===============================================
+
+Generating reports with tens of thousands of records can impact initial creation time or browser responsiveness. Follow these tuning rules:
+
+1. **Filter Data Upfront:**
+   Select required properties *before* passing objects into ``New-HTMLTable``. Avoid passing raw, unfiltered WMI/CIM or Active Directory objects directly.
+
+   .. code-block:: powershell
+
+      # Bad: Passing raw AD objects with 100+ un-needed properties
+      $Users = Get-ADUser -Filter * -Properties *
+
+      # Good: Selecting target properties upfront
+      $Users = Get-ADUser -Filter * -Properties DisplayName, Mail | Select-Object SamAccountName, DisplayName, Mail
+
+2. **Balance Online vs. Offline Mode:**
+   
+   * Use **``-Online``** for live internal dashboards where client web endpoints have internet access. Web dependencies (Bootstrap,
+     DataTables, ApexCharts) pull from fast CDNs, keeping output file sizes below 50 KB.
+   * Use **``-Online:$false``** or no ``-Online`` switch at all (default) when deploying reports into air-gapped corporate subnets.
+     Note that offline asset bundling increases file size.
+
+3. **Limit DataTables Page Lengths:**
+   Keep ``-PageLength 25`` or ``-PageLength 50`` on ``New-HTMLTable``. Defaulting page lengths to ``All`` forces client browsers to render
+   thousands of dynamic DOM elements concurrently, causing tab freezing.
+
+
+Troubleshooting Common Pitfalls
+===============================
+
+Issue 1: Empty Tables or Missing InfoCards
+------------------------------------------
+
+* **Symptom:** Page renders, but card sections or tables are completely blank.
+* **Root Cause:** Variable supplied to ``-DataTable``, ``-Data``, or ``-Number`` is null or unpopulated.
+* **Solution:** Add upfront data validation before building HTML containers:
+
+  .. code-block:: powershell
+
+     if ($null -eq $MyData -or $MyData.Count -eq 0) {
+         Write-Warning "Data array empty. Rendering fallback card."
+         $MyData = [PSCustomObject]@{ Status = "No Records Available"; Count = 0 }
+     }
+
+
+Issue 2: IIS 404 or Access Denied During Dashboard Update
+---------------------------------------------------------
+
+* **Symptom:** Scheduled task fails to overwrite ``index.html`` in ``C:\inetpub\wwwroot\``.
+* **Root Cause:** The service account executing the PowerShell scheduled task lacks file Modify/Write permissions.
+* **Solution:** Grant full folder permissions on the target web root to the execution user account or ``NT AUTHORITY\SYSTEM``.
+
+
+Issue 3: Missing Icons in Air-Gapped Environments
+-------------------------------------------------
+
+* **Symptom:** FontAwesome icons or InfoCard symbols display as hollow square glyphs on internal servers.
+* **Root Cause:** Report was generated with ``-Online``, but client browsers cannot reach CDN endpoints.
+* **Solution:** Pass ``-Online:$false`` to ``New-HTML`` to bundle static local assets into the target path.
+
+
+Diagnostic Checklist
+====================
+
+Verify this checklist when diagnosing reporting pipelines:
+
+.. code-block:: text
+
+   [ ] 1. Is PSWriteHTML up to date on the build host? (Update-Module PSWriteHTML -Force)
+   [ ] 2. Does the target IIS folder permit Write actions for the Scheduled Task user?
+   [ ] 3. Are layout density settings (-Density) applied to appropriate section levels?
+   [ ] 4. Is the browser refresh meta header present for real-time NOC dashboards?
+   [ ] 5. Are script blocks and curly braces balanced across all nested sections?
+   [ ] 6. If emailing alerts: Is Email-HTML used instead of New-HTML?
 
 
 ----
 
-**Next Chapter:** :doc:`Chapter 13: Documentation and Resources <chapter-13>`
+**Next Chapter:** :doc:`Chapter 13: The Evotec PowerShell Module Suite <chapter-13>`

@@ -1,61 +1,141 @@
-=======================================
-Chapter 13: Documentation and Resources
-=======================================
+========================================================================
+Chapter 13: The Evotec PowerShell Module Suite
+========================================================================
 
 .. contents:: Table of Contents
    :local:
    :depth: 2
 
-Web pages
-=========
+Evotec products Overview
+========================
 
-There are lots of official WEB pages and and articles available for **PSWriteHTML** on the Evotec site, like:
+**PSWriteHTML** is part of an extensive suite of over 80 open-source PowerShell modules created and maintained
+by **Przemysław Kłys** (`Przemyslaw.Klys on PowerShell Gallery <https://www.powershellgallery.com/profiles/Przemyslaw.Klys>`_).
 
-* **PSWriteHTML project page:** `Current official project portal. Installation, releases, API, examples and 
-  downloads. <https://evotec.pl/projects/pswritehtml>`_
-* **PSWriteHTML API Reference:** `Current API documentation covering the module's functions/cmdlets. Individual pages are generated
-  from the source documentation.  <https://evotec.pl/projects/pswritehtml/api>`_
-* **New-HTML API:** Main entry point for constructing an HTML document. `<https://evotec.pl/projects/pswritehtml/api/new-html>`_
+This chapter categorizes the complete ecosystem of modules into distinct administrative domains—ranging from messaging, office document
+generation, and Active Directory auditing to security policies, image processing, and system customization.
 
 
-But also official articles are available there, like:
+Core Frameworks & Helper Libraries
+===================================
 
-* Advanced HTML reporting using PowerShell (probably one of the best general PSWriteHTML articles).
-  `<https://evotec.xyz/advanced-html-reporting-using-powershell>`_
-* Enhanced Dashboards with PSWriteHTML: Introducing InfoCards and Density
-  Options. `<https://evotec.xyz/enhanced-dashboards-with-pswritehtml-introducing-infocards-and-density-options>`_
-* Seamless HTML Report Creation: Harness the Power of Markdown with PSWriteHTML.
-  `<https://evotec.xyz/unlocking-seamless-html-report-creation-using-markdown-with-pswritehtml-powershell-module>`_
-* Image Manipulation, Image Resize, Image Combine and more with PowerShell.
-  `<https://evotec.xyz/image-manipulation-image-resize-image-combine-and-more-with-powershell>`_
-* Easy way to create diagrams using PowerShell and PSWriteHTML.
-  `<https://evotec.xyz/easy-way-to-create-diagrams-using-powershell-and-pswritehtml>`_
+* **PSSharedGoods:** The core foundation library containing hundreds of shared helper functions for string manipulation, file handling,
+  logging, and object processing across all Evotec modules.
+* **PSPublishModule:** A project build and publishing framework for preparing, testing, and uploading PowerShell modules to the PowerShell Gallery.
+* **PSParseHTML:** An HTML/CSS/JavaScript parser designed to extract, inspect, and analyze web content programmatically.
 
 
-Do not forget the official GitHub repository on GitHub at https://github.com/EvotecIT/PSWriteHTML, which is is arguably the single most important page.
+Communication & Notification Modules
+====================================
 
-The repository currently has roughly 2,655 commits and contains:
+* **Mailozaurr:** An advanced email engine utilizing MailKit and MimeKit supporting SMTP, POP3, IMAP, Graph API, and OAuth2.
+* **PSTeams:** Sends rich webhook notifications to Microsoft Teams (supports Adaptive Cards, Hero Cards, and List Cards).
+* **PSDiscord:** A lightweight module for sending structured webhooks and notifications to Discord channels.
+* **Connectimo:** A connectivity module for handling network checks and remote endpoint testing.
+* **Emailimo:** Helper module for managing inline email body structures and templates.
 
-Docs
-Examples
-Public
-Private
-Resources
-Tests
-Website
-changelog
-module manifest/source
-README
-and community resources 
 
-Videos
-======
+Office & Document Generation
+============================
 
-A particularly useful YouTube series was made in 2023 by JackedProgrammer:
+* **PSWriteOffice:** Creates and reads Word (``.docx``), Excel (``.xlsx``), PowerPoint (``.pptx``), Markdown, and CSV files natively without
+  Microsoft Office installed. See https://github.com/EvotecIT/PSWriteOffice
+* **PSWriteWord / Documentimo:** Dedicated tools for building Microsoft Word documentation and structured reports. (obsolete, functionality merged into PSWriteOffice)
+* **PSWriteExcel / Excelimo:** Modules for creating and formatting Excel workbooks without requiring local Office installations. (obsolete, functionality merged into PSWriteOffice)
+* **PSWritePDF:** Programmatically creates, edits, merges, splits, and formats PDF documents. (obsolete, functionality merged into PSWriteOffice)
+* **MarkdownPrince:** A utility for parsing, converting, and processing Markdown files. (obsolete, functionality merged into PSWriteOffice)
 
-* Part 1: HTML Reports made easy https://www.youtube.com/watch?v=gazRo-otfwA
-* Part 2: Create Visio Style Diagrams https://www.youtube.com/watch?v=p6SRDWNJdeg
-* Part 3: Create Web Calendars https://www.youtube.com/watch?v=RUXnS6Rkzoc
-* Part 4: Create Dashboards https://www.youtube.com/watch?v=TBRlvcdlDPA
-* Part 5: Charts https://www.youtube.com/watch?v=P7g6rsESauQ
-* Part 6: Adding Events https://www.youtube.com/watch?v=cD-LYYbEg9s
+
+Active Directory, Security & Auditing
+======================================
+
+* **Testimo:** An Active Directory health and security audit framework evaluating domains against hundreds of best-practice checks.
+* **GPOZaurr:** Group Policy analysis and repair tool designed to audit, troubleshoot, and fix GPO inconsistencies.
+* **PSWinReporting / PSWinReportingV2:** Event log viewing, collecting, and security reporting engine focused on Domain Controllers.
+* **SecurityPolicy:** A module wrapping ``secedit`` for managing Windows User Rights Assignments and local security policies.
+* **AuditPolicy:** Replaces ``auditpol.exe`` with a custom wrapper to view and adjust Windows Security Audit policies.
+* **PSPasswordExpiryNotifications:** Automates password expiry warning emails to users and managers using customizable templates.
+* **PSWinDocumentation (AD, DNS, Exchange, O365, AWS):** Datasets and extraction tools that document infrastructure components into Word,
+  Excel, or SQL databases.
+* **AccountTracker:** Tracks non-compliant account placement in Active Directory services and OUs.
+* **PSBlackListChecker:** Verifies IP addresses against global DNS blacklists and sends automated alert reports.
+
+
+File Transfer, Security & Cryptography
+======================================
+
+* **Transferetto:** A reusable module/library for FTP, FTPS, SFTP, SCP, FXP, SSH commands, shell access, and SSH tunneling.
+* **PSPGP:** Encrypts and decrypts files, folders, and text strings using PGP keys natively.
+* **VirusTotalAnalyzer:** Interacts with the VirusTotal API to scan files, hashes, and URLs for threat intelligence.
+* **PowerShellManager:** Extracts and recovers deleted or execution-flagged PowerShell scripts straight from Windows Event Logs for malware analysis.
+
+
+Graphics, UI & Desktop Customization
+=====================================
+
+* **ImagePlayground:** Image processing engine capable of generating QR codes, barcodes, charts, and applying image filters.
+* **PowerBGInfo:** Modern BGInfo replacement that generates dynamic system information desktop background wallpapers.
+* **DesktopManager:** Manages, positions, and switches wallpapers across multi-monitor setups.
+* **ConsoleMonster:** Terminal UI engine for building rich interactive console applications using Spectre.Console.
+* **Statusimo / Dashimo:** Legacy status page and dashboard builders (integrated into modern PSWriteHTML workflows).
+
+
+Cloud, Service & Vendor Integrations
+====================================
+
+* **O365Essentials / GraphEssentials / Graphimo:** Helper modules for managing Microsoft 365, Azure AD, and Intune via Microsoft Graph API.
+* **O365Synchronizer:** Cross-tenant synchronization utility for sync-ing personal contacts, users, and guest objects.
+* **PowerInfoblox:** Helper module for managing Infoblox IPAM and DNS appliance configurations.
+* **PSLansweeper:** Queries Lansweeper asset databases for reporting and inventory tracking.
+* **IISParser:** High-performance IIS log parsing module for traffic and diagnostic audits.
+* **UnifiStockTracker:** Utility for tracking product stock in the Ubiquiti Unifi online store.
+* **PSWordPress:** Interacts with WordPress web instances via REST API endpoints.
+
+
+Ecosystem Integration Pattern
+=============================
+
+Combining these specialized modules yields robust automation solutions. For example, auditing AD security, rendering an HTML report, converting to PDF,
+and emailing a summary via Microsoft Graph:
+
+.. code-block:: powershell
+
+   Import-Module Testimo
+   Import-Module PSWriteHTML
+   Import-Module Mailozaurr
+
+   # 1. Run Active Directory Health Audit
+   $AuditData = Invoke-Testimo -RootDomain
+
+   # 2. Build Interactive HTML Report
+   $ReportPath = "$env:TEMP\ADHealthReport.html"
+   New-HTML -Title "AD Security Audit" -FilePath $ReportPath {
+       New-HTMLTab -Name "Audit Details" {
+           New-HTMLSection -HeaderText "Testimo Results" {
+               New-HTMLTable -DataTable $AuditData
+           }
+       }
+   }
+
+   # 3. Generate HTML Email Body
+   $Body = New-EmailBody {
+       New-EmailSection {
+           New-EmailPanel {
+               New-EmailText -Text "The Active Directory health audit completed successfully. Attached is the interactive report."
+           }
+       }
+   }
+
+   # 4. Send via Mailozaurr Graph API
+   Send-MgEmail -To "admin@domain.com" `
+                -Subject "Weekly AD Audit Report" `
+                -Body $Body `
+                -BodyType HTML `
+                -Attachments $ReportPath
+
+
+
+
+----
+
+**Next Chapter:** :doc:`Chapter 14: Documentation and Resources <chapter-14>`
