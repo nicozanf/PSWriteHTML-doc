@@ -1,10 +1,12 @@
-# 📚 PSWriteHTML Documentation
+# 📚 PSWriteHTML unofficial manual
 
 Hey there! 👋 Welcome to the unofficial manual for [**PSWriteHTML**](https://github.com/EvotecIT/PSWriteHTML) by **Przemysław Kłys** ([Evotec](https://github.com/EvotecIT)).
 
 You can view the live interactive documentation right here:
 
 👉 [**https://nicozanf.github.io/PSWriteHTML-doc**](https://nicozanf.github.io/PSWriteHTML-doc)
+
+There is also a [**blog post**](https://nicozanf.wordpress.com/2026/09/29/from-learning-to-contributing-building-interactive-docs-for-pswritehtml/)
 
 ---
 
@@ -45,6 +47,8 @@ This repository uses **GitHub Actions** to automatically build and publish the d
 
 * **Pull Requests:** Trigger automated build tests to make sure everything compiles cleanly before merging.
 * **Main Branch:** Automatically deploys the rendered output directly to **GitHub Pages** at `https://nicozanf.github.io/PSWriteHTML-doc`.
+
+![the architecture](docs/images/diagram.jpg)
 
 ---
 
