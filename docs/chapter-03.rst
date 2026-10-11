@@ -45,8 +45,6 @@ Container Levels Explained
 
    A tabbed dashboard built from nested PSWriteHTML layout commands.
 
-   *A tabbed dashboard created using simple nested script blocks in PowerShell.*
-
 
 
 Core Syntax: Script Block Nesting
@@ -137,9 +135,7 @@ The following complete script demonstrates how to query Windows services, disk d
    :align: center
    :width: 80%
 
-   A local-node assessment report with service, disk, and uptime panels.
-
-   *Resulting table presentation created by nesting `New-HTMLTable` within `New-HTMLPanel` containers.*
+   Resulting table presentation created by nesting `New-HTMLTable` within `New-HTMLPanel` containers.
 
 Deep Dive: Online vs. Offline Resource Embedding
 ================================================

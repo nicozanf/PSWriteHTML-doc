@@ -137,7 +137,6 @@ After completing installation, verify that the module is imported correctly and 
 
    PowerShell modules available after installing PSWriteHTML and its dependencies.
 
-   *Successful setup allows instant execution of DSL-based layout commands.*
 
 If you should face any errors with the PowerShell execution policy that prevents script execution, you can normally resolve it by
 running the following command:

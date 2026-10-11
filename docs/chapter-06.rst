@@ -97,10 +97,7 @@ This is the result:
    :alt: Rendered Panel Example
    :align: center
 
-   Three panels arranged in a responsive multi-column section.
-
-
-   *Three panels placed inside a single section, automatically flowing into an aligned multi-column grid.*
+   Three panels placed inside a single section, automatically flowing into an aligned multi-column grid
 
 
 Collapsible Sections

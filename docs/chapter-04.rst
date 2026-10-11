@@ -188,8 +188,6 @@ It produces a complete colored interactive table, as shown below:
 
    A complete DataTable combining export buttons, sorting, and conditional formatting.
 
-   *Combining table conditions and controls results in clean, executive-ready documentation.*
-
 
 
 Performance Tips for Large Datasets
