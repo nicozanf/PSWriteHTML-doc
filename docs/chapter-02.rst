@@ -13,7 +13,7 @@ Before using **PSWriteHTML** to construct interactive reports, dashboards, or em
 all core and optional module dependencies are available. 
 
 PSWriteHTML is distributed via the `PowerShell Gallery <https://www.powershellgallery.com/packages/PSWriteHTML>`_ and supports cross-platform
-execution on Windows, macOS, and Linux.
+execution on Windows, macOS, and Linux. Yes, you can generate rich HTML reports not only on Windows but also on Linux servers or macOS workstations!
 
 
 Prerequisites & Requirements

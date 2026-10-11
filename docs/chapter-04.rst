@@ -36,6 +36,19 @@ It produces a simple interactive table, as shown below:
    A first interactive DataTable with sorting, searching, and paging controls.
 
 
+Since PSwriteHTML works fine on Linux and macOS, you can also run a similar script on those platforms to generate the same interactive table output:
+
+.. literalinclude:: sources/chapter-04-first-linux-table.ps1
+   :language: powershell
+
+It produces a simple interactive table, as shown below:
+
+.. figure:: images/chapter-04-first-linux-table.png
+   :alt: Rendered First DataTable Example
+   :align: center
+
+   A first interactive DataTable generated on Linux with sorting, searching, and paging controls.
+
 
 Interactivity Controls & Buttons
 ================================
